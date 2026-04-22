@@ -1,0 +1,32 @@
+name = "euler_catalan_spec"
+version = "0.1.0"
+defaultTargets = ["euler_catalan_spec"]
+
+[[lean_lib]]
+name = "EulerCatalanSpec"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+
+[[lean_exe]]
+name = "euler_catalan_spec"
+root = "Main"
+
+[leanOptions]
+# Enable backtracking in the linear arithmetic solver
+pp.unsafe = false
+
+[buildOptions]
+# Enable warnings on all non-exhaustive pattern matches
+# and all unreachable pattern match cases
+# (these are off by default as they might slow down compilation)
+
+# These options make compilation faster
+# Remove them if you want to check all your code
+
+# This one is mandatatory:
+--threads=2
+
+# These ones are optional:
+leanArgs = ["-Dpp.universes", "-Dpp.proofs.withType", "--verify-olean-checksums"]
