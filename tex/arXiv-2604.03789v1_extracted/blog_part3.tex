@@ -1,0 +1,214 @@
+\toprule
+\textbf{非形式组件} & \textbf{Lean 声明} & \textbf{文件} \\
+\midrule
+应用 Jensen 推论 2.4 & \texttt{jensen\_special\_case} & \texttt{Jensen/Jensen.lean} \\
+平凡一般形式纤维 & \texttt{HasTrivialGenericFormalFiber} & \texttt{Jensen/Defs.lean} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{验证（条件 (A) 和 (B)）}
+
+\begin{center}
+\small
+\begin{tabular}{p{5.5cm} l l}
+\toprule
+\textbf{非形式组件} & \textbf{Lean 声明} & \textbf{文件} \\
+\midrule
+$A$ 是 WQC（条件 (A)） & \texttt{a\_isWeaklyQuasiComplete} & \texttt{Main.lean} \\
+$Q \ne (0)$ & \texttt{Q\_ne\_bot} & \texttt{Main.lean} \\
+$q = Q \cap A$, $\operatorname{ht}(q) = 1$ & \texttt{contraction\_height\_one} & \texttt{Main.lean} \\
+对于素元 $a$ 有 $q = (a)$（UFD） & \texttt{ufd\_height\_one\_principal} & \texttt{Main.lean} \\
+$\dim(A/aA) = 1$ & \texttt{quotient\_prime\_dim\_one} & \texttt{Main.lean} \\
+$A/aA$ 不是分析不可约的 & \texttt{quotient\_not\_analytically\_irreducible} & \texttt{Main.lean} \\
+$\exists$ 不良商（条件 (B)） & \texttt{exists\_prime\_bad\_quotient} & \texttt{Main.lean} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{引用的文献结果}
+
+非形式证明依赖于几个外部结果。我们描述了每一个结果是如何形式化的，以及相应的参考材料存储在何处（位于项目的 \texttt{references/} 目录中）。
+
+\paragraph{Anderson (2014), \emph{Quasi-complete semilocal rings and modules}~\cite{anderson2014quasi}.}
+
+证明中使用了本文的三个结果：
+\begin{itemize}
+\item \emph{Corollary~2.2}（一维局部整环：WQC $\Leftrightarrow$ 分析不可约）在 \texttt{QuasiCompleteRing/QuasiCompleteRing.lean} 中被形式化为 \texttt{dim1\_wqc\_iff\_analyticallyIrreducible}。
+\item \emph{Theorem~5, Item~3}（QC $\Leftrightarrow$ 每个真商是 WQC）在 \texttt{QuasiCompleteRing/QuasiCompleteRing.lean} 中被形式化为 \texttt{isQuasiComplete\_iff\_quotients\_wqc}。
+\item \emph{Theorem~3}（完备 $\Rightarrow$ 拟完备），最初归功于 Chevalley~\cite{chevalley1943theory}，按照 Anderson 的证明，在 \texttt{QuasiCompleteRing/Complete.lean} 中被形式化为 \texttt{anderson\_complete\_isQuasiComplete}。该结果出现在附录 A 的背景讨论中，但在主证明链中并不直接需要。
+\end{itemize}
+参考材料：\texttt{references/anderson\_2014.md}。
+
+\paragraph{Farley (2016), \emph{Quasi-completeness and localizations of polynomial domains}~\cite{farley2016quasi}.}
+
+Proposition~1（诺特局部整环是 WQC 当且仅当完备化的每个非零素理想与环非平凡相交）在 \texttt{QuasiCompleteRing/QuasiCompleteRing.lean} 中被形式化为 \texttt{isWeaklyQuasiComplete\_iff\_primes\_meet}。这个表征是建立条件~(A) 的关键工具。\\
+参考材料：\texttt{references/farley\_2016.md}。
+
+\paragraph{Jensen (2006), \emph{Completions of UFDs with Semi-Local Formal Fibers}~\cite{jensen2006completions}.}
+
+Corollary~2.4（存在具有规定完备化和规定一般形式纤维的局部 UFD）在 \texttt{Jensen.lean} 中被形式化为 \texttt{jensen\_special\_case}，它将一般构造应用于特定的环~$T$。
+
+基础构造（Jensen 的 Theorem~2.2，建立在 Heitmann~\cite{heitmann1993characterization} 和 Loepp~\cite{loepp1997constructing} 的基础上）是一个超限递归过程，它建立了一个 N-子环链，收敛到所需的 UFD。这是形式化中技术上最复杂的部分，跨越整个 \texttt{Jensen/} 子目录（约 15,000 行）。关键模块包括：
+\begin{itemize}
+\item \texttt{Jensen/Construction/}：主要的超限递归及其良基论证。
+\item \texttt{Jensen/CloseUp/}：闭合过程，确保有限生成的理想在扩张下保持闭合。
+\item \texttt{Jensen/KrullDomain/}：通过卡普兰斯基准则验证子环交集的 UFD 属性。
+\item \texttt{Jensen/TransfiniteUnion.lean}：验证极限序数处的并集保留 N-子环属性。
+\item \texttt{Jensen/Adjoin/}：添加超越元素同时保持代数不变量。
+\item \texttt{Jensen/NSubring.lean}：N-子环和 A-扩张的定义。
+\item \texttt{Jensen/Application.lean}：将一般构造应用于特定环~$T$。
+\end{itemize}
+参考材料：\texttt{references/jensen\_2006.md}, \texttt{references/heitmann\_1993.md}, \texttt{references/loepp\_1997.md}。
+
+\paragraph{Chevalley (1943), \emph{On the theory of local rings}~\cite{chevalley1943theory}.}
+
+Chevalley 关于完备蕴含拟完备的结果在 \texttt{QuasiCompleteRing/Complete.lean} 中被形式化为 \texttt{anderson\_complete\_isQuasiComplete}，遵循了 Anderson 推广（~\cite{anderson2014quasi} 的 Theorem~3）中给出的证明。\\
+参考材料：\texttt{references/chevalley\_1943.md}。
+
+\section{人类提供的证明蓝图}\label{appendix:human-blueprint}
+
+本附录复制了在\Cref{subsubsec:ablation-human}描述的消融实验期间由人类主管提供给 Archon 的证明蓝图。该蓝图\emph{没有}在主要实验中使用。该文档以 Markdown 文件形式提供，并在此呈现，仅作了格式调整。它针对 Jensen 构造模块内部的 \texttt{UniqueFactorizationMonoid S\_sub} 的证明，提出了克鲁尔域方法作为 Archon 一直在追求的卡普兰斯基准则路线的替代方案。
+
+\subsection*{数学背景}
+
+设 $(T, M)$ 为完备诺特局部整环。设 $R$ 为 $T$ 的一个 N-子环（特别是 $R \subseteq T$ 的局部 UFD）。设 $y_1, y_2 \in R$ 是互素的，意义是没有 $R$ 的素元同时整除 $y_1$ 和 $y_2$。设 $x_1, x_2 \in T$ 在 $R$ 上是超越的，并且 $c = x_1 y_1 + x_2 y_2$，其中 $c \in R$。
+
+定义：
+\begin{itemize}
+    \item $A_1 = R[x_1, y_2^{-1}]$,\quad $A_2 = R[x_2, y_1^{-1}]$
+    \item $\tilde{R} = A_1 \cap A_2$
+    \item $S_{\mathrm{sub}} = (\tilde{R} \cap (T \setminus M))^{-1}\tilde{R}$
+\end{itemize}
+
+\noindent\textbf{目标：} $S_{\mathrm{sub}}$ 是一个 UFD。
+
+\subsection*{形式化建议}
+
+应该定义一个环的 \texttt{IsKrullRing} 结构，意思是它（它的像）是其分式域中包含它的所有赋值子环的交集。这等价于：给定 $K$ 是 $R$ 的分式域，$R$ 的像是 $K$ 中包含它的所有赋值子环的交集。具有相同分式域的两个克鲁尔环的交集再次是一个克鲁尔环。
+
+设 $d$ 为 $R$ 的一个元素，$K$ 为 $R$ 的分式域。应该将 $K$ 的赋值子环的一个属性定义为“由 $d$ 生成”，如果它包含 $R$ 并且它的极大理想由 $d$ 生成。在“分式域中由一个元素生成的赋值子环”（\texttt{ValuationSubring.IsPrincipalGen}）结构的定义中，这是 $R$ 的分式域的一个赋值子环的属性，要求它是一个 DVR，并且其极大理想由 $R$ 的某个素元 $d$ 的（像）生成。由素元 $d$ 生成的赋值子环自然是由元素生成的赋值子环。
+
+此外，给定克鲁尔整环 $R$ 中的素元 $d$，需要具体构造 $K$ 的一个赋值子环，该子环正好是 $R$ 在由 $d$ 生成的素理想处的局部化。首先应构造此子环，证明（非平凡地，遵循本附录末尾的支持性引理）它是一个赋值子环，然后将其升级为赋值子环。
+
+使用这些定义，可以更好地形式化该命题的以下证明。
+
+\subsection*{证明}
+
+\paragraph{第一步：化简到 $\tilde{R}$。} 因为 UFD 在任何乘法集处的局部化再次是 UFD，所以只需证明 $\tilde{R}$ 是 UFD。
+
+\paragraph{第二步：$A_1$ 和 $A_2$ 是 UFD 也是克鲁尔整环。} 因为 $R$ 是 UFD 且 $x_1, x_2$ 在 $R$ 上是超越的，多项式环 $R[x_1]$ 和 $R[x_2]$ 是 UFD。分别在 $y_2$ 和 $y_1$ 处进行局部化保留了 UFD 属性，因此 $A_1$ 和 $A_2$ 是 UFD。每一个 UFD 都是一个克鲁尔整环：在由任何素元 $p$ 生成的素理想处的局部化是一个 DVR，UFD 是其分式域上所有这些 DVR 的交集，并且任何非零元素仅在有限多个这样的 DVR 中具有非零赋值。
+
+\paragraph{第三步：$\tilde{R}$ 是一个克鲁尔整环。} 具有相同分式域的克鲁尔整环的有限交集再次是一个克鲁尔整环。$\tilde{R}$ 的本质 DVR 集合是通过取 $A_1$ 和 $A_2$ 的 DVR 族的并集获得的。有限性条件（任何元素仅在有限多个 DVR 中具有非零赋值）被继承。
+
+\paragraph{第四步：$y_1 y_2$ 在 $\tilde{R}$ 中是素元的乘积。} 设 $p$ 是 $R$ 中 $y_1$ 的一个素因子。在 $A_1 = R[x_1, y_2^{-1}]$ 中，$p$ 仍然是素元，因为添加 $x_1$ 和对 $y_2$ 求逆（与 $y_1$ 互素）不影响 $p$。在 $A_2 = R[x_2, y_1^{-1}]$ 中，$p$ 变成一个单位，因为 $p \mid y_1$ 且 $y_1$ 被求逆。因此，在克鲁尔整环 $\tilde{R}$ 中，$p$ 的赋值分布在恰好一个 DVR（来自 $A_1$ 一侧）处为 $1$，在其他任何地方都为 $0$。具有这种分布的元素不能被进一步分解，所以 $p$ 在 $\tilde{R}$ 中是素元。同样的论证对称地适用于 $y_2$ 的素因子。
+
+\paragraph{第五步：$\tilde{R}[(y_1 y_2)^{-1}]$ 是一个 UFD。} 我们计算：
+\[
+\tilde{R}[(y_1 y_2)^{-1}] = A_1[y_1^{-1}] \cap A_2[y_2^{-1}] = R[x_1, y_1^{-1}, y_2^{-1}] \cap R[x_2, y_1^{-1}, y_2^{-1}].
+\]
+关系式 $c = x_1 y_1 + x_2 y_2$ 意味着 $x_2 = (c - x_1 y_1)/y_2$，所以 $R[x_1, y_1^{-1}, y_2^{-1}] = R[x_2, y_1^{-1}, y_2^{-1}]$，因此
+\[
+\tilde{R}[(y_1 y_2)^{-1}] = R[x_1, (y_1 y_2)^{-1}],
+\]
+这是多项式 UFD $R[x_1]$ 的一个局部化，因此是一个 UFD。
+
+\paragraph{第六步：应用 Nagata 引理。} 我们现在剩下了一个经典的设置（Nagata 定理的一个变体）：$\tilde{R}$ 是一个克鲁尔整环，$y = y_1 y_2$ 在 $\tilde{R}$ 中是素元的乘积，且 $\tilde{R}[y^{-1}]$ 是一个 UFD。我们必须证明 $\tilde{R}$ 是一个 UFD。为此，我们只需要证明对于 $\tilde{R}$ 中的任何元素，素因式分解的存在性和唯一性。
+
+\emph{分解的存在性。} 取 $\tilde{R}$ 中任意的非零非单位元素 $a$。因为 $\tilde{R}[y^{-1}]$ 是 UFD，我们可以在局部化环中对 $a$ 进行因式分解。为了将这种分解拉回 $\tilde{R}$，我们调整 $y$ 的素因子的幂。由于 $\tilde{R}$ 是一个克鲁尔整环，$a$ 在对应于 $y$ 的素因子的 DVR 处的赋值是严格有限的（这防止了提取 $y$ 的无限次幂的病态情况）。我们可以完美地从 $a$ 中提取出这些 $y$-素元的精确有限次幂，留下一个元素 $a'$，其在 $\tilde{R}[y^{-1}]$ 中的素因式分解完全由与 $y$ 互素的素元组成。我们乘以适当的 $y$ 的幂以清除分母，使得这种因式分解完全位于 $\tilde{R}$ 中。
+
+\emph{拉回因子的素性。} 我们必须验证这些拉回的因子（让我们称其中任意一个为 $q$）在基环 $\tilde{R}$ 中仍然是素元。假设为了寻求矛盾，$q$ 在 $\tilde{R}$ 中不是素元。因为 $q$ 映射到 $\tilde{R}[y^{-1}]$ 中的一个素元，它在局部化环中的赋值分布有恰好一个非零条目（即 $1$）。如果 $q$ 在 $\tilde{R}$ 中分解，它在 $\tilde{R}$ 的 DVR 上的赋值分布必须分裂，这意味着 $q$ 将在两个或更多 DVR 处具有 ${>}\,0$ 的赋值，或者在单个 DVR 处具有 ${>}\,1$ 的赋值。然而，局部化 $\tilde{R}[y^{-1}]$ 的 DVR 集合正好是 $\tilde{R}$ 的 DVR 集合减去对应于 $y$ 的素因子的那些。因为我们特意调整了 $q$ 使得其在 $y$-DVR 处的赋值为 $0$，所以 $q$ 在 $\tilde{R}$ 中的赋值分布与其在 $\tilde{R}[y^{-1}]$ 中的赋值分布相同：恰好在一个 DVR 处为 $1$，在其他任何地方都为 $0$。一个在单个 DVR 处 $v(q) = 1$ 且在别处为 $0$ 的元素不能被进一步分解。因此，$q$ 在 $\tilde{R}$ 中是素元。
+
+\paragraph{第七步：结论。} 因为 $\tilde{R}$ 中的任何元素都可以被分解为素元，所以 $\tilde{R}$ 是一个 UFD。最后，因为 $S_{\mathrm{sub}}$ 是 $\tilde{R}$ 在乘法集 $\tilde{R} \cap (T \setminus M)$ 处的局部化，并且 UFD 的局部化始终是 UFD，我们得出结论 $S_{\mathrm{sub}}$ 是一个 UFD。
+
+\subsection*{支持性引理：在克鲁尔整环中素元处的局部化}
+
+\noindent\textbf{引理。} \textit{设 $A$ 为一个克鲁尔整环，设 $t \in A$ 为一个素元。那么在素理想 $(t)$ 处的局部化 $A_{(t)}$ 是一个 DVR。}
+
+\begin{proof}
+设 $P = (t)$。局部化环 $A_P$ 是一个具有极大理想 $tA_P$ 的局部整环。我们展示在 $A$ 中 $\bigcap_{n=1}^{\infty} (t^n) = (0)$。为了寻求矛盾，假设一个非零 $x \in A$ 对于所有 $n \geq 1$ 满足 $x = a_n t^n$。根据克鲁尔整环的定义，$A$ 与其分式域上的一族离散赋值 $\{v_i\}_{i \in I}$ 相关联，使得 $A = \{a \in K \mid \text{对于所有 } i, v_i(a) \geq 0\}$，并且对于任何非零元素，只有有限多个 $v_i$ 取正值。选择一个满足 $v(t) \geq 1$ 的赋值 $v$。那么对于每一个 $n \geq 1$，都有 $v(x) = v(a_n) + n \cdot v(t) \geq n$，这迫使 $v(x) = \infty$，与 $x \neq 0$ 矛盾。由于 $A_P$ 是一个具有主极大理想且 $\bigcap_{n=1}^{\infty} (tA_P)^n = (0)$ 的局部整环，它是一个 DVR。
+\end{proof}
+
+
+\section{形式化中的详细数学示例}\label{appendix:detailed-examples}
+
+本附录提供了在\Cref{subsec:lessons}中讨论的值得注意的行为的详细数学描述。每个小节对应一个具体的观察结果，并包含理解它所必需的数学背景。
+
+\subsection{在证明细节中自动填补空白}\label{subsubsec:gap-filling}
+
+Archon 展示了自主提供非形式证明所省略的非平凡数学论证的能力。我们用两个例子来说明。
+
+非形式证明断言
+\[
+T = \mathbb{C}[[x,y,z]]/(x^2 - yz)
+\]
+通过 $x \mapsto uv$, $y \mapsto u^2$, $z \mapsto v^2$ 同构于子环 $\mathbb{C}[[u^2, uv, v^2]] \subseteq \mathbb{C}[[u,v]]$。虽然这些分配很容易定义到子环上的满射，但建立单射性需要一个单独的论证，而非形式证明没有提供。Archon 通过在幂级数系数层面上明确构造一个商函数并逐项验证核中的每一个元素都能被生成元 $x^2 - yz$ 整除，从而解决了这个问题，从而在不查阅任何外部参考资料的情况下完成了单射性证明。
+
+第二个例子涉及基数等式 $|T| = |T/\mathfrak{m}| = |\mathbb{C}|$，非形式证明只是陈述了这一点而没有详细说明。这个等式并非微不足道：对于幂级数环 $k[[x_1, \ldots, x_n]]$，有 $|k[[x_1, \ldots, x_n]]| = |k|^{\aleph_0}$，并且对于一般无限基数 $\kappa$，$\kappa^{\aleph_0} = \kappa$ 并\emph{不}成立。Archon 正确地识别出该等式依赖于连续统 $\mathfrak{c} = 2^{\aleph_0}$ 的特殊性质，即 $\mathfrak{c}^{\aleph_0} = (2^{\aleph_0})^{\aleph_0} = 2^{\aleph_0 \cdot \aleph_0} = 2^{\aleph_0} = \mathfrak{c}$，并应用相应的 Mathlib 引理填补了这一空白。
+
+\subsection{处理未充分指定的超限构造}\label{subsubsec:transfinite}
+
+构造具有规定完备化的局部 UFD $A$ 依赖于 Jensen~\cite{jensen2006completions} 的超限递归程序，该程序建立在 Loepp~\cite{loepp1997constructing} 和 Heitmann~\cite{heitmann1993characterization} 的早期工作之上。源论文在很高层次上描述了这一构造——指出应该“递归地定义 $\{R_\alpha\}_{\alpha \in V}$”并“在极限序数处取并集”——但把簿记细节留给了读者。在 Lean 4 中形式化这样的构造要求使递归的每一个方面都变得明确：在每一步携带的数据、良基论证、代数不变量通过后继和极限阶段的传播，以及每一级精确的基数界限。
+
+Archon 通过设计一个捆绑记录类型解决了这一挑战，该类型将递归的每个阶段连同其前驱、扩张关系、基数界限和闭包属性打包在一起。它通过对序数的良基递归实现了递归，并在每一级显式跟踪界限 $\max(\aleph_0, |\{\gamma \le \alpha\}|)$。极限序数的情况通过一个专门的模块处理，该模块验证 N-子环链的并集保留了 UFD 属性、素扩张条件和基数约束。实际上，Archon 成功地将一个庞大的超限论证分解为模块化、可独立验证的代数组件——将所有技术交换代数步骤从归纳支架中分离出来——然后将它们组装成一个完整的形式化证明。达到这个最终架构本身就是一个非平凡的过程：Archon 的初步尝试依赖于一种不正确的证明策略，它通过跨越多个会话的大规模重构诊断并纠正了该策略（附录~\ref{subsubsec:self-diagnosis}和~\ref{subsubsec:refactoring}）。
+
+\subsection{数学错误的自我诊断}\label{subsubsec:self-diagnosis}
+
+在对超限构造的最初尝试中，Archon 采用了佐恩引理（Zorn's lemma）来产生一个极大元，而不是执行证明所需的显式超限递归。此外，它将“基数严格小于连续统”与“可数”混为一谈——这种等同在连续统假设下是有效的，但在仅凭 ZFC 的情况下是无法证明的。这些错误导致了下游的代数步骤失败：无法建立必要的基数界限，并且在极限阶段所需的闭包属性不成立。
+
+值得注意的是，源论文并没有明确警告这些陷阱。Archon 通过其自身的诊断过程找出了失败的根本原因：它认识到佐恩引理只产生存在性，而没有构造所需的对中间阶段的细粒度控制，并且在没有连续统假设的情况下，可数性假设是不合理的。这种自我诊断是在没有人类指导的情况下进行的，并直接导致了下面描述的正确重构。
+
+\subsection{跨会话架构重构}\label{subsubsec:refactoring}
+
+在认识到附录~\ref{subsubsec:self-diagnosis}中描述的错误后，Archon 对超限构造进行了大规模重构，用显式的良基递归取代了基于佐恩引理的方法，并修改了所有基数论证，使用一般基数算术代替可数性假设。这种重构跨越了多个智能体会话——要求智能体在上下文边界保持对整体证明架构的连贯理解——并涉及在整个 Jensen 构造模块中重组相互依赖的文件。
+
+\subsection{替代证明策略的发现}\label{subsubsec:alternative-strategy}
+
+构造中的一个关键技术引理——对应于 Heitmann~\cite{heitmann1993characterization} 的 Lemma 4——建立了一个特定子环的交集是 UFD。原始证明的进行方式是，证明该交集是一个克鲁尔整环，然后诉诸于高为一的素理想的分类。然而，Mathlib 目前并未提供克鲁尔整环的形式化定义，忠实地遵循原始论证将要求 Archon 开发大量额外的基础设施，包括克鲁尔整环的刻画和除子理想理论。
+
+相反，Archon 独立地识别并应用了卡普兰斯基准则（Kaplansky's criterion）——它将 UFD 刻画为每一个非零素理想都包含一个素元的整环——直接建立了该结果。这条没有出现在提供给智能体的任何参考论文中的替代路线，完全绕过了对克鲁尔整环理论的需求，并产生了一个更简洁的形式化。这段经历说明了 Archon 有能力根据可用的库支持调整其证明策略，而不是僵化地遵循非形式论证的结构。
+
+
+\section{通过 Comparator 的陈述验证}\label{appendix:szm_comparator}
+
+正如在\Cref{subsec:overview-result}中所述，我们在两个层面上验证形式化的正确性。首先，整个项目通过了 \texttt{lake build}，证实所有证明义务都被履行。其次，我们使用 Comparator~\cite{comparator} 确认完整项目中证明的定理与一个简短、人类可读的规范相匹配，并且仅依赖于标准的 Lean 公理。
+
+规范文件 \texttt{Challenge.lean} 复制如下。它仅包含拟完备和弱拟完备的定义，以及主定理的陈述。人类评审者可以验证这 30 行代码的语义正确性，而无需了解证明或代码库的其余部分。然后，Comparator 会自动检查完整项目中的 \texttt{main\_theorem} 声明是否完全证明了这一陈述，且没有隐藏的公理。
+
+\begin{Verbatim}[fontsize=\small,commandchars=!?\|]
+import Mathlib.Algebra.Algebra.Operations
+import Mathlib.RingTheory.LocalRing.MaximalIdeal.Defs
+import Mathlib.RingTheory.Noetherian.Defs
+
+variable (R : Type*) [CommRing R] [IsLocalRing R]
+
+/-- A local ring `R` is quasi-complete if for any antitone sequence
+of ideals `A : !(!mathbb?N|!) → Ideal R` and each `k : !(!mathbb?N|!)`, there exists `s`
+such that `A s !(!le!) (!(!sqcap!) n, A n) !(!sqcup!) (IsLocalRing.maximalIdeal R) ^ k`.
+
+This is Definition 1.1 of Anderson (2014). -/
+def IsQuasiComplete : Prop :=
+  !(!forall!) (A : !(!mathbb?N|!) → Ideal R), Antitone A →
+    !(!forall!) (k : !(!mathbb?N|!)), !(!exists!) s,
+      A s !(!le!) (!(!sqcap!) n, A n) !(!sqcup!) (IsLocalRing.maximalIdeal R) ^ k
+
+/-- A local ring `R` is weakly quasi-complete if for any antitone
+sequence of ideals `A : !(!mathbb?N|!) → Ideal R` with `!(!sqcap!) n, A n = !(!bot!)` and
+each `k : !(!mathbb?N|!)`, there exists `s` such that
+`A s !(!le!) (IsLocalRing.maximalIdeal R) ^ k`. -/
+def IsWeaklyQuasiComplete : Prop :=
+  !(!forall!) (A : !(!mathbb?N|!) → Ideal R), Antitone A → (!(!sqcap!) n, A n) = !(!bot!) →
+    !(!forall!) (k : !(!mathbb?N|!)), !(!exists!) s,
+      A s !(!le!) (IsLocalRing.maximalIdeal R) ^ k
+
+/-- **Main Theorem**: There exists a weakly quasi-complete
+Noetherian local ring that is not quasi-complete. -/
+theorem main_theorem :
+    !(!exists!) (R : Type) (_ : CommRing R) (_ : IsLocalRing R)
+      (_ : IsNoetherianRing R),
+      IsWeaklyQuasiComplete R !(!wedge!) ¬ IsQuasiComplete R := by
+  sorry
+\end{Verbatim}
+\noindent 此文件中的 \texttt{sorry} 是有意为之的：它标记了完整项目必须履行的一项义务。Comparator 会验证项目的 \texttt{main\_theorem} 是否以完整的证明填补了这个 \texttt{sorry}，并与陈述完全匹配。
+\let\clearpage\relax
+\end{document}

@@ -1,0 +1,524 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{31}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Affeldt et~al\mbox{.}(2020)]%
+        {Forgetful-inheritance}
+\bibfield{author}{\bibinfo{person}{Reynald Affeldt}, \bibinfo{person}{Cyril
+  Cohen}, \bibinfo{person}{Marie Kerjean}, \bibinfo{person}{Assia Mahboubi},
+  \bibinfo{person}{Damien Rouhling}, {and} \bibinfo{person}{Kazuhiko
+  Sakaguchi}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Competing Inheritance Paths in Dependent Type
+  Theory: {A} Case Study in Functional Analysis}. In
+  \bibinfo{booktitle}{\emph{{IJCAR} 2020}} \emph{(\bibinfo{series}{LNCS},
+  Vol.~\bibinfo{volume}{12167})}, \bibfield{editor}{\bibinfo{person}{Nicolas
+  Peltier} {and} \bibinfo{person}{Viorica Sofronie{-}Stokkermans}} (Eds.).
+  \bibinfo{publisher}{Springer}, \bibinfo{pages}{3--20}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-030-51054-1_1}
+\showDOI{\tempurl}
+
+
+\bibitem[Baanen(2022)]%
+        {typeclasses}
+\bibfield{author}{\bibinfo{person}{Anne Baanen}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Use and Abuse of Instance Parameters in the {L}ean
+  Mathematical Library}. In \bibinfo{booktitle}{\emph{ITP 2022}}
+  \emph{(\bibinfo{series}{LIPIcs}, Vol.~\bibinfo{volume}{237})},
+  \bibfield{editor}{\bibinfo{person}{June Andronick} {and}
+  \bibinfo{person}{Leonardo de~Moura}} (Eds.). \bibinfo{publisher}{Schloss
+  Dagstuhl -- Leibniz-Zentrum für Informatik}, \bibinfo{pages}{4:1--4:20}.
+\newblock
+\showISBNx{978-3-95977-252-5}
+\showISSN{1868-8969}
+\urldef\tempurl%
+\url{https://doi.org/10.4230/LIPIcs.ITP.2022.4}
+\showDOI{\tempurl}
+
+
+\bibitem[Baanen et~al\mbox{.}(2021)]%
+        {baanen_formalization_2021}
+\bibfield{author}{\bibinfo{person}{Anne Baanen}, \bibinfo{person}{Sander~R.
+  Dahmen}, \bibinfo{person}{{Ashvni Narayanan}}, {and} \bibinfo{person}{Filippo
+  A.~E. Nuccio Mortarino Majno~di Capriglio}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{A Formalization of {Dedekind} Domains and Class
+  Groups of Global Fields}. In \bibinfo{booktitle}{\emph{ITP 2021}}
+  \emph{(\bibinfo{series}{LIPIcs}, Vol.~\bibinfo{volume}{193})},
+  \bibfield{editor}{\bibinfo{person}{Liron Cohen} {and} \bibinfo{person}{Cezary
+  Kaliszyk}} (Eds.). \bibinfo{publisher}{Schloss Dagstuhl -- Leibniz-Zentrum
+  für Informatik}, \bibinfo{pages}{5:1--5:19}.
+\newblock
+\showISBNx{978-3-95977-188-7}
+\showISSN{1868-8969}
+\urldef\tempurl%
+\url{https://doi.org/10.4230/LIPIcs.ITP.2021.5}
+\showDOI{\tempurl}
+
+
+\bibitem[Baker(1968)]%
+        {baker68}
+\bibfield{author}{\bibinfo{person}{Alan Baker}.}
+  \bibinfo{year}{1968}\natexlab{}.
+\newblock \showarticletitle{Contributions to the Theory of {Diophantine}
+  Equations. II. the {Diophantine} Equation $y^2 = x^3 + k$}.
+\newblock \bibinfo{journal}{\emph{Philosophical Transactions of the Royal
+  Society of London. Series A, Mathematical and Physical Sciences}}
+  \bibinfo{volume}{263}, \bibinfo{number}{1139} (\bibinfo{year}{1968}),
+  \bibinfo{pages}{193--208}.
+\newblock
+\showISSN{00804614}
+\urldef\tempurl%
+\url{http://www.jstor.org/stable/73429}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Bennett and Ghadermarzi(2015)]%
+        {bennett_mordells_2015}
+\bibfield{author}{\bibinfo{person}{Michael~A. Bennett} {and}
+  \bibinfo{person}{Amir Ghadermarzi}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Mordell’s equation: a classical approach}.
+\newblock \bibinfo{journal}{\emph{LMS Journal of Computation and Mathematics}}
+  \bibinfo{volume}{18}, \bibinfo{number}{1} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{633--646}.
+\newblock
+\showISSN{1461-1570}
+\urldef\tempurl%
+\url{https://doi.org/10.1112/S1461157015000182}
+\showDOI{\tempurl}
+
+
+\bibitem[Cohen(2007)]%
+        {cohen2007number}
+\bibfield{author}{\bibinfo{person}{Henri Cohen}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Number theory: Volume I: Tools and
+  {Diophantine} equations}}. \bibinfo{series}{Graduate Texts in Mathematics},
+  Vol.~\bibinfo{volume}{239}.
+\newblock \bibinfo{publisher}{Springer}, \bibinfo{address}{Cham}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-0-387-49923-9}
+\showDOI{\tempurl}
+
+
+\bibitem[de~Frutos-Fernández(2022)]%
+        {de_frutos-fernandez_formalizing_2022}
+\bibfield{author}{\bibinfo{person}{María~Inés de Frutos-Fernández}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Formalizing the Ring of {Adèles} of a Global
+  Field}. In \bibinfo{booktitle}{\emph{ITP 2022}}
+  \emph{(\bibinfo{series}{LIPIcs}, Vol.~\bibinfo{volume}{237})},
+  \bibfield{editor}{\bibinfo{person}{June Andronick} {and}
+  \bibinfo{person}{Leonardo de~Moura}} (Eds.). \bibinfo{publisher}{Schloss
+  Dagstuhl – Leibniz-Zentrum für Informatik}, \bibinfo{address}{Dagstuhl,
+  Germany}, \bibinfo{pages}{14:1--14:18}.
+\newblock
+\showISBNx{978-3-95977-252-5}
+\showISSN{1868-8969}
+\urldef\tempurl%
+\url{https://doi.org/10.4230/LIPIcs.ITP.2022.14}
+\showDOI{\tempurl}
+
+
+\bibitem[de~Moura et~al\mbox{.}(2015)]%
+        {lean-prover}
+\bibfield{author}{\bibinfo{person}{Leonardo de Moura}, \bibinfo{person}{Soonho
+  Kong}, \bibinfo{person}{Jeremy Avigad}, \bibinfo{person}{Floris van Doorn},
+  {and} \bibinfo{person}{Jakob von Raumer}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{The {L}ean theorem prover (system description)}. In
+  \bibinfo{booktitle}{\emph{Automated Deduction - CADE-25}}
+  \emph{(\bibinfo{series}{LNCS}, Vol.~\bibinfo{volume}{9195})},
+  \bibfield{editor}{\bibinfo{person}{A.~P. Felty} {and}
+  \bibinfo{person}{A.~Middeldorp}} (Eds.). \bibinfo{publisher}{Springer},
+  \bibinfo{pages}{378--388}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-319-21401-6_26}
+\showDOI{\tempurl}
+
+
+\bibitem[de~Moura and Ullrich(2021)]%
+        {lean-4}
+\bibfield{author}{\bibinfo{person}{Leonardo de Moura} {and}
+  \bibinfo{person}{Sebastian Ullrich}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{The {L}ean 4 Theorem Prover and Programming
+  Language}. In \bibinfo{booktitle}{\emph{Automated Deduction - {CADE}-28}}
+  \emph{(\bibinfo{series}{LNCS}, Vol.~\bibinfo{volume}{12699})},
+  \bibfield{editor}{\bibinfo{person}{Andr{\'{e}} Platzer} {and}
+  \bibinfo{person}{Geoff Sutcliffe}} (Eds.). \bibinfo{publisher}{Springer},
+  \bibinfo{pages}{625--635}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-030-79876-5_37}
+\showDOI{\tempurl}
+
+
+\bibitem[Delahaye and Mayero(2005)]%
+        {Diophante-Fermat}
+\bibfield{author}{\bibinfo{person}{David Delahaye} {and}
+  \bibinfo{person}{Micaela Mayero}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \bibinfo{title}{{Diophantus' 20th Problem and Fermat's Last Theorem
+  for $n=4$: Formalization of Fermat's Proofs in the \textsf{Coq} Proof
+  Assistant}}.
+\newblock \bibinfo{howpublished}{Draft}.
+\newblock
+\newblock
+\shownote{\url{http://arxiv.org/abs/cs/0510011}}.
+
+
+\bibitem[Dickson(1920)]%
+        {dickson_history_2}
+\bibfield{author}{\bibinfo{person}{Leonard~E. Dickson}.}
+  \bibinfo{year}{1920}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{History of the theory of numbers}}.
+  Vol.~\bibinfo{volume}{2}.
+\newblock \bibinfo{publisher}{Carnegie Institution of Washington}.
+\newblock
+
+
+\bibitem[Dummit and Foote(2004)]%
+        {DummitFoote2004}
+\bibfield{author}{\bibinfo{person}{David~S. Dummit} {and}
+  \bibinfo{person}{Richard~M. Foote}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Abstract algebra} (\bibinfo{edition}{third}
+  ed.)}.
+\newblock \bibinfo{publisher}{John Wiley \& Sons, Inc., Hoboken, NJ}. xii+932
+  pages.
+\newblock
+\showISBNx{0-471-43334-9}
+
+
+\bibitem[Eberl(2017)]%
+        {Minkowskis_Theorem-AFP}
+\bibfield{author}{\bibinfo{person}{Manuel Eberl}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Minkowski's Theorem}.
+\newblock \bibinfo{journal}{\emph{Archive of Formal Proofs}}
+  (\bibinfo{date}{July} \bibinfo{year}{2017}).
+\newblock
+\showISSN{2150-914x}
+\newblock
+\shownote{\url{https://isa-afp.org/entries/Minkowskis_Theorem.html}, Formal
+  proof development}.
+
+
+\bibitem[Edwards(2000)]%
+        {edwards-fermat}
+\bibfield{author}{\bibinfo{person}{Harold~M. Edwards}.}
+  \bibinfo{year}{2000}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Fermat's last theorem}}.
+  \bibinfo{series}{Graduate Texts in Mathematics}, Vol.~\bibinfo{volume}{50}.
+\newblock \bibinfo{publisher}{Springer}, \bibinfo{address}{Cham}. xvi+410
+  pages.
+\newblock
+\showISBNx{978-0-387-95002-0}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-0-387-95002-0}
+\showDOI{\tempurl}
+\newblock
+\shownote{A genetic introduction to algebraic number theory, Corrected reprint
+  of the 1977 original}.
+
+
+\bibitem[Gr{\'e}goire and Mahboubi(2005)]%
+        {ring-tactic}
+\bibfield{author}{\bibinfo{person}{Benjamin Gr{\'e}goire} {and}
+  \bibinfo{person}{Assia Mahboubi}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Proving equalities in a commutative ring done right
+  in Coq}. In \bibinfo{booktitle}{\emph{TPHOLs 2005}}
+  \emph{(\bibinfo{series}{LNCS}, Vol.~\bibinfo{volume}{3603})},
+  \bibfield{editor}{\bibinfo{person}{J.~Hurd} {and}
+  \bibinfo{person}{T.~Melham}} (Eds.). \bibinfo{publisher}{Springer},
+  \bibinfo{address}{Cham}, \bibinfo{pages}{98--113}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/11541868_7}
+\showDOI{\tempurl}
+
+
+\bibitem[Lang(2005)]%
+        {lang2005undergraduate}
+\bibfield{author}{\bibinfo{person}{S. Lang}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Undergraduate Algebra}}.
+\newblock \bibinfo{publisher}{Springer New York}.
+\newblock
+\showISBNx{9780387220253}
+\showLCCN{2004049194}
+
+
+\bibitem[Larchey-Wendling and Forster(2019)]%
+        {larcheywendling_et_al}
+\bibfield{author}{\bibinfo{person}{Dominique Larchey-Wendling} {and}
+  \bibinfo{person}{Yannick Forster}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Hilbert's Tenth Problem in {Coq}}. In
+  \bibinfo{booktitle}{\emph{FSCD 2019}} \emph{(\bibinfo{series}{LIPIcs},
+  Vol.~\bibinfo{volume}{131})}, \bibfield{editor}{\bibinfo{person}{Herman
+  Geuvers}} (Ed.). \bibinfo{publisher}{Schloss Dagstuhl--Leibniz-Zentrum für
+  Informatik}, \bibinfo{address}{Dagstuhl, Germany},
+  \bibinfo{pages}{27:1--27:20}.
+\newblock
+\showISBNx{978-3-95977-107-8}
+\showISSN{1868-8969}
+\urldef\tempurl%
+\url{https://doi.org/10.4230/LIPIcs.FSCD.2019.27}
+\showDOI{\tempurl}
+
+
+\bibitem[Lewis(2017)]%
+        {lewis_extensible_2017}
+\bibfield{author}{\bibinfo{person}{Robert~Y. Lewis}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{An {Extensible} {Ad} {Hoc} {Interface} between
+  {Lean} and {Mathematica}}.
+\newblock \bibinfo{journal}{\emph{Electronic Proceedings in Theoretical
+  Computer Science}}  \bibinfo{volume}{262} (\bibinfo{date}{Dec.}
+  \bibinfo{year}{2017}), \bibinfo{pages}{23--37}.
+\newblock
+\showISSN{2075-2180}
+\urldef\tempurl%
+\url{https://doi.org/10.4204/EPTCS.262.4}
+\showDOI{\tempurl}
+\newblock
+\shownote{arXiv:1712.09288 [cs]}.
+
+
+\bibitem[Lewis and Madelaine(2020)]%
+        {norm_cast}
+\bibfield{author}{\bibinfo{person}{Robert~Y. Lewis} {and}
+  \bibinfo{person}{Paul{-}Nicolas Madelaine}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Simplifying Casts and Coercions (Extended
+  Abstract)}. In \bibinfo{booktitle}{\emph{Practical Aspects of Automated
+  Reasoning}} \emph{(\bibinfo{series}{{CEUR} Workshop Proceedings},
+  Vol.~\bibinfo{volume}{2752})}, \bibfield{editor}{\bibinfo{person}{Pascal
+  Fontaine}, \bibinfo{person}{Konstantin Korovin}, \bibinfo{person}{Ilias~S.
+  Kotsireas}, \bibinfo{person}{Philipp R{\"{u}}mmer}, {and}
+  \bibinfo{person}{Sophie Tourret}} (Eds.). \bibinfo{publisher}{CEUR-WS.org},
+  \bibinfo{address}{Aachen, Germany}, \bibinfo{pages}{53--62}.
+\newblock
+\urldef\tempurl%
+\url{http://ceur-ws.org/Vol-2752/paper4.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Lewis and Wu(2022)]%
+        {lewis_bi-directional_2022}
+\bibfield{author}{\bibinfo{person}{Robert~Y. Lewis} {and}
+  \bibinfo{person}{Minchao Wu}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A {Bi}-{Directional} {Extensible} {Interface}
+  {Between} {Lean} and {Mathematica}}.
+\newblock \bibinfo{journal}{\emph{Journal of Automated Reasoning}}
+  \bibinfo{volume}{66}, \bibinfo{number}{2} (\bibinfo{date}{May}
+  \bibinfo{year}{2022}), \bibinfo{pages}{215--238}.
+\newblock
+\showISSN{1573-0670}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s10817-021-09611-1}
+\showDOI{\tempurl}
+
+
+\bibitem[Mordell(1914)]%
+        {mordell14}
+\bibfield{author}{\bibinfo{person}{Louis Mordell}.}
+  \bibinfo{year}{1914}\natexlab{}.
+\newblock \showarticletitle{The Diophantine Equation $y^2-k=x^3$}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the London Mathematical
+  Society}} \bibinfo{volume}{s2-13}, \bibinfo{number}{1} (\bibinfo{date}{01}
+  \bibinfo{year}{1914}), \bibinfo{pages}{60--80}.
+\newblock
+\showISSN{0024-6115}
+\urldef\tempurl%
+\url{https://doi.org/10.1112/plms/s2-13.1.60}
+\showDOI{\tempurl}
+
+
+\bibitem[Mordell(1920)]%
+        {mordell1920}
+\bibfield{author}{\bibinfo{person}{Louis Mordell}.}
+  \bibinfo{year}{1920}\natexlab{}.
+\newblock \showarticletitle{A Statement by Fermat}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the London Mathematical
+  Society}}  \bibinfo{volume}{s2-18} (\bibinfo{year}{1920}),
+  \bibinfo{pages}{v--vi}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1112/plms/s2-18.1.1-s}
+\showDOI{\tempurl}
+
+
+\bibitem[Mordell(1923)]%
+        {mordell23}
+\bibfield{author}{\bibinfo{person}{Louis Mordell}.}
+  \bibinfo{year}{1923}\natexlab{}.
+\newblock \showarticletitle{On the Integer Solutions of the Equation $ey^2 =
+  ax^3+bx^2+cx+d$}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the London Mathematical
+  Society}} \bibinfo{volume}{s2-21}, \bibinfo{number}{1} (\bibinfo{date}{01}
+  \bibinfo{year}{1923}), \bibinfo{pages}{415--419}.
+\newblock
+\showISSN{0024-6115}
+\urldef\tempurl%
+\url{https://doi.org/10.1112/plms/s2-21.1.415}
+\showDOI{\tempurl}
+
+
+\bibitem[Mordell(1969)]%
+        {mordell1969diophantine}
+\bibfield{author}{\bibinfo{person}{Louis Mordell}.}
+  \bibinfo{year}{1969}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Diophantine equations}}.
+\newblock \bibinfo{publisher}{Academic Press}.
+\newblock
+\showISBNx{9780080873428}
+
+
+\bibitem[Neukirch(1999)]%
+        {Neukirch}
+\bibfield{author}{\bibinfo{person}{J. Neukirch}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Algebraic number theory}}.
+  \bibinfo{series}{Fundamental Principles of Mathematical Sciences},
+  Vol.~\bibinfo{volume}{322}.
+\newblock \bibinfo{publisher}{Springer}, \bibinfo{address}{Cham}. xviii+571
+  pages.
+\newblock
+\showISBNx{3-540-65399-6}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-662-03983-0}
+\showDOI{\tempurl}
+\newblock
+\shownote{Translated from the 1992 German original and with a note by Norbert
+  Schappacher, With a foreword by G. Harder}.
+
+
+\bibitem[Oosterhuis(2007)]%
+        {Oosterhuis}
+\bibfield{author}{\bibinfo{person}{R. Oosterhuis}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \bibinfo{title}{Mechanised theorem proving: exponents 3 and 4 of
+  Fermat's last theorem using Isabelle}.
+\newblock \bibinfo{howpublished}{MSc thesis. Faculty of Science and
+  Engineering, Groningen}.
+\newblock
+\urldef\tempurl%
+\url{https://fse.studenttheses.ub.rug.nl/8392/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[P\k{a}k and Kaliszyk(2022)]%
+        {pak_et_al}
+\bibfield{author}{\bibinfo{person}{Karol P\k{a}k} {and} \bibinfo{person}{Cezary
+  Kaliszyk}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Formalizing a {Diophantine} Representation of the
+  Set of Prime Numbers}. In \bibinfo{booktitle}{\emph{ITP 2022}}
+  \emph{(\bibinfo{series}{LIPIcs}, Vol.~\bibinfo{volume}{237})},
+  \bibfield{editor}{\bibinfo{person}{June Andronick} {and}
+  \bibinfo{person}{Leonardo de~Moura}} (Eds.). \bibinfo{publisher}{Schloss
+  Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik}, \bibinfo{address}{Dagstuhl,
+  Germany}, \bibinfo{pages}{26:1--26:8}.
+\newblock
+\showISBNx{978-3-95977-252-5}
+\showISSN{1868-8969}
+\urldef\tempurl%
+\url{https://doi.org/10.4230/LIPIcs.ITP.2022.26}
+\showDOI{\tempurl}
+
+
+\bibitem[Selsam et~al\mbox{.}(2020)]%
+        {lean-tabled-typeclasses}
+\bibfield{author}{\bibinfo{person}{Daniel Selsam}, \bibinfo{person}{Sebastian
+  Ullrich}, {and} \bibinfo{person}{Leonardo de Moura}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Tabled Typeclass Resolution}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/2001.04301}
+  (\bibinfo{year}{2020}).
+\newblock
+\showeprint[arXiv]{2001.04301}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2001.04301}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Stark(1973)]%
+        {Stark1973}
+\bibfield{author}{\bibinfo{person}{Harold Stark}.}
+  \bibinfo{year}{1973}\natexlab{}.
+\newblock \showarticletitle{Effective estimates of solutions of some
+  {Diophantine} equations}.
+\newblock \bibinfo{journal}{\emph{Acta Arithmetica}} \bibinfo{volume}{24},
+  \bibinfo{number}{3} (\bibinfo{year}{1973}), \bibinfo{pages}{251--259}.
+\newblock
+\urldef\tempurl%
+\url{http://eudml.org/doc/205226}
+\showURL{%
+\tempurl}
+
+
+\bibitem[{The mathlib Community}(2020)]%
+        {mathlib}
+\bibfield{author}{\bibinfo{person}{{The mathlib Community}}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{The {L}ean Mathematical Library}. In
+  \bibinfo{booktitle}{\emph{CPP 2020}} \emph{(\bibinfo{series}{Certified
+  Programs and Proofs})}, \bibfield{editor}{\bibinfo{person}{J.~Blanchette}
+  {and} \bibinfo{person}{C.~Hrițcu}} (Eds.). \bibinfo{publisher}{{ACM}},
+  \bibinfo{pages}{367–381}.
+\newblock
+\showISBNx{9781450370974}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3372885.3373824}
+\showDOI{\tempurl}
+
+
+\bibitem[{The Sage Developers}(2022)]%
+        {sagemath}
+\bibfield{author}{\bibinfo{person}{{The Sage Developers}}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{{S}ageMath, the {S}age {M}athematics
+  {S}oftware {S}ystem ({V}ersion 9.7)}}.
+\newblock
+\newblock
+\shownote{{\tt https://www.sagemath.org}}.
+
+
+\end{thebibliography}

@@ -1,0 +1,61 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "blog.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/Agent_system_with_tools.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/Archon_Workflow.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/code_structure.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/rethlas.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/rethlas_exploration_trajectory.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figure/whole.svg"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pkuai4m/ByteSans-Bold.ttf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pkuai4m/ByteSans-Medium.ttf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pkuai4m/bytesans.tfm"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pkuai4m/bytesansmedium.tfm"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pkuai4m/matlas_logo.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "ref.bib"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

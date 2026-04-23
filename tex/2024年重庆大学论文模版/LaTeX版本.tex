@@ -1,0 +1,461 @@
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+\usepackage[left=3cm, right=3cm]{geometry}
+
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+\renewcommand\thesection{\arabic{section}}
+\allowdisplaybreaks[4]       %多行公式中换页
+\usepackage{array}
+\usepackage[font=small,labelsep=none]{caption}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+\usepackage{dutchcal}
+\usepackage{color}
+\usepackage{graphicx}    %插入图片 
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{fancyhdr} %页眉页脚
+\usepackage{booktabs}  %三线表
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+\newcommand*{\circled}[1]{\lower.7ex\hbox{\tikz\draw (0pt, 0pt)%
+    circle (.5em) node {\makebox[1em][c]{\small #1}};}}
+    
+\usepackage{hyperref}  %目录
+\hypersetup{colorlinks=true,linkcolor=black}
+
+\renewcommand {\thefigure} {\thesection{}.\arabic{figure}}%设定图片的编号。这样设置的实现效果为图1.1
+\renewcommand {\thetable} {\thesection{}.\arabic{table}}
+
+
+\usepackage{caption}
+\captionsetup{font={small},labelsep=quad}%文字5号，之间空一个汉字符位。
+
+\usepackage{appendix}
+\usepackage{tocloft} 
+\usepackage{titletoc}
+
+\usepackage{setspace}
+\usepackage{titlesec}
+\setstretch{1.25}
+
+
+% 设置section字体为黑体三号
+\titleformat{\section}{\heiti\zihao{3}\centering}{\thesection}{0.5em}{}[]
+% 设置subsection字体为黑体小三号
+\titleformat{\subsection}{\heiti\zihao{-3}}{\thesubsection}{0.5em}{}[]
+% 设置subsubsection字体为黑体四号
+\titleformat{\subsubsection}{\heiti\zihao{4}}{\thesubsubsection}{0.5em}{}[]
+%\titlespacing{\section}{0pt}{\baselineskip}{\baselineskip}
+%\titlespacing{\section}{0pt}{0pt}{\baselineskip}
+
+% 目录中section的格式
+\titlecontents{section}[0pt]{\addvspace{0pt}\filright\heiti\zihao{4}}%
+               {\contentspush{\thecontentslabel \quad}}%
+               {}{\titlerule*[8pt]{.}\contentspage}
+% 目录中subsection的格式
+\titlecontents{subsection}[1em]{\addvspace{0pt}\filright\heiti\zihao{5}}%
+               {\contentspush{\thecontentslabel \quad}}%
+               {}{\titlerule*[8pt]{.}\contentspage}
+% 目录中subsubsection的格式
+\titlecontents{subsubsection}[2em]{\addvspace{0pt}\filright\songti\zihao{5}}%
+               {\contentspush{\thecontentslabel \quad}}%
+               {}{\titlerule*[8pt]{.}\contentspage}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} %为目录中section补上引导点
+               
+\makeatletter % 单线页眉
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+\hrule\@height 0.5pt \@width\headwidth\vskip1.5pt% 上面线为0.5pt粗
+\vskip-2\headrulewidth\vskip-1pt}}     % 与下面正文之间的垂直间距
+\makeatother
+
+
+
+\setlength{\headheight}{14.48167pt} 
+\setlength{\voffset}{-1.14cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headsep}{2.5cm}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+
+
+\begin{center}
+\heiti  \zihao{-2} 重庆大学本科学生毕业论文（设计）
+\end{center}
+%该页为中文扉页。无需页眉页脚，纸质论文应装订在右侧
+~\\
+\begin{center}
+\heiti  \zihao{2} XXX计算方法的研究
+\end{center}
+%中文论文标题，1行或2行，黑体，二号，居中。论文题目不得超过36个汉字
+
+~\\
+\renewcommand{\headrulewidth}{1pt}
+\begin{figure}[htb] 
+  \centering
+    \center{\includegraphics[width=5cm]  {fig1.png}} 
+     \end{figure}
+     
+~\\
+\begin{center}
+\heiti\zihao{4}
+\begin{tabular}{l}
+学\qquad 生：王建华\\
+学\qquad 号：20XXXXXX\\
+指导教师：杨XX\\
+助理指导教师：李XX\\
+专\qquad 业：\\
+\end{tabular}
+\end{center}
+
+%此模版适用于理工农医等专业；人文社科类专业按《重庆大学普通本科毕业论文（设计）撰写规范化要求》。  若没有助理指导教师，请删除“助理指导教师姓名”栏。若为校外完成毕业论文（设计），请改为“校外指导教师姓名”即可。  学院、专业填全称。
+
+~\\
+\begin{center}
+\heiti \zihao{-2} {重庆大学XXXXXX学院}\\
+\end{center}
+
+\begin{center}
+\heiti \zihao{3} {20XX年6月}
+\end{center}
+
+
+
+\newpage
+\thispagestyle{empty}
+\setmainfont{Times New Roman}
+\begin{center}
+\zihao{3}
+\textbf{
+Undergraduate Thesis (Design) of Chongqing University}
+\end{center}
+~\\
+\begin{center}
+\zihao{2}
+\textbf{
+Study on Calculation method of XXX }
+\end{center}
+
+~\\
+\renewcommand{\headrulewidth}{1pt}
+\begin{figure}[htb] 
+  \centering
+    \center{\includegraphics[width=5cm]  {fig1.png}} 
+     \end{figure}
+     
+
+\setmainfont{Times New Roman}
+\begin{center}
+\zihao{3} 
+\textbf{By}  \\
+\textbf{WANG Jianhua }
+\end{center}
+
+\begin{center}
+\zihao{3} 
+\textbf{Supervised by}\\
+\textbf{Prof. YANG XX}\\
+\textbf{and}\\
+\textbf{Prof. LI XX}
+\end{center}
+
+\begin{center}
+\zihao{-2} 
+\textbf{XXXXXX}\\ %专业
+\textbf{XXXXXX}\\ %学院
+\textbf{Chongqing University}
+\end{center}
+
+\begin{center}
+\zihao{3} 
+\textbf{June，20XX}
+\end{center}
+
+
+\newpage
+\pagestyle{fancy}
+\pagenumbering{Roman}
+
+% 设置左侧页眉
+\fancyhead[LH]{ \songti\zihao{-5} 重庆大学本科学生毕业论文（设计）}
+\fancyhead[RH]{\songti\zihao{-5} 摘要}
+
+
+
+\addcontentsline{toc}{section}{摘要}
+
+\section*{摘\quad 要}
+%摘要：二字间空两格，黑体三号居中，段前，段后各空一行。
+
+摘要是论文（设计）内容不加注释和评论的简短陈述，应具有独立性和自明性，即不阅读论文（设计）的全文，就可以获得必要的信息。\par 
+摘要一般应说明研究工作的目的 和意义、研究思想和方法、研究过程、研究结果和最终结论等。摘要中一般不用图、表、化学结构式、计算机程序，不用非公知公用的符号、术语和非法定的计量单位。\par 
+中文摘要一般为300-500汉字。\par 
+摘要页置于英文题名页后。 \par 
+关键词是从论文（设计）题名、摘要或正文中选取的对表示论文（设计）主题内容起关键作用，且具有检索意义的词或词组。一般每篇论文（设计）应选取3-5个词作为关键词，以显著的字符另起一行，排在同种语言摘要的下方，尽量用《汉语主题词表》或各专业主题词表提供的规范词。\par 
+关键词与摘要的内容之间空一行。关键词的词间用分号间隔，末尾不加标点。\\
+~\\
+\hspace*{2em}{\heiti \zihao{-4}关键词}：学位论文；论文格式；规范化；模板\\
+%关键字：宋体12磅，行距20磅，段前段后0磅，关键字之间用分号隔开,关键词三个字加粗。
+
+\newpage
+\fancyhead[LH]{ \songti\zihao{-5} 重庆大学本科学生毕业论文（设计）}
+\fancyhead[RH]{\zihao{-5} ABSTRACT}
+
+\addcontentsline{toc}{section}{ABSTRACT}
+\titleformat{\section}[block]{\centering\bfseries\fontspec{Times New Roman}\fontsize{16pt}{20pt}\selectfont}{\thesection}{1em}{}[]
+
+\section*{ABSTRACT}
+%ABSTRCT：Times New Roman 加粗三号，段前段后空一行
+
+As a primary means of demonstrating research findings for undergraduate students, dissertation is a systematic and standardized record of the new inventions, theories or insights obtained by the author in the research work. It can not only function as an important reference when students pursue further studies, but also contribute to scientific research and social development.\par 
+This template is therefore made to improve the quality of undergraduates’ dissertation and to further standardize it both in content and in format.
+%英文摘要内容：Times New Roman 12磅（即小四号），行距20磅段前段后0磅
+
+~\\ 
+\hspace*{2em}\textbf{Key words}: dissertation;dissertation format;standardization;template\\
+%Keywords：Times New Roman 12磅，行距20磅， “key words” 两词加粗
+
+\newpage
+\fancyhead[LH]{ \songti\zihao{-5} 重庆大学本科学生毕业论文（设计）}
+\fancyhead[RH]{\songti\zihao{-5} 目录}
+
+\renewcommand\contentsname{{目\quad 录}}
+
+\begin{center}
+{\tableofcontents
+\thispagestyle{fancy}
+\fancyhead [RO, L] {\zihao{-5}{\songti 1\quad 绪论}}
+\fancyhead [LO, R] {\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+}
+\end{center}
+
+
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 1\quad 绪论}}
+\pagenumbering{arabic}
+
+
+\titleformat{\section}{\heiti\zihao{3}\centering}{\thesection}{0.5em}{}[]
+\section{绪论}
+\subsection{引言}
+\zihao{-4} 
+学位论文的引言是研究工作的开端，旨在引导读者对研究的背景、问题、目的和重要性有所了解。在背景介绍中，阐述与研究主题相关的一般性信息，为引入具体问题做铺垫。问题陈述明确阐述研究的核心问题，强调研究的重要性。进一步，目的和目标部分解释研究的意图和预期贡献。对研究范围和限制进行概述，确立研究的边界和可能的局限性。在方法论概述中简要介绍选择的研究方法及其与问题的关联。最后，通过论文结构概述，为读者提供整篇论文的框架，使其能够预知各章节内容。整个引言力求简明扼要，引发读者兴趣，并确保与后续章节之间的连贯性，以保持整体逻辑清晰……
+
+\subsection{本文主要研究内容}
+\zihao{-4} 
+研究内容部分应着重介绍你具体研究的对象、问题或主题。明确概括你的研究范围和涉及的关键要素。强调你的研究如何填补领域现有知识的空白或者为该领域做出独特的贡献。这一部分的目标是为读者提供关于研究的具体方向和深度的清晰认识……
+
+\subsection{本文研究意义}
+\zihao{-4} 
+在研究意义部分，阐述你的研究对学术界和实践领域的重要性。强调你的研究如何推动学科的发展，解决实际问题或者对社会产生积极影响。可以涉及到研究的创新性、实用性、理论意义等方面。此部分需要突出你的研究对于学术和实际领域的价值，使读者明白为何该研究是有意义的……
+
+\subsection{本章小结}
+\zihao{-4} 
+小结部分是引言的收尾，总结引言中提到的关键信息。简要回顾研究的背景、问题、目的和结构，并为读者提供对整个研究的整体印象。强调研究的重要性，为后续章节的阅读做铺垫。小结要紧凑而有力，概括引言的核心内容，使读者对整篇论文的主旨有明确的认识……
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 2\quad 正文文字格式}}
+
+\section{正文文字格式}
+\subsection{论文正文}
+\zihao{-4} 
+论文正文是主体，一般由标题、文字叙述、图、表格和公式等部分构成。一般可包括理论分析、计算方法、实验装置和测试方法，经过整理加工的实验结果分析和讨论，与理论计算结果的比较以及本研究方法与已有研究方法的比较等，因学科性质不同可有所变化。\par
+
+\subsection{字数要求}
+\subsubsection{本科论文字数要求}
+\zihao{-4} 
+论文主体部分字数要求：理工类专业一般不少于1.5万字，其他专业一般不少于1.0万字。
+
+\subsection{本章小结}
+\zihao{-4} 
+本章介绍了……
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 3\quad 图表、公式格式}}
+
+\section{图表、公式格式}
+\subsection{图表格式}
+\zihao{-4} 
+本章将主要介绍一些图表和公式的格式...\\
+
+\begin{figure}[htb] 
+\center{\includegraphics[width=0.95\textwidth]  {fig2.png}} 
+\caption{内热源沿径向的分布}
+\end{figure} %图表上下各空一行
+
+\begin{table}[htbp]
+\centering
+\caption{高频感应加热的基本参数}
+\small
+\begin{tabular}{c c c c}
+\toprule
+感应频率 &感应发生器功率 & 工件移动速度  &感应圈与零件间隙\\
+（KHz）&($\% \times$80Kw) &(mm/min)  &(mm)\\
+\midrule
+250 &88 &5900 &1.65\\
+
+250 &88 &5900 &1.65\\
+
+250 &88 &5900 &1.65\\
+
+250 &88 &5900 &1.65\\
+
+
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[htbp]
+\centering
+\captionsetup{singlelinecheck=off}
+\caption*{续表3.1}
+\small
+\begin{tabular}{c c c c}
+\toprule
+感应频率 &感应发生器功率 & 工件移动速度  &感应圈与零件间隙\\
+（KHz）&($\% \times$80Kw) &(mm/min)  &(mm)\\
+\midrule
+250 &88 &5900 &1.65\\
+
+250 &88 &5900 &1.65\\
+\bottomrule
+\end{tabular}
+\end{table}
+\vspace{\baselineskip}
+%表格太大需要转页时，需要在续表上方注明“续表”，表头也应重复排出。
+
+
+\subsection{公式格式}
+
+
+\begin{eqnarray}
+\frac{1}{\mu} \nabla^2A - j \omega \sigma A -\nabla(\frac{1}{\mu}) \times(\nabla \times A)+J_0=0
+\end{eqnarray}
+
+
+\subsection{本章小结}
+\zihao{-4} 
+本章介绍了……
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 4\quad 结论与展望}}
+\section{结论与展望}
+
+\subsection{主要结论}
+\zihao{-4} 
+本文主要……
+
+\subsection{研究展望}
+\zihao{-4} 
+更深入的研究……
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 参考文献}}
+
+\addcontentsline{toc}{section}{参考文献}
+\renewcommand\refname{参考文献}
+
+\zihao{5}
+
+\begin{thebibliography}{1}
+\setlength{\itemsep}{0pt}
+\bibitem{1} 杨瑞林, 李力军. 新型低合金高强韧性耐磨钢的研究[J]. 钢铁. 1999(7): 41-45.
+\bibitem{2} 于潇, 刘义, 柴跃廷, 等. 互联网药品可信交易环境中主体资质审核备案模式[J]. 清华大学学报(自然科学版), 2012, 52(11): 1518-1523.
+\bibitem{3} Schinstock D.E., Cuttino J.F. Real time kinematic solutions of a non-contacting, three dimensional metrology frame[J]. Precision Engineering. 2000, 24(1): 70-76. 
+\bibitem{4} 温诗铸. 摩擦学原理[M]. 北京: 清华大学出版社, 1990: 296-300.
+\bibitem{5} 蒋有绪, 郭泉水, 马娟, 等. 中国森林群落分类及其群落学特征[M]. 北京: 科学出版社, 1998: 5-17.
+\bibitem{6} 贾名字. 工程硕士论文撰写规范[D]. 重庆: 重庆大学, 2000: 177-178.
+\bibitem{7} 张凯军. 轨道火车及高速轨道火车紧急安全制动辅助装置: 201220158825.2[P]. 2012-04-05.
+\bibitem{8} 全国信息与文献标准化技术委员会. 文献著录: 第4部分 非书资料: GB/T 3792.4-2009[S]. 北京: 中国标准出版社, 2010: 3.
+\end{thebibliography}
+%（参考文献格式请参考GB/T 7714-2015《信息与文献 参考文献著录规则》）
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 附录A：XX公式的推导}}
+
+\addcontentsline{toc}{section}{附录A：XX公式的推导}
+\section*{附录A：XX公式的推导}
+\zihao{5}
+XX公式的推导过程是：
+
+\newpage
+\fancyhead[LH]{\zihao{-5}{\songti 重庆大学本科学生毕业论文（设计）}}
+\fancyhead[RH]{\zihao{-5}{\songti 致谢}}
+
+\addcontentsline{toc}{section}{致谢}
+\section*{致\quad 谢}
+\zihao{-4}
+致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
+
+\newpage
+\thispagestyle{empty}
+
+\addcontentsline{toc}{section}{原创性声明和使用授权书}
+\begin{center}
+\heiti \zihao{3}
+原创性声明
+\end{center}
+
+\songti\zihao{-4}
+郑重声明：所呈交的论文（设计）\underline{《  \hspace{6em}》}，是本人在导师的指导下，独立进行研究取得的成果。除论文（设计）中已经标注引用的内容外，本论文（设计）不包含其他人或集体已经发表或撰写过的作品成果。对本文的研究做出贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律后果，并承诺因本声明而产生的法律结果由本人承担。
+
+~\\
+\begin{flushleft}
+\begin{tabular}{l}
+\songti\zihao{-4}
+论文（设计）作者签名: \underline{\hspace{6em}}\\
+\songti\zihao{-4}
+日期：\underline{\hspace{6em}}
+\end{tabular}
+\end{flushleft}
+
+~\\
+\begin{center}
+\heiti \zihao{3}
+使用授权书
+\end{center}
+
+\songti\zihao{-4}
+本论文（设计）作者完全了解学校有关保留、使用论文（设计）的规定，同意学校保留并向国家有关部门或机构送交论文（设计）复印件和电子版，允许论文（设计）被查阅和借阅。本人授权重庆大学将本论文（设计）的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制方式保存和汇编本论文（设计）。
+
+~\\
+\songti\zihao{-4}
+本论文（设计）属于：\par
+保\quad 密 $\Box$  \quad 在\underline{\qquad}年解密后适用本授权书\par
+不保密 $\Box$
+
+~\\
+~\\
+\begin{flushleft}
+\songti\zihao{-4}
+\begin{tabular}{l l}
+论文（设计）作者签名：\underline{\hspace{6em}} \hspace{300mm}&指导教师签名：\underline{\hspace{6em}} \\
+日期：\underline{\hspace{6em}} &日期：\underline{\hspace{6em}}\\
+\end{tabular}
+\end{flushleft}
+
+\end{document} 
