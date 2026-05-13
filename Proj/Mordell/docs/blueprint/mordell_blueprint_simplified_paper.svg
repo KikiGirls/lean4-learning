@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="935" viewBox="30 110 1520 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#263238"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #17212b; }
+      .title { font-size: 32px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #54636f; }
+      .cluster-title { font-size: 17px; font-weight: 700; fill: #34414d; }
+      .cluster { fill: #f8fafc; stroke: #8a98a3; stroke-width: 1.5; stroke-dasharray: 8 7; rx: 16; }
+      .node { stroke: #30404d; stroke-width: 1.25; rx: 9; }
+      .foundation { fill: #e0f0ff; }
+      .dedekind { fill: #e5f7e6; }
+      .classinput { fill: #fff0c7; }
+      .descent { fill: #efe9ff; }
+      .final { fill: #ffe3e8; }
+      .node-title { font-size: 18px; font-weight: 700; }
+      .node-line { font-size: 13px; fill: #40505d; }
+      .edge { stroke: #263238; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke-dasharray: 7 5; stroke: #667782; }
+      .note { font-size: 13px; fill: #60717a; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1580" height="1160" fill="#ffffff"/>
+  <text x="54" y="60" class="title">Mordell Lean 4 项目简化蓝图</text>
+  <text x="54" y="91" class="subtitle">从完整声明蓝图（156 个节点，262 条项目内依赖边）中抽取主证明链；箭头从依赖项指向被依赖项。</text>
+
+  <rect x="42" y="126" width="265" height="860" class="cluster"/>
+  <text x="66" y="158" class="cluster-title">基础代数模型</text>
+  <rect x="72" y="190" width="205" height="96" class="node foundation"/>
+<text x="86" y="217" class="node-title">ZsqrtdBasic</text>
+<text x="86" y="242" class="node-line">ℤ√d, QuadRat d</text>
+<text x="86" y="263" class="node-line">trace / norm / basis</text>
+  <rect x="72" y="330" width="205" height="96" class="node foundation"/>
+<text x="86" y="357" class="node-title">ZomegaBasic</text>
+<text x="86" y="382" class="node-line">ℤ[(1+√d)/2]</text>
+<text x="86" y="403" class="node-line">备用二次整数环模型</text>
+  <rect x="72" y="470" width="205" height="96" class="node foundation"/>
+<text x="86" y="497" class="node-title">EuclideanNegTwo</text>
+<text x="86" y="522" class="node-line">ℤ√(-2) 除法算法</text>
+<text x="86" y="543" class="node-line">EuclideanDomain 实例</text>
+
+  <rect x="352" y="126" width="280" height="860" class="cluster"/>
+  <text x="376" y="158" class="cluster-title">Dedekind 与逼近</text>
+  <rect x="390" y="210" width="205" height="104" class="node dedekind"/>
+<text x="404" y="237" class="node-title">Dedekind</text>
+<text x="404" y="262" class="node-line">IsDomain</text>
+<text x="404" y="283" class="node-line">IntegralClosure</text>
+<text x="404" y="304" class="node-line">IsDedekindDomain</text>
+  <rect x="390" y="390" width="205" height="104" class="node dedekind"/>
+<text x="404" y="417" class="node-title">Approximation</text>
+<text x="404" y="442" class="node-line">有理数取整逼近</text>
+<text x="404" y="463" class="node-line">d=-5,-6,-13</text>
+<text x="404" y="484" class="node-line">范数估计</text>
+  <rect x="390" y="590" width="205" height="104" class="node dedekind"/>
+<text x="404" y="617" class="node-title">ClassGroupApprox</text>
+<text x="404" y="642" class="node-line">exists_mk0_eq_mk0</text>
+<text x="404" y="663" class="node-line">代表元含 2 或 12</text>
+
+  <rect x="680" y="126" width="300" height="860" class="cluster"/>
+  <text x="704" y="158" class="cluster-title">小类数输入</text>
+  <rect x="724" y="200" width="218" height="104" class="node classinput"/>
+<text x="738" y="227" class="node-title">ClassNumber/Common</text>
+<text x="738" y="252" class="node-line">d=-1,-2 类数为 1</text>
+<text x="738" y="273" class="node-line">cube-root 特例</text>
+<text x="738" y="294" class="node-line">共享理想成员判定</text>
+  <rect x="724" y="360" width="218" height="96" class="node classinput"/>
+<text x="738" y="387" class="node-title">NegFive / NegSix</text>
+<text x="738" y="412" class="node-line">类群至多两个元素</text>
+<text x="738" y="433" class="node-line">gcd(classNumber,3)=1</text>
+  <rect x="724" y="520" width="218" height="118" class="node classinput"/>
+<text x="738" y="547" class="node-title">NegThirteen</text>
+<text x="738" y="572" class="node-line">12-约化代表</text>
+<text x="738" y="593" class="node-line">类群至多两个元素</text>
+<text x="738" y="614" class="node-line">classNumber_gcd_three</text>
+
+  <rect x="1028" y="126" width="270" height="860" class="cluster"/>
+  <text x="1052" y="158" class="cluster-title">理想下降核心</text>
+  <rect x="1060" y="190" width="205" height="96" class="node descent"/>
+<text x="1074" y="217" class="node-title">factor_y_sq_sub_d</text>
+<text x="1074" y="242" class="node-line">y²-d = (y+√d)(y-√d)</text>
+<text x="1074" y="263" class="node-line">主理想分解入口</text>
+  <rect x="1060" y="330" width="205" height="96" class="node descent"/>
+<text x="1074" y="357" class="node-title">span_y_add_sqrtd_coprime</text>
+<text x="1074" y="382" class="node-line">把互素性化为整数</text>
+<text x="1074" y="403" class="node-line">Bezout 组合</text>
+  <rect x="1060" y="470" width="205" height="118" class="node descent"/>
+<text x="1074" y="497" class="node-title">exists_cube_root</text>
+<text x="1074" y="522" class="node-line">互素理想 ⇒ 立方理想</text>
+<text x="1074" y="543" class="node-line">类群消去</text>
+<text x="1074" y="564" class="node-line">单位是立方</text>
+  <rect x="1060" y="640" width="205" height="118" class="node descent"/>
+<text x="1074" y="667" class="node-title">mordell_d</text>
+<text x="1074" y="692" class="node-line">系数比较得到 m</text>
+<text x="1074" y="713" class="node-line">d = -3m² ± 1</text>
+<text x="1074" y="734" class="node-line">y = m(3d+m²)</text>
+
+  <rect x="1340" y="126" width="200" height="860" class="cluster"/>
+  <text x="1364" y="158" class="cluster-title">最终结论</text>
+  <rect x="1362" y="235" width="150" height="116" class="node final"/>
+<text x="1376" y="262" class="node-title">d = -1</text>
+<text x="1376" y="287" class="node-line">(x,y)=(1,0)</text>
+<text x="1376" y="308" class="node-line">solution_iff</text>
+  <rect x="1362" y="405" width="150" height="116" class="node final"/>
+<text x="1376" y="432" class="node-title">d = -2</text>
+<text x="1376" y="457" class="node-line">(x,y)=(3,±5)</text>
+<text x="1376" y="478" class="node-line">solution_iff</text>
+  <rect x="1362" y="575" width="150" height="116" class="node final"/>
+<text x="1376" y="602" class="node-title">d = -13</text>
+<text x="1376" y="627" class="node-line">(x,y)=(17,±70)</text>
+<text x="1376" y="648" class="node-line">solution_iff</text>
+  <rect x="1362" y="755" width="150" height="116" class="node final"/>
+<text x="1376" y="782" class="node-title">d = -5,-6</text>
+<text x="1376" y="807" class="node-line">无整数解</text>
+<text x="1376" y="828" class="node-line">mordell_minus5/6</text>
+
+  <path class="edge" d="M277 238 C333 238, 334 262, 390 262"/>
+  <path class="edge" d="M277 238 C333 238, 334 442, 390 442"/>
+  <path class="edge" d="M595 262 C827 262, 828 518, 1060 518"/>
+  <path class="edge" d="M595 442 C659 442, 660 412, 724 412"/>
+  <path class="edge" d="M595 442 C659 442, 660 575, 724 575"/>
+  <path class="edge" d="M595 642 C659 642, 660 412, 724 412"/>
+  <path class="edge" d="M595 642 C659 642, 660 575, 724 575"/>
+  <path class="edge" d="M942 252 C1001 252, 1001 518, 1060 518"/>
+  <path class="edge" d="M942 412 C1001 412, 1001 518, 1060 518"/>
+  <path class="edge" d="M942 575 C1001 575, 1001 518, 1060 518"/>
+  <path class="edge" d="M1265 238 C1313 238, 1314 293, 1362 293"/>
+  <path class="edge" d="M1265 378 C1313 378, 1314 293, 1362 293"/>
+  <path class="edge" d="M1265 518 C1313 518, 1314 293, 1362 293"/>
+  <path class="edge" d="M1265 699 C1313 699, 1314 293, 1362 293"/>
+  <path class="edge" d="M1265 699 C1313 699, 1314 463, 1362 463"/>
+  <path class="edge" d="M1265 699 C1313 699, 1314 633, 1362 633"/>
+  <path class="edge" d="M1265 699 C1313 699, 1314 813, 1362 813"/>
+  <path class="edge dashed" d="M277 518 C500 518, 501 252, 724 252"/>
+  <path class="edge dashed" d="M277 518 C819 518, 820 463, 1362 463"/>
+
+  <rect x="54" y="1030" width="1468" height="76" fill="#fbfcfd" stroke="#d4dbe0" stroke-width="1.2" rx="12"/>
+  <text x="78" y="1060" class="note">说明：简化图保留论文叙述中的主结果依赖；完整交互图 mordell_blueprint_full.html 包含全部公开顶层声明，可按文件、声明类型和名称筛选。</text>
+  <text x="78" y="1084" class="note">ClassNumber 目前拆分为 Common / NegFive / NegSix / NegThirteen 四个文件；图中把 -5 和 -6 合并为同一类小类数输入。</text>
+</svg>

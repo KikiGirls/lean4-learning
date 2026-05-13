@@ -1,0 +1,2774 @@
+{
+  "title": "Mordell Lean 4 full declaration blueprint",
+  "source_root": "/Users/kikigirl/Desktop/lean4-learning/Proj/Mordell/Mordell",
+  "node_count": 156,
+  "edge_count": 262,
+  "files": [
+    {
+      "file": "ZsqrtdBasic.lean",
+      "count": 17
+    },
+    {
+      "file": "ZomegaBasic.lean",
+      "count": 19
+    },
+    {
+      "file": "EuclideanNegTwo.lean",
+      "count": 17
+    },
+    {
+      "file": "Approximation.lean",
+      "count": 11
+    },
+    {
+      "file": "Dedekind.lean",
+      "count": 6
+    },
+    {
+      "file": "ClassGroupApprox.lean",
+      "count": 4
+    },
+    {
+      "file": "Descent.lean",
+      "count": 27
+    },
+    {
+      "file": "ClassNumber/Common.lean",
+      "count": 19
+    },
+    {
+      "file": "ClassNumber/NegFive.lean",
+      "count": 7
+    },
+    {
+      "file": "ClassNumber/NegSix.lean",
+      "count": 7
+    },
+    {
+      "file": "ClassNumber/NegThirteen.lean",
+      "count": 11
+    },
+    {
+      "file": "Solutions.lean",
+      "count": 11
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "kind": "abbrev",
+      "name": "QuadRat",
+      "qualified": "Mordell.QuadRat",
+      "file": "ZsqrtdBasic.lean",
+      "line": 18,
+      "end_line": 19
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "kind": "def",
+      "name": "zsqrtdToQuadRat",
+      "qualified": "Mordell.zsqrtdToQuadRat",
+      "file": "ZsqrtdBasic.lean",
+      "line": 20,
+      "end_line": 24
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "kind": "lemma",
+      "name": "zsqrtdToQuadRat_apply",
+      "qualified": "Mordell.zsqrtdToQuadRat_apply",
+      "file": "ZsqrtdBasic.lean",
+      "line": 25,
+      "end_line": 28
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_injective_29",
+      "kind": "lemma",
+      "name": "zsqrtdToQuadRat_injective",
+      "qualified": "Mordell.zsqrtdToQuadRat_injective",
+      "file": "ZsqrtdBasic.lean",
+      "line": 29,
+      "end_line": 39
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdAlgebraQuadRat_40",
+      "kind": "instance",
+      "name": "zsqrtdAlgebraQuadRat",
+      "qualified": "Mordell.zsqrtdAlgebraQuadRat",
+      "file": "ZsqrtdBasic.lean",
+      "line": 40,
+      "end_line": 42
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtd_isScalarTower_int_quadRat_43",
+      "kind": "instance",
+      "name": "zsqrtd_isScalarTower_int_quadRat",
+      "qualified": "Mordell.zsqrtd_isScalarTower_int_quadRat",
+      "file": "ZsqrtdBasic.lean",
+      "line": 43,
+      "end_line": 47
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.quadRat_trace_mk_48",
+      "kind": "lemma",
+      "name": "quadRat_trace_mk",
+      "qualified": "Mordell.quadRat_trace_mk",
+      "file": "ZsqrtdBasic.lean",
+      "line": 48,
+      "end_line": 64
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.quadRat_trace_65",
+      "kind": "lemma",
+      "name": "quadRat_trace",
+      "qualified": "Mordell.quadRat_trace",
+      "file": "ZsqrtdBasic.lean",
+      "line": 65,
+      "end_line": 69
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.quadRat_norm_mk_70",
+      "kind": "lemma",
+      "name": "quadRat_norm_mk",
+      "qualified": "Mordell.quadRat_norm_mk",
+      "file": "ZsqrtdBasic.lean",
+      "line": 70,
+      "end_line": 77
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.quadRat_norm_78",
+      "kind": "lemma",
+      "name": "quadRat_norm",
+      "qualified": "Mordell.quadRat_norm",
+      "file": "ZsqrtdBasic.lean",
+      "line": 78,
+      "end_line": 84
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.rat_eq_int_of_squarefree_mul_sq_eq_int_85",
+      "kind": "lemma",
+      "name": "rat_eq_int_of_squarefree_mul_sq_eq_int",
+      "qualified": "Mordell.rat_eq_int_of_squarefree_mul_sq_eq_int",
+      "file": "ZsqrtdBasic.lean",
+      "line": 85,
+      "end_line": 122
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdLinearEquiv_123",
+      "kind": "def",
+      "name": "zsqrtdLinearEquiv",
+      "qualified": "Mordell.zsqrtdLinearEquiv",
+      "file": "ZsqrtdBasic.lean",
+      "line": 123,
+      "end_line": 137
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "kind": "def",
+      "name": "zsqrtdBasis",
+      "qualified": "Mordell.zsqrtdBasis",
+      "file": "ZsqrtdBasic.lean",
+      "line": 138,
+      "end_line": 140
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.anonymous_instance_ZsqrtdBasic_lean_141_141",
+      "kind": "instance",
+      "name": "anonymous_instance_ZsqrtdBasic_lean_141",
+      "qualified": "Mordell.anonymous_instance_ZsqrtdBasic_lean_141",
+      "file": "ZsqrtdBasic.lean",
+      "line": 141,
+      "end_line": 143
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.anonymous_instance_ZsqrtdBasic_lean_144_144",
+      "kind": "instance",
+      "name": "anonymous_instance_ZsqrtdBasic_lean_144",
+      "qualified": "Mordell.anonymous_instance_ZsqrtdBasic_lean_144",
+      "file": "ZsqrtdBasic.lean",
+      "line": 144,
+      "end_line": 147
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_mk_148",
+      "kind": "lemma",
+      "name": "zsqrtd_algebra_norm_mk",
+      "qualified": "Mordell.zsqrtd_algebra_norm_mk",
+      "file": "ZsqrtdBasic.lean",
+      "line": 148,
+      "end_line": 159
+    },
+    {
+      "id": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_160",
+      "kind": "lemma",
+      "name": "zsqrtd_algebra_norm",
+      "qualified": "Mordell.zsqrtd_algebra_norm",
+      "file": "ZsqrtdBasic.lean",
+      "line": 160,
+      "end_line": 165
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega_20",
+      "kind": "abbrev",
+      "name": "Zomega",
+      "qualified": "Mordell.Zomega",
+      "file": "ZomegaBasic.lean",
+      "line": 20,
+      "end_line": 26
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.omega_27",
+      "kind": "def",
+      "name": "omega",
+      "qualified": "Mordell.Zomega.omega",
+      "file": "ZomegaBasic.lean",
+      "line": 27,
+      "end_line": 30
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.omega_re_31",
+      "kind": "lemma",
+      "name": "omega_re",
+      "qualified": "Mordell.Zomega.omega_re",
+      "file": "ZomegaBasic.lean",
+      "line": 31,
+      "end_line": 34
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.omega_im_35",
+      "kind": "lemma",
+      "name": "omega_im",
+      "qualified": "Mordell.Zomega.omega_im",
+      "file": "ZomegaBasic.lean",
+      "line": 35,
+      "end_line": 37
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.omega_sq_38",
+      "kind": "lemma",
+      "name": "omega_sq",
+      "qualified": "Mordell.Zomega.omega_sq",
+      "file": "ZomegaBasic.lean",
+      "line": 38,
+      "end_line": 42
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.sqrtd_43",
+      "kind": "def",
+      "name": "sqrtd",
+      "qualified": "Mordell.Zomega.sqrtd",
+      "file": "ZomegaBasic.lean",
+      "line": 43,
+      "end_line": 46
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.sqrtd_re_47",
+      "kind": "lemma",
+      "name": "sqrtd_re",
+      "qualified": "Mordell.Zomega.sqrtd_re",
+      "file": "ZomegaBasic.lean",
+      "line": 47,
+      "end_line": 51
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.sqrtd_im_52",
+      "kind": "lemma",
+      "name": "sqrtd_im",
+      "qualified": "Mordell.Zomega.sqrtd_im",
+      "file": "ZomegaBasic.lean",
+      "line": 52,
+      "end_line": 56
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.norm_57",
+      "kind": "def",
+      "name": "norm",
+      "qualified": "Mordell.Zomega.norm",
+      "file": "ZomegaBasic.lean",
+      "line": 57,
+      "end_line": 60
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.norm_mul_61",
+      "kind": "lemma",
+      "name": "norm_mul",
+      "qualified": "Mordell.Zomega.norm_mul",
+      "file": "ZomegaBasic.lean",
+      "line": 61,
+      "end_line": 65
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.norm_pow_66",
+      "kind": "lemma",
+      "name": "norm_pow",
+      "qualified": "Mordell.Zomega.norm_pow",
+      "file": "ZomegaBasic.lean",
+      "line": 66,
+      "end_line": 69
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.norm_mk_70",
+      "kind": "lemma",
+      "name": "norm_mk",
+      "qualified": "Mordell.Zomega.norm_mk",
+      "file": "ZomegaBasic.lean",
+      "line": 70,
+      "end_line": 100
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_101",
+      "kind": "def",
+      "name": "toQuadRat",
+      "qualified": "Mordell.Zomega.toQuadRat",
+      "file": "ZomegaBasic.lean",
+      "line": 101,
+      "end_line": 113
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_apply_114",
+      "kind": "lemma",
+      "name": "toQuadRat_apply",
+      "qualified": "Mordell.Zomega.toQuadRat_apply",
+      "file": "ZomegaBasic.lean",
+      "line": 114,
+      "end_line": 118
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_injective_119",
+      "kind": "lemma",
+      "name": "toQuadRat_injective",
+      "qualified": "Mordell.Zomega.toQuadRat_injective",
+      "file": "ZomegaBasic.lean",
+      "line": 119,
+      "end_line": 136
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_137",
+      "kind": "def",
+      "name": "fromZsqrtd",
+      "qualified": "Mordell.Zomega.fromZsqrtd",
+      "file": "ZomegaBasic.lean",
+      "line": 137,
+      "end_line": 157
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_apply_158",
+      "kind": "lemma",
+      "name": "fromZsqrtd_apply",
+      "qualified": "Mordell.Zomega.fromZsqrtd_apply",
+      "file": "ZomegaBasic.lean",
+      "line": 158,
+      "end_line": 161
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_sqrtd_162",
+      "kind": "lemma",
+      "name": "fromZsqrtd_sqrtd",
+      "qualified": "Mordell.Zomega.fromZsqrtd_sqrtd",
+      "file": "ZomegaBasic.lean",
+      "line": 162,
+      "end_line": 166
+    },
+    {
+      "id": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "lemma",
+      "name": "toQuadRat_fromZsqrtd",
+      "qualified": "Mordell.Zomega.toQuadRat_fromZsqrtd",
+      "file": "ZomegaBasic.lean",
+      "line": 167,
+      "end_line": 173
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.R_14",
+      "kind": "abbrev",
+      "name": "R",
+      "qualified": "ZsqrtNegTwo.R",
+      "file": "EuclideanNegTwo.lean",
+      "line": 14,
+      "end_line": 15
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_16_16",
+      "kind": "instance",
+      "name": "anonymous_instance_EuclideanNegTwo_lean_16",
+      "qualified": "ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_16",
+      "file": "EuclideanNegTwo.lean",
+      "line": 16,
+      "end_line": 21
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.div_def_22",
+      "kind": "theorem",
+      "name": "div_def",
+      "qualified": "ZsqrtNegTwo.div_def",
+      "file": "EuclideanNegTwo.lean",
+      "line": 22,
+      "end_line": 26
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_27_27",
+      "kind": "instance",
+      "name": "anonymous_instance_EuclideanNegTwo_lean_27",
+      "qualified": "ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_27",
+      "file": "EuclideanNegTwo.lean",
+      "line": 27,
+      "end_line": 29
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.mod_def_30",
+      "kind": "theorem",
+      "name": "mod_def",
+      "qualified": "ZsqrtNegTwo.mod_def",
+      "file": "EuclideanNegTwo.lean",
+      "line": 30,
+      "end_line": 31
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_pos_32",
+      "kind": "theorem",
+      "name": "norm_pos",
+      "qualified": "ZsqrtNegTwo.norm_pos",
+      "file": "EuclideanNegTwo.lean",
+      "line": 32,
+      "end_line": 43
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.abs_natCast_norm_44",
+      "kind": "theorem",
+      "name": "abs_natCast_norm",
+      "qualified": "ZsqrtNegTwo.abs_natCast_norm",
+      "file": "EuclideanNegTwo.lean",
+      "line": 44,
+      "end_line": 46
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_re_47",
+      "kind": "theorem",
+      "name": "rem_mul_conj_re",
+      "qualified": "ZsqrtNegTwo.rem_mul_conj_re",
+      "file": "EuclideanNegTwo.lean",
+      "line": 47,
+      "end_line": 51
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_im_52",
+      "kind": "theorem",
+      "name": "rem_mul_conj_im",
+      "qualified": "ZsqrtNegTwo.rem_mul_conj_im",
+      "file": "EuclideanNegTwo.lean",
+      "line": 52,
+      "end_line": 56
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_rem_mul_norm_57",
+      "kind": "theorem",
+      "name": "norm_rem_mul_norm",
+      "qualified": "ZsqrtNegTwo.norm_rem_mul_norm",
+      "file": "EuclideanNegTwo.lean",
+      "line": 57,
+      "end_line": 95
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_re_bound_96",
+      "kind": "theorem",
+      "name": "round_re_bound",
+      "qualified": "ZsqrtNegTwo.round_re_bound",
+      "file": "EuclideanNegTwo.lean",
+      "line": 96,
+      "end_line": 105
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_im_bound_106",
+      "kind": "theorem",
+      "name": "round_im_bound",
+      "qualified": "ZsqrtNegTwo.round_im_bound",
+      "file": "EuclideanNegTwo.lean",
+      "line": 106,
+      "end_line": 115
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_mod_lt_116",
+      "kind": "theorem",
+      "name": "norm_mod_lt",
+      "qualified": "ZsqrtNegTwo.norm_mod_lt",
+      "file": "EuclideanNegTwo.lean",
+      "line": 116,
+      "end_line": 147
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.natAbs_norm_mod_lt_148",
+      "kind": "theorem",
+      "name": "natAbs_norm_mod_lt",
+      "qualified": "ZsqrtNegTwo.natAbs_norm_mod_lt",
+      "file": "EuclideanNegTwo.lean",
+      "line": 148,
+      "end_line": 151
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_le_norm_mul_left_152",
+      "kind": "theorem",
+      "name": "norm_le_norm_mul_left",
+      "qualified": "ZsqrtNegTwo.norm_le_norm_mul_left",
+      "file": "EuclideanNegTwo.lean",
+      "line": 152,
+      "end_line": 161
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.instNontrivial_162",
+      "kind": "instance",
+      "name": "instNontrivial",
+      "qualified": "ZsqrtNegTwo.instNontrivial",
+      "file": "EuclideanNegTwo.lean",
+      "line": 162,
+      "end_line": 164
+    },
+    {
+      "id": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "instance",
+      "name": "anonymous_instance_EuclideanNegTwo_lean_165",
+      "qualified": "ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165",
+      "file": "EuclideanNegTwo.lean",
+      "line": 165,
+      "end_line": 176
+    },
+    {
+      "id": "Approximation.lean_Mordell.rat_sub_round_sq_le_quarter_8",
+      "kind": "lemma",
+      "name": "rat_sub_round_sq_le_quarter",
+      "qualified": "Mordell.rat_sub_round_sq_le_quarter",
+      "file": "Approximation.lean",
+      "line": 8,
+      "end_line": 17
+    },
+    {
+      "id": "Approximation.lean_Mordell.int_round_scaled_sq_le_quarter_18",
+      "kind": "lemma",
+      "name": "int_round_scaled_sq_le_quarter",
+      "qualified": "Mordell.int_round_scaled_sq_le_quarter",
+      "file": "Approximation.lean",
+      "line": 18,
+      "end_line": 33
+    },
+    {
+      "id": "Approximation.lean_Mordell.int_scaled_sub_sq_le_34",
+      "kind": "lemma",
+      "name": "int_scaled_sub_sq_le",
+      "qualified": "Mordell.int_scaled_sub_sq_le",
+      "file": "Approximation.lean",
+      "line": 34,
+      "end_line": 45
+    },
+    {
+      "id": "Approximation.lean_Mordell.exists_int_two_mul_sub_sq_le_one_nine_46",
+      "kind": "lemma",
+      "name": "exists_int_two_mul_sub_sq_le_one_nine",
+      "qualified": "Mordell.exists_int_two_mul_sub_sq_le_one_nine",
+      "file": "Approximation.lean",
+      "line": 46,
+      "end_line": 63
+    },
+    {
+      "id": "Approximation.lean_Mordell.rat_sq_le_of_abs_le_64",
+      "kind": "lemma",
+      "name": "rat_sq_le_of_abs_le",
+      "qualified": "Mordell.rat_sq_le_of_abs_le",
+      "file": "Approximation.lean",
+      "line": 64,
+      "end_line": 68
+    },
+    {
+      "id": "Approximation.lean_Mordell.exists_int_mul_sub_sq_le_one_twentyfive_69",
+      "kind": "lemma",
+      "name": "exists_int_mul_sub_sq_le_one_twentyfive",
+      "qualified": "Mordell.exists_int_mul_sub_sq_le_one_twentyfive",
+      "file": "Approximation.lean",
+      "line": 69,
+      "end_line": 140
+    },
+    {
+      "id": "Approximation.lean_Mordell.norm_approx_mul_norm_141",
+      "kind": "lemma",
+      "name": "norm_approx_mul_norm",
+      "qualified": "Mordell.norm_approx_mul_norm",
+      "file": "Approximation.lean",
+      "line": 141,
+      "end_line": 150
+    },
+    {
+      "id": "Approximation.lean_Mordell.approx_norm_expr_lt_151",
+      "kind": "lemma",
+      "name": "approx_norm_expr_lt",
+      "qualified": "Mordell.approx_norm_expr_lt",
+      "file": "Approximation.lean",
+      "line": 151,
+      "end_line": 168
+    },
+    {
+      "id": "Approximation.lean_Mordell.approx_norm_expr_lt_neg_thirteen_169",
+      "kind": "lemma",
+      "name": "approx_norm_expr_lt_neg_thirteen",
+      "qualified": "Mordell.approx_norm_expr_lt_neg_thirteen",
+      "file": "Approximation.lean",
+      "line": 169,
+      "end_line": 180
+    },
+    {
+      "id": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "lemma",
+      "name": "exists_q_r_of_neg_six_le",
+      "qualified": "Mordell.exists_q_r_of_neg_six_le",
+      "file": "Approximation.lean",
+      "line": 181,
+      "end_line": 268
+    },
+    {
+      "id": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "lemma",
+      "name": "exists_q_r_of_neg_thirteen",
+      "qualified": "Mordell.exists_q_r_of_neg_thirteen",
+      "file": "Approximation.lean",
+      "line": 269,
+      "end_line": 327
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three_55",
+      "kind": "theorem",
+      "name": "zsqrtd_isDomain_of_mod_four_eq_two_or_three",
+      "qualified": "Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three",
+      "file": "Dedekind.lean",
+      "line": 55,
+      "end_line": 71
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_algebra_isIntegral_72",
+      "kind": "instance",
+      "name": "zsqrtd_algebra_isIntegral",
+      "qualified": "Mordell.zsqrtd_algebra_isIntegral",
+      "file": "Dedekind.lean",
+      "line": 72,
+      "end_line": 74
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "instance",
+      "name": "zsqrtd_isNoetherianRing",
+      "qualified": "Mordell.zsqrtd_isNoetherianRing",
+      "file": "Dedekind.lean",
+      "line": 75,
+      "end_line": 227
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "theorem",
+      "name": "zsqrtd_isIntegrallyClosed_of_squarefree_mod",
+      "qualified": "Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod",
+      "file": "Dedekind.lean",
+      "line": 228,
+      "end_line": 270
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod_271",
+      "kind": "theorem",
+      "name": "zsqrtd_isIntegralClosure_of_squarefree_mod",
+      "qualified": "Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod",
+      "file": "Dedekind.lean",
+      "line": 271,
+      "end_line": 290
+    },
+    {
+      "id": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "kind": "theorem",
+      "name": "zsqrtd_isDedekindDomain_of_squarefree_mod",
+      "qualified": "Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod",
+      "file": "Dedekind.lean",
+      "line": 291,
+      "end_line": 311
+    },
+    {
+      "id": "ClassGroupApprox.lean_Mordell.exists_mk0_eq_mk0_of_approx_15",
+      "kind": "theorem",
+      "name": "exists_mk0_eq_mk0_of_approx",
+      "qualified": "Mordell.exists_mk0_eq_mk0_of_approx",
+      "file": "ClassGroupApprox.lean",
+      "line": 15,
+      "end_line": 61
+    },
+    {
+      "id": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le_62",
+      "kind": "theorem",
+      "name": "classGroup_exists_mk0_mem_two_of_neg_six_le",
+      "qualified": "Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le",
+      "file": "ClassGroupApprox.lean",
+      "line": 62,
+      "end_line": 80
+    },
+    {
+      "id": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_twelve_neg_thirteen_81",
+      "kind": "theorem",
+      "name": "classGroup_exists_mk0_mem_twelve_neg_thirteen",
+      "qualified": "Mordell.classGroup_exists_mk0_mem_twelve_neg_thirteen",
+      "file": "ClassGroupApprox.lean",
+      "line": 81,
+      "end_line": 104
+    },
+    {
+      "id": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "kind": "def",
+      "name": "quadClassNumber",
+      "qualified": "Mordell.quadClassNumber",
+      "file": "ClassGroupApprox.lean",
+      "line": 105,
+      "end_line": 122
+    },
+    {
+      "id": "Descent.lean_Mordell.int_eq_of_cube_eq_24",
+      "kind": "lemma",
+      "name": "int_eq_of_cube_eq",
+      "qualified": "Mordell.int_eq_of_cube_eq",
+      "file": "Descent.lean",
+      "line": 24,
+      "end_line": 27
+    },
+    {
+      "id": "Descent.lean_Mordell.factor_y_sq_sub_d_28",
+      "kind": "theorem",
+      "name": "factor_y_sq_sub_d",
+      "qualified": "Mordell.factor_y_sq_sub_d",
+      "file": "Descent.lean",
+      "line": 28,
+      "end_line": 35
+    },
+    {
+      "id": "Descent.lean_Mordell.sqrtNegOneUnit_36",
+      "kind": "def",
+      "name": "sqrtNegOneUnit",
+      "qualified": "Mordell.sqrtNegOneUnit",
+      "file": "Descent.lean",
+      "line": 36,
+      "end_line": 44
+    },
+    {
+      "id": "Descent.lean_Mordell.negSqrtNegOneUnit_45",
+      "kind": "def",
+      "name": "negSqrtNegOneUnit",
+      "qualified": "Mordell.negSqrtNegOneUnit",
+      "file": "Descent.lean",
+      "line": 45,
+      "end_line": 52
+    },
+    {
+      "id": "Descent.lean_Mordell.zsqrtd_units_eq_one_or_neg_one_53",
+      "kind": "theorem",
+      "name": "zsqrtd_units_eq_one_or_neg_one",
+      "qualified": "Mordell.zsqrtd_units_eq_one_or_neg_one",
+      "file": "Descent.lean",
+      "line": 53,
+      "end_line": 75
+    },
+    {
+      "id": "Descent.lean_Mordell.zsqrtd_units_neg_one_cases_76",
+      "kind": "theorem",
+      "name": "zsqrtd_units_neg_one_cases",
+      "qualified": "Mordell.zsqrtd_units_neg_one_cases",
+      "file": "Descent.lean",
+      "line": 76,
+      "end_line": 104
+    },
+    {
+      "id": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "kind": "theorem",
+      "name": "zsqrtd_units_cubes",
+      "qualified": "Mordell.zsqrtd_units_cubes",
+      "file": "Descent.lean",
+      "line": 105,
+      "end_line": 124
+    },
+    {
+      "id": "Descent.lean_Mordell.ideal_isPrincipal_of_cube_isPrincipal_125",
+      "kind": "theorem",
+      "name": "ideal_isPrincipal_of_cube_isPrincipal",
+      "qualified": "Mordell.ideal_isPrincipal_of_cube_isPrincipal",
+      "file": "Descent.lean",
+      "line": 125,
+      "end_line": 152
+    },
+    {
+      "id": "Descent.lean_Mordell.cube_root_of_principal_cube_span_153",
+      "kind": "theorem",
+      "name": "cube_root_of_principal_cube_span",
+      "qualified": "Mordell.cube_root_of_principal_cube_span",
+      "file": "Descent.lean",
+      "line": 153,
+      "end_line": 192
+    },
+    {
+      "id": "Descent.lean_Mordell.span_y_add_sqrtd_eq_ideal_cube_of_coprime_193",
+      "kind": "theorem",
+      "name": "span_y_add_sqrtd_eq_ideal_cube_of_coprime",
+      "qualified": "Mordell.span_y_add_sqrtd_eq_ideal_cube_of_coprime",
+      "file": "Descent.lean",
+      "line": 193,
+      "end_line": 219
+    },
+    {
+      "id": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "kind": "theorem",
+      "name": "exists_cube_root_y_add_sqrtd_of_ideal_coprime",
+      "qualified": "Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime",
+      "file": "Descent.lean",
+      "line": 220,
+      "end_line": 257
+    },
+    {
+      "id": "Descent.lean_Mordell.x_odd_two_three_aux_258",
+      "kind": "lemma",
+      "name": "x_odd_two_three_aux",
+      "qualified": "Mordell.x_odd_two_three_aux",
+      "file": "Descent.lean",
+      "line": 258,
+      "end_line": 276
+    },
+    {
+      "id": "Descent.lean_Mordell.x_odd_two_three_277",
+      "kind": "lemma",
+      "name": "x_odd_two_three",
+      "qualified": "Mordell.x_odd_two_three",
+      "file": "Descent.lean",
+      "line": 277,
+      "end_line": 298
+    },
+    {
+      "id": "Descent.lean_Mordell.int_isUnit_of_dvd_four_mul_d_of_dvd_y_sq_sub_d_299",
+      "kind": "lemma",
+      "name": "int_isUnit_of_dvd_four_mul_d_of_dvd_y_sq_sub_d",
+      "qualified": "Mordell.int_isUnit_of_dvd_four_mul_d_of_dvd_y_sq_sub_d",
+      "file": "Descent.lean",
+      "line": 299,
+      "end_line": 347
+    },
+    {
+      "id": "Descent.lean_Mordell.int_isCoprime_four_mul_d_y_sq_sub_d_348",
+      "kind": "lemma",
+      "name": "int_isCoprime_four_mul_d_y_sq_sub_d",
+      "qualified": "Mordell.int_isCoprime_four_mul_d_y_sq_sub_d",
+      "file": "Descent.lean",
+      "line": 348,
+      "end_line": 367
+    },
+    {
+      "id": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "kind": "theorem",
+      "name": "span_y_add_sqrtd_coprime",
+      "qualified": "Mordell.span_y_add_sqrtd_coprime",
+      "file": "Descent.lean",
+      "line": 368,
+      "end_line": 431
+    },
+    {
+      "id": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_dedekind_432",
+      "kind": "theorem",
+      "name": "exists_cube_root_y_add_sqrtd_of_dedekind",
+      "qualified": "Mordell.exists_cube_root_y_add_sqrtd_of_dedekind",
+      "file": "Descent.lean",
+      "line": 432,
+      "end_line": 443
+    },
+    {
+      "id": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_444",
+      "kind": "theorem",
+      "name": "exists_cube_root_y_add_sqrtd",
+      "qualified": "Mordell.exists_cube_root_y_add_sqrtd",
+      "file": "Descent.lean",
+      "line": 444,
+      "end_line": 459
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_arithmetic_of_cube_460",
+      "kind": "theorem",
+      "name": "mordell_arithmetic_of_cube",
+      "qualified": "Mordell.mordell_arithmetic_of_cube",
+      "file": "Descent.lean",
+      "line": 460,
+      "end_line": 489
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_490",
+      "kind": "theorem",
+      "name": "mordell_d",
+      "qualified": "Mordell.mordell_d",
+      "file": "Descent.lean",
+      "line": 490,
+      "end_line": 505
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "kind": "theorem",
+      "name": "mordell_d_of_ideal_coprime",
+      "qualified": "Mordell.mordell_d_of_ideal_coprime",
+      "file": "Descent.lean",
+      "line": 506,
+      "end_line": 522
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_of_dedekind_523",
+      "kind": "theorem",
+      "name": "mordell_d_of_dedekind",
+      "qualified": "Mordell.mordell_d_of_dedekind",
+      "file": "Descent.lean",
+      "line": 523,
+      "end_line": 534
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_param_solution_535",
+      "kind": "theorem",
+      "name": "mordell_param_solution",
+      "qualified": "Mordell.mordell_param_solution",
+      "file": "Descent.lean",
+      "line": 535,
+      "end_line": 545
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "kind": "theorem",
+      "name": "mordell_d_solution_of_eq",
+      "qualified": "Mordell.mordell_d_solution_of_eq",
+      "file": "Descent.lean",
+      "line": 546,
+      "end_line": 572
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_solution_iff_573",
+      "kind": "theorem",
+      "name": "mordell_d_solution_iff",
+      "qualified": "Mordell.mordell_d_solution_iff",
+      "file": "Descent.lean",
+      "line": 573,
+      "end_line": 589
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_no_solution_of_no_param_590",
+      "kind": "theorem",
+      "name": "mordell_d_no_solution_of_no_param",
+      "qualified": "Mordell.mordell_d_no_solution_of_no_param",
+      "file": "Descent.lean",
+      "line": 590,
+      "end_line": 607
+    },
+    {
+      "id": "Descent.lean_Mordell.mordell_d_no_solution_of_three_dvd_608",
+      "kind": "theorem",
+      "name": "mordell_d_no_solution_of_three_dvd",
+      "qualified": "Mordell.mordell_d_no_solution_of_three_dvd",
+      "file": "Descent.lean",
+      "line": 608,
+      "end_line": 624
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_one_18",
+      "kind": "theorem",
+      "name": "quadClassNumber_neg_one",
+      "qualified": "Mordell.quadClassNumber_neg_one",
+      "file": "ClassNumber/Common.lean",
+      "line": 18,
+      "end_line": 22
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_two_23",
+      "kind": "theorem",
+      "name": "quadClassNumber_neg_two",
+      "qualified": "Mordell.quadClassNumber_neg_two",
+      "file": "ClassNumber/Common.lean",
+      "line": 23,
+      "end_line": 26
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_one_27",
+      "kind": "theorem",
+      "name": "classNumber_gcd_three_neg_one",
+      "qualified": "Mordell.classNumber_gcd_three_neg_one",
+      "file": "ClassNumber/Common.lean",
+      "line": 27,
+      "end_line": 31
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_two_32",
+      "kind": "theorem",
+      "name": "classNumber_gcd_three_neg_two",
+      "qualified": "Mordell.classNumber_gcd_three_neg_two",
+      "file": "ClassNumber/Common.lean",
+      "line": 32,
+      "end_line": 36
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.R5_37",
+      "kind": "abbrev",
+      "name": "R5",
+      "qualified": "Mordell.R5",
+      "file": "ClassNumber/Common.lean",
+      "line": 37,
+      "end_line": 37
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.R6_38",
+      "kind": "abbrev",
+      "name": "R6",
+      "qualified": "Mordell.R6",
+      "file": "ClassNumber/Common.lean",
+      "line": 38,
+      "end_line": 38
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.R13_39",
+      "kind": "abbrev",
+      "name": "R13",
+      "qualified": "Mordell.R13",
+      "file": "ClassNumber/Common.lean",
+      "line": 39,
+      "end_line": 40
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_int_zsqrtd_iff_41",
+      "kind": "lemma",
+      "name": "mem_span_int_zsqrtd_iff",
+      "qualified": "Mordell.mem_span_int_zsqrtd_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 41,
+      "end_line": 54
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_two_zsqrtd_iff_55",
+      "kind": "lemma",
+      "name": "mem_span_two_zsqrtd_iff",
+      "qualified": "Mordell.mem_span_two_zsqrtd_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 55,
+      "end_line": 64
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_two_negFive_iff_65",
+      "kind": "lemma",
+      "name": "mem_span_two_negFive_iff",
+      "qualified": "Mordell.mem_span_two_negFive_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 65,
+      "end_line": 68
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_two_negSix_iff_69",
+      "kind": "lemma",
+      "name": "mem_span_two_negSix_iff",
+      "qualified": "Mordell.mem_span_two_negSix_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 69,
+      "end_line": 72
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_two_negThirteen_iff_73",
+      "kind": "lemma",
+      "name": "mem_span_two_negThirteen_iff",
+      "qualified": "Mordell.mem_span_two_negThirteen_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 73,
+      "end_line": 76
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.mem_span_three_negThirteen_iff_77",
+      "kind": "lemma",
+      "name": "mem_span_three_negThirteen_iff",
+      "qualified": "Mordell.mem_span_three_negThirteen_iff",
+      "file": "ClassNumber/Common.lean",
+      "line": 77,
+      "end_line": 80
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.idealDivBy_81",
+      "kind": "def",
+      "name": "idealDivBy",
+      "qualified": "Mordell.idealDivBy",
+      "file": "ClassNumber/Common.lean",
+      "line": 81,
+      "end_line": 89
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.span_singleton_mul_idealDivBy_eq_of_le_90",
+      "kind": "lemma",
+      "name": "span_singleton_mul_idealDivBy_eq_of_le",
+      "qualified": "Mordell.span_singleton_mul_idealDivBy_eq_of_le",
+      "file": "ClassNumber/Common.lean",
+      "line": 90,
+      "end_line": 106
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.ClassNumber.card_le_two_of_two_values_107",
+      "kind": "lemma",
+      "name": "card_le_two_of_two_values",
+      "qualified": "Mordell.ClassNumber.card_le_two_of_two_values",
+      "file": "ClassNumber/Common.lean",
+      "line": 107,
+      "end_line": 119
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.ClassNumber.gcd_three_of_card_le_two_120",
+      "kind": "lemma",
+      "name": "gcd_three_of_card_le_two",
+      "qualified": "Mordell.ClassNumber.gcd_three_of_card_le_two",
+      "file": "ClassNumber/Common.lean",
+      "line": 120,
+      "end_line": 130
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_one_131",
+      "kind": "theorem",
+      "name": "exists_cube_root_y_add_sqrtd_neg_one",
+      "qualified": "Mordell.exists_cube_root_y_add_sqrtd_neg_one",
+      "file": "ClassNumber/Common.lean",
+      "line": 131,
+      "end_line": 141
+    },
+    {
+      "id": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_two_142",
+      "kind": "theorem",
+      "name": "exists_cube_root_y_add_sqrtd_neg_two",
+      "qualified": "Mordell.exists_cube_root_y_add_sqrtd_neg_two",
+      "file": "ClassNumber/Common.lean",
+      "line": 142,
+      "end_line": 154
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "kind": "def",
+      "name": "sqrtTwoIdealNegFive",
+      "qualified": "Mordell.sqrtTwoIdealNegFive",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 12,
+      "end_line": 14
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_ne_bot_15",
+      "kind": "lemma",
+      "name": "sqrtTwoIdealNegFive_ne_bot",
+      "qualified": "Mordell.sqrtTwoIdealNegFive_ne_bot",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 15,
+      "end_line": 21
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "kind": "def",
+      "name": "sqrtTwoClassNegFive",
+      "qualified": "Mordell.sqrtTwoClassNegFive",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 22,
+      "end_line": 27
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.mem_sqrtTwoIdealNegFive_iff_28",
+      "kind": "lemma",
+      "name": "mem_sqrtTwoIdealNegFive_iff",
+      "qualified": "Mordell.mem_sqrtTwoIdealNegFive_iff",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 28,
+      "end_line": 66
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "lemma",
+      "name": "class_mk0_eq_one_or_sqrtTwo_negFive",
+      "qualified": "Mordell.class_mk0_eq_one_or_sqrtTwo_negFive",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 67,
+      "end_line": 159
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "kind": "lemma",
+      "name": "classGroup_negFive_eq_one_or_sqrtTwo",
+      "qualified": "Mordell.classGroup_negFive_eq_one_or_sqrtTwo",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 160,
+      "end_line": 170
+    },
+    {
+      "id": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "theorem",
+      "name": "classNumber_gcd_three_neg_five",
+      "qualified": "Mordell.classNumber_gcd_three_neg_five",
+      "file": "ClassNumber/NegFive.lean",
+      "line": 171,
+      "end_line": 190
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "kind": "def",
+      "name": "sqrtTwoIdealNegSix",
+      "qualified": "Mordell.sqrtTwoIdealNegSix",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 12,
+      "end_line": 14
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_ne_bot_15",
+      "kind": "lemma",
+      "name": "sqrtTwoIdealNegSix_ne_bot",
+      "qualified": "Mordell.sqrtTwoIdealNegSix_ne_bot",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 15,
+      "end_line": 21
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "kind": "def",
+      "name": "sqrtTwoClassNegSix",
+      "qualified": "Mordell.sqrtTwoClassNegSix",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 22,
+      "end_line": 27
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.mem_sqrtTwoIdealNegSix_iff_28",
+      "kind": "lemma",
+      "name": "mem_sqrtTwoIdealNegSix_iff",
+      "qualified": "Mordell.mem_sqrtTwoIdealNegSix_iff",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 28,
+      "end_line": 60
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "lemma",
+      "name": "class_mk0_eq_one_or_sqrtTwo_negSix",
+      "qualified": "Mordell.class_mk0_eq_one_or_sqrtTwo_negSix",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 61,
+      "end_line": 146
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "kind": "lemma",
+      "name": "classGroup_negSix_eq_one_or_sqrtTwo",
+      "qualified": "Mordell.classGroup_negSix_eq_one_or_sqrtTwo",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 147,
+      "end_line": 157
+    },
+    {
+      "id": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "theorem",
+      "name": "classNumber_gcd_three_neg_six",
+      "qualified": "Mordell.classNumber_gcd_three_neg_six",
+      "file": "ClassNumber/NegSix.lean",
+      "line": 158,
+      "end_line": 179
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "kind": "def",
+      "name": "sqrtTwoIdealNegThirteen",
+      "qualified": "Mordell.sqrtTwoIdealNegThirteen",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 12,
+      "end_line": 14
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_ne_bot_15",
+      "kind": "lemma",
+      "name": "sqrtTwoIdealNegThirteen_ne_bot",
+      "qualified": "Mordell.sqrtTwoIdealNegThirteen_ne_bot",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 15,
+      "end_line": 21
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "kind": "def",
+      "name": "sqrtTwoClassNegThirteen",
+      "qualified": "Mordell.sqrtTwoClassNegThirteen",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 22,
+      "end_line": 27
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.mem_sqrtTwoIdealNegThirteen_iff_28",
+      "kind": "lemma",
+      "name": "mem_sqrtTwoIdealNegThirteen_iff",
+      "qualified": "Mordell.mem_sqrtTwoIdealNegThirteen_iff",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 28,
+      "end_line": 66
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.three_dvd_re_and_im_of_three_dvd_norm_negThirteen_67",
+      "kind": "lemma",
+      "name": "three_dvd_re_and_im_of_three_dvd_norm_negThirteen",
+      "qualified": "Mordell.three_dvd_re_and_im_of_three_dvd_norm_negThirteen",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 67,
+      "end_line": 86
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "lemma",
+      "name": "class_mk0_eq_one_or_sqrtTwo_negThirteen",
+      "qualified": "Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 87,
+      "end_line": 179
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.one_one_mem_of_mem_four_of_odd_re_even_diff_180",
+      "kind": "lemma",
+      "name": "one_one_mem_of_mem_four_of_odd_re_even_diff",
+      "qualified": "Mordell.one_one_mem_of_mem_four_of_odd_re_even_diff",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 180,
+      "end_line": 217
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "lemma",
+      "name": "class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four",
+      "qualified": "Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 218,
+      "end_line": 303
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "lemma",
+      "name": "class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve",
+      "qualified": "Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 304,
+      "end_line": 363
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "kind": "lemma",
+      "name": "classGroup_negThirteen_eq_one_or_sqrtTwo",
+      "qualified": "Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 364,
+      "end_line": 373
+    },
+    {
+      "id": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "theorem",
+      "name": "classNumber_gcd_three_neg_thirteen",
+      "qualified": "Mordell.classNumber_gcd_three_neg_thirteen",
+      "file": "ClassNumber/NegThirteen.lean",
+      "line": 374,
+      "end_line": 393
+    },
+    {
+      "id": "Solutions.lean_mordell_minus1_16",
+      "kind": "theorem",
+      "name": "mordell_minus1",
+      "qualified": "mordell_minus1",
+      "file": "Solutions.lean",
+      "line": 16,
+      "end_line": 28
+    },
+    {
+      "id": "Solutions.lean_mordell_minus1_solution_29",
+      "kind": "theorem",
+      "name": "mordell_minus1_solution",
+      "qualified": "mordell_minus1_solution",
+      "file": "Solutions.lean",
+      "line": 29,
+      "end_line": 37
+    },
+    {
+      "id": "Solutions.lean_mordell_minus1_solution_iff_38",
+      "kind": "theorem",
+      "name": "mordell_minus1_solution_iff",
+      "qualified": "mordell_minus1_solution_iff",
+      "file": "Solutions.lean",
+      "line": 38,
+      "end_line": 44
+    },
+    {
+      "id": "Solutions.lean_mordell_minus2_45",
+      "kind": "theorem",
+      "name": "mordell_minus2",
+      "qualified": "mordell_minus2",
+      "file": "Solutions.lean",
+      "line": 45,
+      "end_line": 67
+    },
+    {
+      "id": "Solutions.lean_mordell_minus2_solutions_68",
+      "kind": "theorem",
+      "name": "mordell_minus2_solutions",
+      "qualified": "mordell_minus2_solutions",
+      "file": "Solutions.lean",
+      "line": 68,
+      "end_line": 84
+    },
+    {
+      "id": "Solutions.lean_mordell_minus2_solutions_iff_85",
+      "kind": "theorem",
+      "name": "mordell_minus2_solutions_iff",
+      "qualified": "mordell_minus2_solutions_iff",
+      "file": "Solutions.lean",
+      "line": 85,
+      "end_line": 90
+    },
+    {
+      "id": "Solutions.lean_mordell_minus13_91",
+      "kind": "theorem",
+      "name": "mordell_minus13",
+      "qualified": "mordell_minus13",
+      "file": "Solutions.lean",
+      "line": 91,
+      "end_line": 120
+    },
+    {
+      "id": "Solutions.lean_mordell_minus13_solutions_121",
+      "kind": "theorem",
+      "name": "mordell_minus13_solutions",
+      "qualified": "mordell_minus13_solutions",
+      "file": "Solutions.lean",
+      "line": 121,
+      "end_line": 137
+    },
+    {
+      "id": "Solutions.lean_mordell_minus13_solutions_iff_138",
+      "kind": "theorem",
+      "name": "mordell_minus13_solutions_iff",
+      "qualified": "mordell_minus13_solutions_iff",
+      "file": "Solutions.lean",
+      "line": 138,
+      "end_line": 143
+    },
+    {
+      "id": "Solutions.lean_mordell_minus5_144",
+      "kind": "theorem",
+      "name": "mordell_minus5",
+      "qualified": "mordell_minus5",
+      "file": "Solutions.lean",
+      "line": 144,
+      "end_line": 167
+    },
+    {
+      "id": "Solutions.lean_mordell_minus6_168",
+      "kind": "theorem",
+      "name": "mordell_minus6",
+      "qualified": "mordell_minus6",
+      "file": "Solutions.lean",
+      "line": 168,
+      "end_line": 189
+    }
+  ],
+  "edges": [
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtd_isScalarTower_int_quadRat_43",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.quadRat_trace_mk_48",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.quadRat_trace_65",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.quadRat_norm_mk_70",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZsqrtdBasic.lean_Mordell.quadRat_norm_78",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.norm_mk_70",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_101",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod_271",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.QuadRat_18",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_injective_29",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdAlgebraQuadRat_40",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_20",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_injective_29",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_apply_25",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdToQuadRat_injective_29",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.quadRat_trace_mk_48",
+      "to": "ZsqrtdBasic.lean_Mordell.quadRat_trace_65",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.quadRat_trace_65",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.quadRat_norm_78",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.rat_eq_int_of_squarefree_mul_sq_eq_int_85",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdLinearEquiv_123",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdLinearEquiv_123",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_mk_148",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ZsqrtdBasic.lean_Mordell.anonymous_instance_ZsqrtdBasic_lean_141_141",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ZsqrtdBasic.lean_Mordell.anonymous_instance_ZsqrtdBasic_lean_144_144",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_mk_148",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtdBasis_138",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_mk_148",
+      "to": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_160",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_160",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZsqrtdBasic.lean_Mordell.zsqrtd_algebra_norm_160",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega_20",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.omega_27",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega_20",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.omega_sq_38",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega_20",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.norm_mk_70",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega_20",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_101",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_apply_114",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_101",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_injective_119",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_101",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_137",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_apply_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_137",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_sqrtd_162",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ZomegaBasic.lean_Mordell.Zomega.fromZsqrtd_137",
+      "to": "ZomegaBasic.lean_Mordell.Zomega.toQuadRat_fromZsqrtd_167",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.div_def_22",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_re_bound_96",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.div_def_22",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_im_bound_106",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.div_def_22",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.mod_def_30",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_re_47",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.mod_def_30",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_im_52",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.mod_def_30",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.abs_natCast_norm_44",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.natAbs_norm_mod_lt_148",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.abs_natCast_norm_44",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_le_norm_mul_left_152",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_re_47",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_rem_mul_norm_57",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.rem_mul_conj_im_52",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_rem_mul_norm_57",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_rem_mul_norm_57",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_mod_lt_116",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_re_bound_96",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_mod_lt_116",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.round_im_bound_106",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_mod_lt_116",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_mod_lt_116",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.natAbs_norm_mod_lt_148",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.natAbs_norm_mod_lt_148",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.norm_le_norm_mul_left_152",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "EuclideanNegTwo.lean_ZsqrtNegTwo.instNontrivial_162",
+      "to": "EuclideanNegTwo.lean_ZsqrtNegTwo.anonymous_instance_EuclideanNegTwo_lean_165_165",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.rat_sub_round_sq_le_quarter_8",
+      "to": "Approximation.lean_Mordell.int_round_scaled_sq_le_quarter_18",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.int_round_scaled_sq_le_quarter_18",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.int_round_scaled_sq_le_quarter_18",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.int_scaled_sub_sq_le_34",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.int_scaled_sub_sq_le_34",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.exists_int_two_mul_sub_sq_le_one_nine_46",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.rat_sq_le_of_abs_le_64",
+      "to": "Approximation.lean_Mordell.exists_int_mul_sub_sq_le_one_twentyfive_69",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.exists_int_mul_sub_sq_le_one_twentyfive_69",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.norm_approx_mul_norm_141",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.norm_approx_mul_norm_141",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.approx_norm_expr_lt_151",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.approx_norm_expr_lt_neg_thirteen_169",
+      "to": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.exists_q_r_of_neg_six_le_181",
+      "to": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le_62",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Approximation.lean_Mordell.exists_q_r_of_neg_thirteen_269",
+      "to": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_twelve_neg_thirteen_81",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three_55",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isNoetherianRing_75",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three_55",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three_55",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod_271",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDomain_of_mod_four_eq_two_or_three_55",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isIntegrallyClosed_of_squarefree_mod_228",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod_271",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isIntegralClosure_of_squarefree_mod_271",
+      "to": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_444",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Dedekind.lean_Mordell.zsqrtd_isDedekindDomain_of_squarefree_mod_291",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.exists_mk0_eq_mk0_of_approx_15",
+      "to": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le_62",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.exists_mk0_eq_mk0_of_approx_15",
+      "to": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_twelve_neg_thirteen_81",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le_62",
+      "to": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_two_of_neg_six_le_62",
+      "to": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.classGroup_exists_mk0_mem_twelve_neg_thirteen_81",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_dedekind_432",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_444",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_490",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_of_dedekind_523",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_solution_iff_573",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_no_solution_of_no_param_590",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Descent.lean_Mordell.mordell_d_no_solution_of_three_dvd_608",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_one_18",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_two_23",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_one_27",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_two_32",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Solutions.lean_mordell_minus13_91",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Solutions.lean_mordell_minus5_144",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassGroupApprox.lean_Mordell.quadClassNumber_105",
+      "to": "Solutions.lean_mordell_minus6_168",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_eq_of_cube_eq_24",
+      "to": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_eq_of_cube_eq_24",
+      "to": "Solutions.lean_mordell_minus1_solution_29",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_eq_of_cube_eq_24",
+      "to": "Solutions.lean_mordell_minus2_solutions_68",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_eq_of_cube_eq_24",
+      "to": "Solutions.lean_mordell_minus13_solutions_121",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.factor_y_sq_sub_d_28",
+      "to": "Descent.lean_Mordell.span_y_add_sqrtd_eq_ideal_cube_of_coprime_193",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.factor_y_sq_sub_d_28",
+      "to": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.sqrtNegOneUnit_36",
+      "to": "Descent.lean_Mordell.zsqrtd_units_neg_one_cases_76",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.sqrtNegOneUnit_36",
+      "to": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.negSqrtNegOneUnit_45",
+      "to": "Descent.lean_Mordell.zsqrtd_units_neg_one_cases_76",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.negSqrtNegOneUnit_45",
+      "to": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.zsqrtd_units_eq_one_or_neg_one_53",
+      "to": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.zsqrtd_units_neg_one_cases_76",
+      "to": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "to": "Descent.lean_Mordell.ideal_isPrincipal_of_cube_isPrincipal_125",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.zsqrtd_units_cubes_105",
+      "to": "Descent.lean_Mordell.cube_root_of_principal_cube_span_153",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.ideal_isPrincipal_of_cube_isPrincipal_125",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.cube_root_of_principal_cube_span_153",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.span_y_add_sqrtd_eq_ideal_cube_of_coprime_193",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_dedekind_432",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "to": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_one_131",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_ideal_coprime_220",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_two_142",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.x_odd_two_three_aux_258",
+      "to": "Descent.lean_Mordell.x_odd_two_three_277",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.x_odd_two_three_277",
+      "to": "Descent.lean_Mordell.int_isUnit_of_dvd_four_mul_d_of_dvd_y_sq_sub_d_299",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_isUnit_of_dvd_four_mul_d_of_dvd_y_sq_sub_d_299",
+      "to": "Descent.lean_Mordell.int_isCoprime_four_mul_d_y_sq_sub_d_348",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.int_isCoprime_four_mul_d_y_sq_sub_d_348",
+      "to": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_dedekind_432",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "to": "Descent.lean_Mordell.mordell_d_of_dedekind_523",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_one_131",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.span_y_add_sqrtd_coprime_368",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_two_142",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_of_dedekind_432",
+      "to": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_444",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.exists_cube_root_y_add_sqrtd_444",
+      "to": "Descent.lean_Mordell.mordell_d_490",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_arithmetic_of_cube_460",
+      "to": "Descent.lean_Mordell.mordell_d_490",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_arithmetic_of_cube_460",
+      "to": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_arithmetic_of_cube_460",
+      "to": "Solutions.lean_mordell_minus1_16",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_arithmetic_of_cube_460",
+      "to": "Solutions.lean_mordell_minus2_45",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Descent.lean_Mordell.mordell_d_of_dedekind_523",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Solutions.lean_mordell_minus13_91",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Solutions.lean_mordell_minus5_144",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_490",
+      "to": "Solutions.lean_mordell_minus6_168",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_of_ideal_coprime_506",
+      "to": "Descent.lean_Mordell.mordell_d_of_dedekind_523",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_param_solution_535",
+      "to": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_param_solution_535",
+      "to": "Descent.lean_Mordell.mordell_d_solution_iff_573",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "to": "Descent.lean_Mordell.mordell_d_solution_iff_573",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_solution_of_eq_546",
+      "to": "Descent.lean_Mordell.mordell_d_no_solution_of_no_param_590",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Descent.lean_Mordell.mordell_d_no_solution_of_no_param_590",
+      "to": "Descent.lean_Mordell.mordell_d_no_solution_of_three_dvd_608",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_one_18",
+      "to": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_one_27",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.quadClassNumber_neg_two_23",
+      "to": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_two_32",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_one_27",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_one_131",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.classNumber_gcd_three_neg_two_32",
+      "to": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_two_142",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negFive_iff_65",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.mem_sqrtTwoIdealNegFive_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R5_37",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negSix_iff_69",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.mem_sqrtTwoIdealNegSix_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R6_38",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negThirteen_iff_73",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_three_negThirteen_iff_77",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.mem_sqrtTwoIdealNegThirteen_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.one_one_mem_of_mem_four_of_odd_re_even_diff_180",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.R13_39",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_int_zsqrtd_iff_41",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_zsqrtd_iff_55",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_int_zsqrtd_iff_41",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_three_negThirteen_iff_77",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_zsqrtd_iff_55",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negFive_iff_65",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_zsqrtd_iff_55",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negSix_iff_69",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_zsqrtd_iff_55",
+      "to": "ClassNumber_Common.lean_Mordell.mem_span_two_negThirteen_iff_73",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_negFive_iff_65",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_negSix_iff_69",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_negThirteen_iff_73",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_two_negThirteen_iff_73",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.mem_span_three_negThirteen_iff_77",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.idealDivBy_81",
+      "to": "ClassNumber_Common.lean_Mordell.span_singleton_mul_idealDivBy_eq_of_le_90",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.idealDivBy_81",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.idealDivBy_81",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.span_singleton_mul_idealDivBy_eq_of_le_90",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.span_singleton_mul_idealDivBy_eq_of_le_90",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_one_131",
+      "to": "Solutions.lean_mordell_minus1_16",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_Common.lean_Mordell.exists_cube_root_y_add_sqrtd_neg_two_142",
+      "to": "Solutions.lean_mordell_minus2_45",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "to": "ClassNumber_NegFive.lean_Mordell.mem_sqrtTwoIdealNegFive_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_12",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_ne_bot_15",
+      "to": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoIdealNegFive_ne_bot_15",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "to": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.sqrtTwoClassNegFive_22",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.mem_sqrtTwoIdealNegFive_iff_28",
+      "to": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negFive_67",
+      "to": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.classGroup_negFive_eq_one_or_sqrtTwo_160",
+      "to": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegFive.lean_Mordell.classNumber_gcd_three_neg_five_171",
+      "to": "Solutions.lean_mordell_minus5_144",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "to": "ClassNumber_NegSix.lean_Mordell.mem_sqrtTwoIdealNegSix_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_12",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_ne_bot_15",
+      "to": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoIdealNegSix_ne_bot_15",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "to": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.sqrtTwoClassNegSix_22",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.mem_sqrtTwoIdealNegSix_iff_28",
+      "to": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negSix_61",
+      "to": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.classGroup_negSix_eq_one_or_sqrtTwo_147",
+      "to": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegSix.lean_Mordell.classNumber_gcd_three_neg_six_158",
+      "to": "Solutions.lean_mordell_minus6_168",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_ne_bot_15",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.mem_sqrtTwoIdealNegThirteen_iff_28",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_12",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_ne_bot_15",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoIdealNegThirteen_ne_bot_15",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.sqrtTwoClassNegThirteen_22",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.mem_sqrtTwoIdealNegThirteen_iff_28",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.three_dvd_re_and_im_of_three_dvd_norm_negThirteen_67",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_87",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.one_one_mem_of_mem_four_of_odd_re_even_diff_180",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four_218",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve_304",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.classGroup_negThirteen_eq_one_or_sqrtTwo_364",
+      "to": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "ClassNumber_NegThirteen.lean_Mordell.classNumber_gcd_three_neg_thirteen_374",
+      "to": "Solutions.lean_mordell_minus13_91",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus1_16",
+      "to": "Solutions.lean_mordell_minus1_solution_29",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus1_solution_29",
+      "to": "Solutions.lean_mordell_minus1_solution_iff_38",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus2_45",
+      "to": "Solutions.lean_mordell_minus2_solutions_68",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus2_solutions_68",
+      "to": "Solutions.lean_mordell_minus2_solutions_iff_85",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus13_91",
+      "to": "Solutions.lean_mordell_minus13_solutions_121",
+      "kind": "textual-reference"
+    },
+    {
+      "from": "Solutions.lean_mordell_minus13_solutions_121",
+      "to": "Solutions.lean_mordell_minus13_solutions_iff_138",
+      "kind": "textual-reference"
+    }
+  ]
+}
