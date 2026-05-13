@@ -1,0 +1,150 @@
+% !TeX program = xelatex
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+
+\usepackage[left=2cm,right=2cm,top=2.6cm,bottom=2.6cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{tabularx}
+
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
+\IfFontExistsTF{Menlo}{\setmonofont{Menlo}}{}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+
+\captionsetup{font={small},labelsep=quad}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.22}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\leanfile}[1]{{\scriptsize\texttt{#1}}}
+
+\begin{document}
+
+\begin{table}[H]
+  \centering
+  \caption*{\textbf{表：项目制品统计数据}}
+  \vspace{1em}
+  \begin{tabular}{@{}L{8.6cm}R{2.7cm}@{}}
+    \toprule
+    \toprule
+    \textbf{指标} & \textbf{数值} \\
+    \midrule
+    证明链 Lean 源文件 & 12 \\
+    Lean 源代码行数 & 2839 \\
+    定理/引理声明 & 120 \\
+    \texttt{sorry/admit/axiom} 占位符 & 0 \\
+    Lean 版本 & 4.30.0-rc2 \\
+    \bottomrule
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vspace{2.4em}
+
+\begin{table}[H]
+  \centering
+  \caption*{\textbf{表：辅助检索工具}}
+  \vspace{0.6em}
+  \begin{tabularx}{0.92\textwidth}{@{}L{3cm}L{4.8cm}Y@{}}
+    \toprule
+    \toprules
+    \textbf{工具} & \textbf{链接} & \textbf{用途} \\
+    \midrule
+    \texttt{LeanSearch} & \url{https://leansearch.net/} & Lean 证明与库检索工具 \\
+    \texttt{Moogle} & \url{https://www.moogle.ai/} & Lean 代码与定理搜索引擎 \\
+    \texttt{Aristotle} & \url{https://aristotle.harmonic.fun/} &专门用于 Lean 4 证明综合的 AI 系统。 \\
+    \texttt{Matlas} & \url{https://matlas.ai/} & 基于人工智能的数学文献搜索引擎 \\
+    \bottomrule
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\vspace{2.4em}
+
+\small
+\begin{longtable}{@{}L{4.75cm}L{8.35cm}R{1.15cm}R{1.3cm}@{}}
+  \caption*{%
+    \begin{minipage}{\textwidth}
+      \textbf{表：Mordell 形式化项目模块统计。}
+      代码行数表示纳入证明链的 Lean 源代码行数；声明数表示 Lean 中定义、引理、定理、实例及相关声明的数量。
+    \end{minipage}}\\[1em]
+    \toprule
+    \toprule
+    \textbf{文件} & \textbf{作用} & \textbf{代码行数} & \textbf{声明数} \\
+    \midrule
+    \endfirsthead
+    \toprule
+    \toprule
+    \textbf{文件} & \textbf{作用} & \textbf{代码行数} & \textbf{声明数} \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{4}{r}{接下页}\\
+    \bottomrule
+    \endfoot
+    \bottomrule
+    \bottomrule
+    \endlastfoot
+
+    \leanfile{Mordell.lean}
+      & 项目公开入口，导入可复用核心与最终解表述模块
+      & 9 & 0 \\
+
+    \leanfile{Approximation.lean}
+      & 有理数取整逼近与范数估计，用于类群代表元约化
+      & 327 & 11 \\
+
+    \leanfile{ClassGroupApprox.lean}
+      & 把逼近结果转化为类群代表控制，并定义二次类数接口
+      & 122 & 4 \\
+
+    \leanfile{ClassNumber/Common.lean}
+      & 共享的理想成员判定、理想除法以及小类数辅助结论
+      & 154 & 19 \\
+
+    \leanfile{ClassNumber/NegFive.lean}
+      & \(d=-5\) 情形所需的显式类群计算
+      & 190 & 7 \\
+
+    \leanfile{ClassNumber/NegSix.lean}
+      & \(d=-6\) 情形所需的显式类群计算
+      & 179 & 7 \\
+
+    \leanfile{ClassNumber/NegThirteen.lean}
+      & \(d=-13\) 情形所需的显式类群计算
+      & 393 & 11 \\
+
+    \leanfile{Dedekind.lean}
+      & \(\mathbb{Z}[\sqrt d]\) 的整环、整闭包与 Dedekind 整环结构
+      & 311 & 13 \\
+
+    \leanfile{Descent.lean}
+      & Mordell 下降法：单位、互素理想、立方根、参数化与判别准则
+      & 624 & 30 \\
+
+    \leanfile{EuclideanNegTwo.lean}
+      & \(\mathbb{Z}[\sqrt{-2}]\) 的 Euclidean domain 结构
+      & 176 & 18 \\
+
+    \leanfile{Solutions.lean}
+      & \(d=-1,-2,-5,-6,-13\) 的最终整数解定理
+      & 189 & 11 \\
+
+    \leanfile{ZsqrtdBasic.lean}
+      & \(\mathbb{Z}[\sqrt d]\)、二次代数、迹、范数和基的基础接口
+      & 165 & 17 \\
+
+    \midrule
+    \textbf{合计} & \textbf{12 个 Lean 源文件} & \textbf{2839} & \textbf{148} \\
+\end{longtable}
+
+\end{document}

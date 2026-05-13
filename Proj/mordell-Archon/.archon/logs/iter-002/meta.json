@@ -1,0 +1,26 @@
+{
+  "iteration": 2,
+  "stage": "prover",
+  "mode": "parallel",
+  "startedAt": "2026-05-09T10:44:00Z",
+  "plan": {
+    "status": "done",
+    "durationSecs": 1007
+  },
+  "prover": {
+    "status": "done",
+    "durationSecs": 1964
+  },
+  "provers": {
+    "MordellArchon_Basic": {
+      "file": "MordellArchon/Basic.lean",
+      "status": "error"
+    }
+  },
+  "review": {
+    "status": "done",
+    "durationSecs": 62
+  },
+  "completedAt": "2026-05-09T20:44:00Z",
+  "wallTimeSecs": 3033
+}

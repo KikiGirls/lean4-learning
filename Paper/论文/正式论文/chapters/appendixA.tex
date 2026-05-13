@@ -1,0 +1,325 @@
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录A：Mordell 主定理的详细推导}
+\addcontentsline{toc}{section}{附录A：Mordell 主定理的详细推导}
+\section*{附录A：Mordell 主定理的详细推导}
+\zihao{5}
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35\baselineskip}
+
+\subsection*{A.1 定理表述与基本记号}
+
+本附录对正文定理 \ref{thm:mordell-basic} 中使用的类群下降法作较为完整的推导。设 \(d<0\) 为无平方因子的整数，且 \(d\equiv 2\) 或 \(3\pmod 4\)。令 \(D=\mathbb Z[\sqrt d]\)，记 \(h(D)\) 为 \(D\) 的类数，并假设 \(3\nmid h(D)\)。在这些假设下，需要证明 Mordell 方程
+\[
+    y^2=x^3+d
+\]
+存在整数解，当且仅当存在 \(m\in\mathbb Z_{\ge0}\) 使得
+\[
+    d=-3m^2\pm 1.
+\]
+并且在这种情形下，解中的 \(y\) 满足
+\[
+    y=\pm m(3d+m^2).
+\]
+
+\subsection*{A.2 三个初等算术引理}
+
+在上述假设下，先记录后续理想分解会用到的三个初等事实。设 \((x,y)\in\mathbb Z^2\) 是方程
+\[
+    y^2=x^3+d
+\]
+的一个整数解。由原方程可得
+\[
+    y^2-d=x^3.
+\]
+因为 \(d<0\)，所以左边 \(y^2-d\) 为正数，故 \(x^3>0\)，从而得到第一个事实：
+\[
+    x>0.
+\]
+
+第二，\(x\) 与 \(y\) 互素，即
+\[
+    \gcd(x,y)=1.
+\]
+事实上，若某个有理素数 \(p\) 同时整除 \(x\) 和 \(y\)，则 \(p^2\mid y^2\)，且由于 \(p^3\mid x^3\)，也有 \(p^2\mid x^3\)。由
+\[
+    d=y^2-x^3
+\]
+可得 \(p^2\mid d\)，这与 \(d\) 无平方因子矛盾。
+
+第三，\(x\) 必为奇数。若 \(x\) 为偶数，则
+\[
+    x^3\equiv 0 \pmod 8.
+\]
+由 \(y^2-d=x^3\) 得
+\[
+    y^2\equiv d \pmod 8.
+\]
+然而整数平方模 \(8\) 只可能为
+\[
+    0,1,4,
+\]
+而由 \(d\equiv2\) 或 \(3\pmod4\) 可知
+\[
+    d\equiv 2,3,6,7 \pmod8,
+\]
+不可能与平方剩余同余，矛盾。因此 \(x\) 为奇数。
+
+\subsection*{A.3 将方程在 \(D=\mathbb Z[\sqrt d]\) 中分解}
+
+原方程在 \(D\) 中有
+\[
+    (y+\sqrt d)(y-\sqrt d)=y^2-d=x^3.
+\]
+将其转化为主理想等式，得到
+\[
+    \langle y+\sqrt d\rangle\langle y-\sqrt d\rangle=\langle x\rangle^3.
+\]
+记
+\[
+    I=\langle y+\sqrt d\rangle,
+    \qquad
+    J=\langle y-\sqrt d\rangle,
+    \qquad
+    L=\langle x\rangle.
+\]
+则
+\[
+    IJ=L^3.
+\]
+
+下面证明 \(I\) 与 \(J\) 互素（见 A.8 中定理 T1）。反设存在素理想 \(\mathfrak p\) 同时整除 \(I\) 和 \(J\)。由 \(IJ=L^3\) 可知 \(\mathfrak p\) 也整除 \(L\)，故
+\[
+    x\in \mathfrak p.
+\]
+另一方面，由 \(\mathfrak p\mid I\) 与 \(\mathfrak p\mid J\) 得
+\[
+    y+\sqrt d\in \mathfrak p,
+    \qquad
+    y-\sqrt d\in \mathfrak p,
+\]
+从而
+\[
+    2y=(y+\sqrt d)+(y-\sqrt d)\in \mathfrak p.
+\]
+令
+\[
+    \mathfrak p\cap\mathbb Z=(p),
+\]
+其中 \(p\) 是某个有理素数（见 A.8 中定理 T2）。于是
+\[
+    p\mid x,
+    \qquad
+    p\mid 2y.
+\]
+由于 \(x\) 为奇数且 \(\gcd(x,y)=1\)，不存在这样的素数 \(p\)。矛盾。因此 \(I\) 与 \(J\) 没有公共素理想因子，即
+\[
+    \gcd(I,J)=1.
+\]
+
+\subsection*{A.4 理想下降与类数条件}
+
+由于 \(d\) 的同余条件成立，\(D\) 是二次域 \(\mathbb Q(\sqrt d)\) 的整数环，故 \(D\) 是 Dedekind 域（见 A.8 中定理 T3）。由
+\[
+    IJ=L^3,
+    \qquad
+    \gcd(I,J)=1
+\]
+可知，\(I\) 和 \(J\) 在各自的素理想分解中出现的指数都必须是 \(3\) 的倍数（见 A.8 中定理 T4）。因此存在 \(D\) 中的非零理想 \(\mathfrak a\)、\(\mathfrak b\)，使得
+\[
+    I=\mathfrak a^3,
+    \qquad
+    J=\mathfrak b^3.
+\]
+特别地，
+\[
+    \langle y+\sqrt d\rangle=\mathfrak a^3.
+\]
+
+将该等式传入理想类群 \(\operatorname{Cl}(D)\)（见 A.8 中定理 T5）。由于左边是主理想，它在类群中代表单位元，故
+\[
+    [\mathfrak a]^3=1.
+\]
+于是 \([\mathfrak a]\) 的阶整除 \(3\)。另一方面，由有限群的 Lagrange 定理（见 A.8 中定理 T6），\([\mathfrak a]\) 的阶也整除类群阶数 \(h(D)\)。由假设 \(3\nmid h(D)\)，得到
+\[
+    [\mathfrak a]=1.
+\]
+所以 \(\mathfrak a\) 也是主理想（见 A.8 中定理 T7）。故存在 \(\alpha\in D\)，使得
+\[
+    \mathfrak a=\langle \alpha\rangle.
+\]
+从而
+\[
+    \langle y+\sqrt d\rangle=\langle \alpha^3\rangle.
+\]
+又两个主理想相等当且仅当其生成元相差一个单位（见 A.8 中定理 T8），因此存在单位 \(u\in D^\times\)，满足
+\[
+    y+\sqrt d=u\alpha^3.
+\]
+
+\subsection*{A.5 单位因子的吸收}
+
+对任意元素
+\[
+    a+b\sqrt d\in D,
+    \qquad a,b\in\mathbb Z,
+\]
+其范数为
+\[
+    N(a+b\sqrt d)=a^2-db^2.
+\]
+由二次整数环的范数公式（见 A.8 中定理 T9），当 \(a+b\sqrt d\) 是单位时，范数必须为 \(1\)（见 A.8 中定理 T10）。由于 \(d<0\)，有
+\[
+    a^2-db^2=a^2+|d|b^2=1.
+\]
+若 \(d<-1\)，则只能有 \(b=0\)、\(a=\pm1\)，故单位只有 \(\pm1\)。若 \(d=-1\)，则 \(D=\mathbb Z[i]\)，单位为
+\[
+    \{\pm1,\pm i\}.
+\]
+因此在本定理的假设下，单位群 \(D^\times\) 的阶为 \(2\) 或 \(4\)，均与 \(3\) 互素。由有限群中幂映射为双射的判别定理（见 A.8 中定理 T11），三次幂映射
+\[
+    D^\times\longrightarrow D^\times,
+    \qquad
+    v\longmapsto v^3
+\]
+是双射。故存在单位 \(v\in D^\times\)，使得
+\[
+    u=v^3.
+\]
+将 \(v\) 吸收到 \(\alpha\) 中，可得
+\[
+    y+\sqrt d=u\alpha^3 = v^3\alpha^3 =(a+b\sqrt d)^3
+    ,
+    \qquad a,b\in\mathbb Z.
+\]
+
+\subsection*{A.6 展开并比较系数}
+
+由
+\[
+    y+\sqrt d=(a+b\sqrt d)^3
+\]
+展开右边，得
+\[
+\begin{aligned}
+    (a+b\sqrt d)^3
+    &=a^3+3a^2b\sqrt d+3ab^2d+b^3d\sqrt d \\
+    &=a(a^2+3b^2d)+b(3a^2+b^2d)\sqrt d.
+\end{aligned}
+\]
+由于 \(D=\mathbb Z\oplus\mathbb Z\sqrt d\)，表示式中的有理部分和 \(\sqrt d\) 部分唯一确定（见 A.8 中定理 T12）。比较系数得到
+\[
+    y=a(a^2+3b^2d),
+\]
+以及
+\[
+    1=b(3a^2+b^2d).
+\]
+后一式是整数环 \(\mathbb Z\) 中的乘积分解。因此
+\[
+    b=\pm1,     \qquad 3a^2+d=b.
+\]
+
+令
+\[
+    m=|a|\in\mathbb Z_{\ge0},
+\]
+则
+\[
+    d=-3m^2\pm1.
+\]
+
+\[
+    y=\pm m(3d+m^2).
+\]
+这给出了必要性方向中关于 \(d\) 和 \(y\) 的结论。
+
+对于充分性，带入验证即可。
+
+\subsection*{A.7 对 \(x\) 的表达式}
+
+虽然定理主要记录 \(y\) 的形式，但同一推导也给出 \(x\) 的表达式。对
+\[
+    y+\sqrt d=(a+b\sqrt d)^3
+\]
+对两边同时取范数，并使用范数的乘法性（见 A.8 中定理 T13），得到
+\[
+    N(y+\sqrt d)=N(a+b\sqrt d)^3.
+\]
+即
+\[
+    x^3=(a^2-db^2)^3.
+\]
+整数中的三次幂映射是单射，因此
+\[
+    x=a^2-db^2=m^2-d.
+\]
+
+\subsection*{A.8 用到的定理与事实}
+
+\textbf{定理 T1（Dedekind 域中理想互素判别）}
+在 Dedekind 域中，两个非零理想互素，当且仅当它们没有公共素理想因子。
+
+\textbf{定理 T2（素理想在 \(\mathbb Z\) 上的收缩）}
+若 \(\mathfrak p\) 是整数环扩张中的非零素理想，则 \(\mathfrak p\cap\mathbb Z\) 是 \(\mathbb Z\) 的非零素理想，因而形如 \((p)\)，其中 \(p\) 是有理素数。
+
+\textbf{定理 T3（数域整数环是 Dedekind 域与理想唯一分解）}
+数域的整数环是 Dedekind 域；在 Dedekind 域中，每个非零真理想都可唯一分解为非零素理想的乘积。
+
+\textbf{定理 T4（互素因子的理想下降引理）}
+在 Dedekind 域中，若非零理想 \(I,J\) 互素且
+\[
+    IJ=L^n,
+\]
+则存在非零理想 \(A,B\)，使得
+\[
+    I=A^n,\qquad J=B^n.
+\]
+本文使用的是 \(n=3\) 的情形。
+
+\textbf{定理 T5（理想类群中的主理想为单位）}
+理想类群的乘法由理想乘法诱导；任意非零主理想在理想类群中代表单位元。
+
+\textbf{定理 T6（Lagrange 定理）}
+有限群中任意元素的阶整除群的阶。因此若 \(g^3=1\) 且 \(\gcd(3,|G|)=1\)，则 \(g=1\)。
+
+\textbf{定理 T7（类群单位元判别）}
+非零理想 \(I\) 在理想类群中代表单位元，当且仅当 \(I\) 是主理想。
+
+\textbf{定理 T8（相等主理想的生成元相差单位）}
+在整环中，若 \(\langle a\rangle=\langle b\rangle\) 且 \(a,b\ne0\)，则存在单位 \(u\)，使得
+\[
+    a=ub.
+\]
+
+\textbf{定理 T9（二次整数环范数公式）}
+在 \(D=\mathbb Z[\sqrt d]\) 中，
+\[
+    N(a+b\sqrt d)=a^2-db^2.
+\]
+
+\textbf{定理 T10（单位范数）}
+范数是乘法映射。若 \(u\) 是单位，则 \(N(u)\) 是 \(\mathbb Z\) 中的单位；在 \(d<0\) 时，二次范数非负，所以 \(N(u)=1\)。
+
+\textbf{定理 T11（有限群中的幂映射双射）}
+若 \(G\) 是有限群且 \(\gcd(n,|G|)=1\)，则映射
+\[
+    G\to G,\qquad g\mapsto g^n
+\]
+是双射。本文对单位群使用 \(n=3\) 的情形。
+
+\textbf{定理 T12（二次整数环基表示唯一性）}
+\(D=\mathbb Z[\sqrt d]\) 作为 \(\mathbb Z\)-模有基 \(\{1,\sqrt d\}\)，因此若
+\[
+    a+b\sqrt d=c+e\sqrt d,
+\]
+则 \(a=c\) 且 \(b=e\)。
+
+\textbf{定理 T13（范数乘法性）}
+对二次整数环中的元素 \(\alpha,\beta\)，
+\[
+    N(\alpha\beta)=N(\alpha)N(\beta).
+\]
+因此 \(N(\alpha^3)=N(\alpha)^3\)。
+\par\endgroup

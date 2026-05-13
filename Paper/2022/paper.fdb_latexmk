@@ -1,0 +1,14 @@
+# Fdb version 4
+["xelatex"] 1777895314.42944 "/Users/kikigirl/Desktop/lean4-learning/Paper/2022/paper.tex" "paper.pdf" "paper" 1777895314.59117 2
+  "/Users/kikigirl/Desktop/lean4-learning/Paper/2022/paper.tex" 1777895284.54711 108924 d53ee7b36bef6fc211590c0a360ed8c5 ""
+  "acmart.cls" 1777542807.10665 107518 ab24d4157353af49a76653c2ab3ce736 ""
+  "lstlean.tex" 1777542807.10699 11527 386ddf0caa18f07287f261cc57fc68d2 ""
+  "paper.aux" 1777542807.10718 1399 8cc4ca00fe99e048a5746dcbbded7c1f "xelatex"
+  "paper.out" 1777542807.10887 374 c8b4c48cab3e4b15b745b344bb2a0959 "xelatex"
+  "paper.tex" 1777895284.54711 108924 d53ee7b36bef6fc211590c0a360ed8c5 ""
+  (generated)
+  "paper.aux"
+  "paper.log"
+  "paper.out"
+  "paper.pdf"
+  (rewritten before read)

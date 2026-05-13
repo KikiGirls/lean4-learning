@@ -1,0 +1,165 @@
+\newpage
+\setChapterHeader{5}{多模型 AI 辅助 Lean 4 形式化实验与分析}
+\section{多模型 AI 辅助 Lean 4 形式化实验与分析}
+\zihao{-4}
+
+本章在前文 Mordell 方程 Lean 4 形式化实现的基础上，设计多模型 AI 辅助证明实验。实验目的不是重新提出新的数学问题，也不是构造覆盖大量题目的通用排行榜，而是在同一个已经确定的 Mordell 形式化案例中，比较 AI 在不同参与方式下能够提供的证明贡献。换言之，本章所有实验均围绕第 2 章中的同一数学对象展开：整数 Mordell 方程
+\[
+  y^2=x^3+d
+\]
+及其在 Lean 4 中的形式化证明。
+
+这种设计可以避免不同数学题目之间难度差异带来的干扰。本文关注的问题不是“某个模型能解决多少种题目”，而是“在同一组 Mordell 形式化目标上，模型能否理解证明、能否生成可检查代码、能否在智能体模式下自主完成搜索与修复”。因此，实验评价的核心是 AI 贡献程度和验证可靠性，而不是题目数量。
+
+\subsection{Mordell 形式化项目结构}
+
+本文的 Lean 4 形式化实验以 Lake 项目 \texttt{Mordell} 为对象。该项目围绕整数 Mordell 方程组织证明代码，整体结构可以分为三层：第一层是二次整数环 \(\mathbb Z[\sqrt d]\)、范数、迹和 Dedekind 整环等基础结构；第二层是逼近引理、类群代表元约化和理想下降法；第三层是小类数输入以及 \(d=-1,-2,-5,-6,-13\) 等具体参数下的解或无解结论。前文已经介绍了这些模块之间的证明依赖关系，表 \ref{tab:mordell-module-stats} 进一步列出各 Lean 文件的用途、代码行数和声明数量。
+
+表中 LOC 按源码文件行数统计；声明数量按顶层 Lean 声明关键词统计，主要包括 \texttt{def}、\texttt{abbrev}、\texttt{lemma}、\texttt{theorem} 和 \texttt{instance}。这一统计口径反映的是本项目中显式维护的形式化对象数量，而不是 Mathlib4 中已复用声明的数量。
+
+\input{chapters/mordell_module_stats_table}
+
+从项目结构看，\texttt{Solutions.lean} 中的最终定理虽然篇幅较短，但其背后依赖了 \texttt{Descent.lean} 中的理想下降法、\texttt{Dedekind.lean} 中的 Dedekind 整环实例，以及 \texttt{ClassNumberSmall.lean} 中的具体类数输入。因此，本文选择最终解集定理作为实验目标，可以同时考察模型对自然语言数学证明、Lean 代码证明以及仓库级证明工程的处理能力。
+
+\subsection{固定任务与实验变量}
+
+为了保证不同模型和不同实验模式之间具有可比性，本文不为不同模型设置不同题目。所有实验均固定在 Mordell 方程形式化案例上，主要目标为 \texttt{Solutions.lean} 中的最终解集定理，尤其是参数 \(d=-13\) 的情形：
+
+\begin{leanlisting}
+theorem mordell_minus13_solutions_iff (x y : Int) :
+    Iff (y ^ 2 = x ^ 3 - 13)
+      (Or (And (x = 17) (y = 70)) (And (x = 17) (y = -70)))
+\end{leanlisting}
+
+该目标适合作为主测评对象，原因有三点。第一，它是一个完整的整数解集命题，既包含解的存在性，也包含无其他解的排除。第二，它不能只靠简单算术完成，而需要调用前文建立的 Mordell 下降法和类数结果。第三，它的 Lean 证明最终仍然落到有限的整数计算和逻辑分支上，便于人工复核和机器验证。
+
+除主目标外，本文可将 \(d=-1,-2,-5,-6\) 的结论作为同一案例下的辅助目标，用于观察模型在更简单有解、双解和无解情形中的稳定性。但这些目标并不构成新的数学问题，而是同一 Mordell 形式化项目中的不同参数实例。实验比较时，重点仍然放在固定证明路线下 AI 贡献方式的差异。
+
+本文设置三个实验变量：第一，AI 是否只输出自然语言证明；第二，AI 是否需要生成 Lean 4 证明代码；第三，AI 是否作为全自动智能体在仓库中自主搜索、编辑和运行验证。三种实验模式面对的是同一数学内容，只是输入信息、输出形式和自主程度不同。
+
+\subsection{模型和评价框架}
+
+本文评估 18 个模型，涵盖通用模型和面向形式化数学任务微调的领域专用模型。模型族、模型名称、调用方式、采样参数和评测时间等详细信息统一列入附录 D。
+
+评价方式参考 Erdős Problems Wiki 中对 AI 数学贡献的整理方式\cite{TaoErdosAIWiki2026}。该页面不只给出 Full、Partial、Incorrect 等结果标记，还按照 AI 在数学工作中的角色对贡献进行分区，并特别区分相关文献是否已知以及人类参与是否显著。本文不把该页面作为多题目排行榜，而是将其改造为固定 Mordell 形式化任务下的多维记录框架。完整评价表见附录 E。
+
+\subsection{实验一：自然语言证明生成}
+
+自然语言证明生成实验考察模型是否真正理解 Mordell 形式化证明背后的数学结构。实验输入为固定目标定理、必要的背景说明以及可选的 Lean 定理名称；实验输出为一段自然语言证明，说明为什么方程
+\[
+  y^2=x^3-13
+\]
+的整数解只有 \((17,70)\) 和 \((17,-70)\)。
+
+该实验可以设置两种上下文强度。第一种是“定理陈述输入”，即只提供目标命题和前文数学结论，让模型自行组织证明。第二种是“Lean 证明输入”，即同时提供 \texttt{mordell\_minus13\_solutions\_iff} 及其依赖定理名称，让模型解释已有形式化证明。前者更接近证明生成能力测试，后者更接近形式化证明解释能力测试。
+
+自然语言证明的 Full 标准是：模型能够正确说明由 Mordell 下降法得到参数 \(m\) 的限制，正确使用 \(d=-13\) 的类数条件，推出 \(m=\pm 2\)，再由参数公式得到 \(y=\pm 70\)，最后代回原方程推出 \(x=17\)。证明中不得虚构不存在的核心结论，也不得把需要证明的解集命题当作前提使用。
+
+Partial 标准是：模型给出了基本正确的证明路线，但省略了关键条件或最后的整数计算。例如，模型知道要使用下降法和类数条件，却没有说明如何由参数公式排除其他 \(m\)。Incorrect 标准是：模型给出错误的参数关系、错误解集，或者错误地认为只需数值检验有限范围即可完成无穷整数解的证明。
+
+\subsection{实验二：给定定理的 Lean 证明生成}
+
+给定定理的 Lean 证明生成实验考察模型将既定数学目标转化为机器可检查证明的能力。实验输入为固定 theorem statement、必要 imports 以及允许使用的项目内定理名称；实验输出为 Lean 4 证明代码。与自然语言实验不同，该实验的主要评价标准不是文字说服力，而是 Lean 是否接受证明。
+
+主实验目标仍为：
+
+\begin{leanlisting}
+theorem mordell_minus13_solutions_iff (x y : Int) :
+    Iff (y ^ 2 = x ^ 3 - 13)
+      (Or (And (x = 17) (y = 70)) (And (x = 17) (y = -70))) := by
+  ...
+\end{leanlisting}
+
+模型生成证明后，本文通过 \texttt{lake build} 检查整个项目。Full 标准包括四项：第一，Lean 构建通过；第二，证明中不含 \texttt{sorry}、\texttt{admit} 或额外公理；第三，目标定理陈述没有被削弱；第四，证明没有破坏项目中其他已有定理。
+
+Partial 标准是：模型生成了正确的证明骨架，能够定位并调用 \texttt{mordell\_minus13}、整数三次单射、\texttt{omega} 或 \texttt{norm\_num} 等关键工具，但仍存在少量局部类型错误或 tactic 错误。Incorrect 标准是：代码无法解析，证明方向错误，依赖不存在的 lemma，或通过修改 theorem statement 规避原目标。
+
+为了记录模型在 Lean 证明开发中的表现，本文对每次实验记录如下信息，见表 \ref{tab:lean-proof-record-fields}。
+
+\begin{table}[H]
+\centering
+\small
+\caption{Lean 证明生成实验记录项}
+\label{tab:lean-proof-record-fields}
+\begin{tabular}{@{}p{0.24\textwidth}p{0.62\textwidth}@{}}
+\toprule
+\textbf{记录项} & \textbf{含义} \\
+\midrule
+模型与版本 & 使用的 AI 模型、调用日期和主要参数。 \\
+输入上下文 & 是否提供 theorem statement、已有 imports、相关 lemma 名称或完整 Lean 文件。 \\
+AI 贡献角色 & Primary 或 Secondary。 \\
+贡献类型 & 独立证明、基于文献、协作、文献检索、形式化、改写、计算等。 \\
+文献资料状态 & 是否提供论文、Lean3 证明、项目 README，或由 AI 自行检索获得。 \\
+文献检索行为 & AI 是否主动检索并正确使用相关资料。 \\
+构建结果 & \texttt{lake build} 是否通过。 \\
+修复轮数 & 从首次输出到最终通过所需的 Lean 报错反馈轮数。 \\
+人类辅助程度 & 人是否改写证明结构、补充关键 lemma、提供文献，或仅复制报错。 \\
+证明完整性 & 是否含 \texttt{sorry}，是否引入新公理，是否削弱定理。 \\
+贡献等级 & Full、Partial、Incorrect 或 Pending。 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+这些记录使得实验结果不仅能回答“最后是否成功”，还可以反映模型证明生成过程的稳定性和对 Lean 报错的修复能力。
+
+\subsection{实验三：全自动智能体证明构造}
+
+全自动智能体实验考察 AI 在真实 Lean 仓库中的自主证明工程能力。与前两个实验相比，智能体实验不只要求模型输出一段证明，而是要求它完成从仓库探索到最终验证的全过程。
+
+该实验的输入可以简化为：“在当前 Lean 4 项目中，证明 Mordell 方程 \(y^2=x^3-13\) 的整数解只有 \((17,70)\) 和 \((17,-70)\)。”
+
+在该设置下，智能体需要自行完成以下步骤：识别项目结构，定位 \texttt{Solutions.lean}、\texttt{Descent.lean} 和 \texttt{ClassNumberSmall.lean} 等相关文件；搜索可复用定理；编辑或新增目标证明；运行 \texttt{lake build}；根据 Lean 报错修复代码；最后给出完成情况说明。
+
+智能体实验的 Full 标准是：在不改变数学目标、不引入未证明假设、不破坏已有代码的前提下，最终仓库构建通过。Partial 标准是：智能体能够找到关键依赖并生成接近完成的证明，但未能在限定轮数内修复所有 Lean 错误。Incorrect 标准是：智能体找错目标、删除或改坏无关证明、削弱 theorem statement，或在未验证的情况下声称完成。
+
+该实验特别记录过程性指标，包括搜索路径、编辑文件、构建次数、失败报错类型、最终差异以及人工介入程度。与给定定理证明生成相比，智能体实验更能反映模型在真实形式化数学项目中的端到端能力。
+
+\subsection{三类实验的比较维度}
+
+三类实验共享同一数学对象，但评价重点不同。自然语言证明生成主要考察模型的数学理解和表达；给定定理 Lean 证明生成主要考察模型的形式化代码能力；全自动智能体实验主要考察模型的仓库级搜索、计划、编辑和验证能力。三类实验的差异如表 \ref{tab:three-ai-experiments} 所示。
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{三类 AI 辅助形式化实验的比较}
+\label{tab:three-ai-experiments}
+\begin{tabular}{@{}p{0.18\textwidth}p{0.18\textwidth}p{0.18\textwidth}p{0.18\textwidth}p{0.22\textwidth}@{}}
+\toprule
+\textbf{实验类型} & \textbf{输入} & \textbf{输出} & \textbf{主要验证方式} & \textbf{主要风险} \\
+\midrule
+自然语言证明生成 & 定理陈述与背景材料 & 文字证明 & 人工数学复核 & 证明跳步、幻觉引用、参数关系错误 \\
+给定定理 Lean 证明生成 & theorem statement 与可用依赖 & Lean 4 证明代码 & \texttt{lake build} & 类型错误、tactic 失败、定理被削弱 \\
+全自动智能体 & 简短任务说明与仓库访问 & 修改后的 Lean 项目 & \texttt{lake build} 与 diff 审查 & 找错目标、破坏项目、未验证即声称完成 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+这样的实验设计使本文能够在同一个 Mordell 案例中区分三种能力：一是能否讲清证明，二是能否写出机器可检查证明，三是能否在真实项目中自主完成证明开发。三者难度逐级提高，但数学目标保持一致。
+
+\subsection{实验流程}
+
+为了保证实验可重复，本文采用统一流程。每次实验开始前，项目均恢复到同一 Git 版本，并确认 \texttt{lake build} 在初始状态下可以通过。随后，根据实验类型向模型提供固定 prompt 和规定上下文。模型输出后，自然语言证明由人工按照前述标准复核；Lean 代码和智能体修改则通过 \texttt{lake build} 验证，并检查是否引入 \texttt{sorry}、额外公理或无关改动。
+
+对于需要多轮交互的实验，本文记录每一轮输入、模型输出、Lean 报错和人工反馈。若模型只收到 Lean 报错而没有额外证明提示，则记为低人工干预；若人类明确指出应使用哪个关键 lemma 或重写证明结构，则记为高人工干预。通过这种方式，可以区分模型自身能力与人类指导带来的收益。
+
+最终，每次实验形成一条结果记录，如表 \ref{tab:ai-result-record} 所示。该记录表不是为了比较不同题目的解决率，而是为了展示同一形式化任务在不同 AI 工作模式下的完成质量。由于所有模型面对同一 Mordell 目标，实验结论可以更集中地说明 AI 在数学理解、形式化生成和自动化证明工程中的具体优势与局限。
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{AI 实验结果记录模板}
+\label{tab:ai-result-record}
+\begin{tabular}{@{}p{0.10\textwidth}p{0.16\textwidth}p{0.18\textwidth}p{0.18\textwidth}p{0.12\textwidth}p{0.13\textwidth}p{0.11\textwidth}@{}}
+\toprule
+\textbf{模型} & \textbf{实验类型} & \textbf{贡献类型} & \textbf{文献资料与检索} & \textbf{人类辅助} & \textbf{验证结果} & \textbf{贡献等级} \\
+\midrule
+模型 A & 自然语言证明生成 & Primary/Secondary + 具体类型 & 未提供/提供/AI 检索 & 无/低/中/高 & 人工复核 & 四档等级 \\
+模型 A & 给定定理 Lean 证明生成 & Formalization 或 Building on literature & theorem statement、lemma、论文或 Lean 文件 & 无/低/中/高 & 构建通过/未通过 & 四档等级 \\
+模型 A & 全自动智能体 & Standalone、Collaboration 或 Formalization & AI 是否自行检索并引用资料 & 无/低/中/高 & 构建与 diff 审查 & 四档等级 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{本章小结}
+
+本章给出了面向 Mordell 方程 Lean 4 形式化案例的 AI 测评设计。与多题目 benchmark 不同，本文固定同一数学对象和同一证明路线，只改变 AI 的参与方式。本文评估 18 个模型，并将 Erdős Problems Wiki 的贡献分区改造为包含结果状态、文献资料、文献检索、人类辅助、形式化完整性和验证方式的多维表格框架。基于该框架，本文分别设计了自然语言证明生成、给定定理 Lean 证明生成和全自动智能体证明构造三类实验，为后续分析多模型在真实形式化数学任务中的表现提供统一依据。

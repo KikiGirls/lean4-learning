@@ -1,0 +1,25 @@
+# Fdb version 4
+["bibtex paper_zh"] 0 "paper_zh.aux" "paper_zh.bbl" "paper_zh" 0 0
+  "ACM-Reference-Format.bst" 0 -1 0 ""
+  "MordellLean.bib" 0 -1 0 ""
+  "paper_zh.aux" 0 -1 0 "xelatex"
+  (generated)
+  "paper_zh.bbl"
+  "paper_zh.blg"
+  (rewritten before read)
+["xelatex"] 1778239307.37359 "/Users/kikigirl/Desktop/lean4-learning/Paper/2022/paper_zh.tex" "paper_zh.pdf" "paper_zh" 1778239307.52728 2
+  "/Users/kikigirl/Desktop/lean4-learning/Paper/2022/paper_zh.tex" 1777542807.11195 100382 1871f9c66949e1121f736b7862acd39e ""
+  "acmart.cls" 1777542807.10665 107518 ab24d4157353af49a76653c2ab3ce736 ""
+  "comment.cut" 1777542807.10687 426 01ad630b8a4a9aaa078e8fa210a55a87 "xelatex"
+  "lstlean.tex" 1777542807.10699 11527 386ddf0caa18f07287f261cc57fc68d2 ""
+  "paper_zh.aux" 1777542807.11006 10232 3f4bb13f170026e5fff362625cf917d8 "xelatex"
+  "paper_zh.bbl" 1777542807.11015 19643 6faa69fe35a8bccec21070f4c5e3be99 "bibtex paper_zh"
+  "paper_zh.out" 1777542807.11067 3244 7f0e92a48cb5a46d0b0523bec872e8f2 "xelatex"
+  "paper_zh.tex" 1777542807.11195 100382 1871f9c66949e1121f736b7862acd39e ""
+  (generated)
+  "comment.cut"
+  "paper_zh.aux"
+  "paper_zh.log"
+  "paper_zh.out"
+  "paper_zh.pdf"
+  (rewritten before read)

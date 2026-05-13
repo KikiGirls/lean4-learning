@@ -1,0 +1,47 @@
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录D：评价框架}
+\addcontentsline{toc}{section}{附录D：评价框架}
+\section*{附录D：评价框架}
+\zihao{5}
+
+评价方式参考 Erdős Problems Wiki 中对 AI 数学贡献的整理方式\cite{TaoErdosAIWiki2026}。
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{AI 贡献等级与判定标准}
+\label{tab:appendix-ai-contribution-levels}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.58\textwidth}@{}}
+\toprule
+\textbf{等级} & \textbf{含义} & \textbf{本文中的判定标准} \\
+\midrule
+Full & 完整贡献 & 输出完整满足当前实验目标；自然语言证明经人工复核正确，或 Lean 代码通过 \texttt{lake build} 且无 \texttt{sorry}。 \\
+Partial & 部分贡献 & 输出包含实质性有用内容，例如正确证明框架、关键引理定位或接近可运行的 Lean 代码，但尚未独立完成目标。 \\
+Incorrect & 错误贡献 & 输出存在数学错误、Lean 代码无法形成有效证明、削弱了定理陈述，或引用不存在的关键结论。 \\
+Pending & 待确认 & 输出尚未经过人工复核或 Lean 构建验证，暂不能判定最终有效性。 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{AI 贡献的多维评价指标}
+\label{tab:appendix-ai-evaluation-dimensions}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.42\textwidth}@{}}
+\toprule
+\textbf{维度} & \textbf{取值或记录方式} & \textbf{说明} \\
+\midrule
+AI 贡献角色 & Primary / Secondary & Primary 表示 AI 生成核心证明思路或完成主要证明构造；Secondary 表示 AI 主要承担解释、形式化、检索、改写、计算等辅助工作。 \\
+贡献类型 & Standalone / Alongside literature / Building on literature / Collaboration / Literature search / Formalization / Artifact generation / Rewriting / Computation & 参考 Erdős 页面中的分区，但映射到本文的 Mordell 形式化任务。 \\
+文献资料状态 & 未提供文献 / 提供论文或 Lean3 证明 / AI 自行检索 / 事后发现相关文献 & 用来区分模型是独立生成，还是基于已知证明路线、已有论文或已有形式化代码。 \\
+文献检索行为 & 无检索 / 人提供文献 / AI 检索并引用 / AI 检索但未有效使用 & 用来评价模型是否能主动找到并正确利用相关论文、README、Lean3 源码或项目内文档。 \\
+人类辅助程度 & 无 / 低 / 中 / 高 & 低表示人只提供题目或 Lean 报错；中表示人提供关键 lemma 名称、证明方向或文献入口；高表示人重写证明结构或实质性补全关键步骤。 \\
+验证方式 & 人工数学复核 / \texttt{lake build} / diff 审查 / 组合验证 & 自然语言证明以人工复核为主，Lean 证明以构建验证为主，智能体实验还需检查文件差异。 \\
+形式化完整性 & 无 Lean 代码 / Lean 片段 / 完整定理证明 / 项目级构建通过 & 用来区分自然语言贡献、局部代码贡献和完整形式化贡献。 \\
+\bottomrule
+\end{tabular}
+\end{table}

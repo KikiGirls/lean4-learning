@@ -1,0 +1,14 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "paper.xdv" "paper.pdf" "paper" 0 -1
+  "paper.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "paper.pdf"
+  (rewritten before read)
+["xelatex"] 1778237088.61229 "/Users/kikigirl/Desktop/lean4-learning/Paper/论文/定理证明/paper.tex" "paper.xdv" "paper" 1778237088.62085 2
+  "/Users/kikigirl/Desktop/lean4-learning/Paper/论文/定理证明/paper.tex" 1777542807.10933 108924 d53ee7b36bef6fc211590c0a360ed8c5 ""
+  "paper.aux" 1778237080.61181 32 3985256e7290058c681f74d7a3565a19 "xelatex"
+  (generated)
+  "paper.aux"
+  "paper.log"
+  "paper.xdv"
+  (rewritten before read)

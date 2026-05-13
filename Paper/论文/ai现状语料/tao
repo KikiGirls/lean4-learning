@@ -1,0 +1,98 @@
+
+Nature
+View all journals
+Search
+Account
+Explore content
+About the journal
+Publish with us
+Subscribe
+Sign up for alerts
+RSS feed
+nature  news q&a  article  自然新闻问答文章
+NEWS Q&A
+27 April 2026
+
+The job description is changing’: mathematician Terence Tao on the rise of AI
+“工作内容正在改变”：数学家陶哲轩谈人工智能的崛起
+The Fields medallist discusses how ever-evolving technology is transforming mathematicians’ work.
+菲尔兹奖得主探讨了不断发展的技术如何改变数学家的工作。
+By  经过 Davide Castelvecchi
+Email Bluesky Facebook LinkedIn Reddit Whatsapp X
+Side-view of Terence Tao writing with chalk on a blackboard.
+Terence Tao has been exploring the intersection between maths and AI.Credit: David Esquivel/UCLA
+陶哲轩一直在探索数学与人工智能的交叉领域。 图片来源：David Esquivel/加州大学洛杉矶分校
+
+Is mathematics being taken over by generative artificial intelligence? A spate of media reports has suggested that the field is being fundamentally changed by the technology. Many maths researchers say that AI’s actual capabilities are often hyped up, and that it’s not yet time to announce the death of their profession. Still, by many accounts, in the past year, AI has jumped from solving secondary-school-level problems to actually being useful in research mathematicians’ daily work.
+数学领域是否正被生成式人工智能所取代？ 一系列媒体报道暗示，这项技术正在从根本上改变数学界。许多数学研究人员表示，人工智能的实际能力常常被夸大，现在就宣布数学职业的终结还为时过早。然而，根据许多报道，在过去一年里，人工智能的应用范围已经从解决中学水平的问题跃升至能够真正应用于数学研究人员的日常工作中。
+
+Terence Tao, a mathematician at the University of California, Los Angeles, has been at the forefront of experimentation with large language models, including OpenAI’s GPT, Anthropic’s Claude and Google’s Gemini. In particular, he has contributed to a project to test the skills of AI systems on a collection of more than 1,000 problems, ranging from major conjectures to obscure factoids. The questions were accumulated by the late Hungarian mathematician Paul Erdős (1913–1996) over his lifetime.
+加州大学洛杉矶分校的数学家陶哲轩一直走在大型语言模型实验的前沿，参与开发的模型包括 OpenAI 的 GPT、Anthropic 的 Claude 和谷歌的 Gemini。他尤其参与了一个项目，旨在测试人工智能系统在超过 1000 个问题上的能力 ，这些问题涵盖了从重大猜想到晦涩事实的各种问题。这些问题是已故匈牙利数学家保罗·埃尔德什（1913-1996）毕生积累的。
+
+Last month, Tao teamed up with Tanya Klowden, an art historian at the Courtauld Institute of Art in London, to explore the implications of AI for researchers and the world at large. They took mathematics as a test case, and urge society to adopt the technology but in a human-centric way. They posted a draft of their essay, due to be published in the forthcoming edition of The Blackwell Companion to the Philosophy of Mathematics, on arXiv1. Nature spoke to Tao about how the technology is transforming his profession.
+上个月，陶哲轩与伦敦科陶德艺术学院的艺术史学家坦尼娅·克劳登合作，探讨人工智能对研究人员和整个世界的影响。他们以数学为例，呼吁社会以人为本的方式应用这项技术。他们将论文草稿发布在 arXiv 上，该论文将收录于即将出版的 《 布莱克威尔数学哲学指南 》中。 《自然》杂志就人工智能技术如何改变他的职业领域采访了陶哲轩。
+
+Why do you think it is important to consider the impacts of rapidly evolving AI?
+你认为考虑快速发展的人工智能的影响为什么很重要？
+I feel like AI is not just another technology like the word processor or the web browser. It really is forcing us to rethink fundamental questions — what is a mathematical proof? What is a paper? What is the purpose of our profession? If we don’t ask these questions ourselves, then they will get answered for us by a technology company or decided by financial incentives. We have to get ahead of this.
+我觉得人工智能不仅仅是像文字处理器或网页浏览器那样的另一种技术。它确实在迫使我们重新思考一些根本性的问题——什么是数学证明？什么是论文？我们这个职业的意义何在？如果我们不主动提出这些问题，那么它们就会被科技公司替我们解答，或者由经济利益来决定。我们必须抢占先机。
+
+Why has maths become ‘the next big thing’ for AI?
+为什么数学会成为人工智能领域的“下一个重大突破”？
+In almost any other application, the biggest Achilles heel of AI is that it makes unverifiable mistakes. But in mathematics, almost uniquely, you can automatically check the output — at least if the output is supposed to be the proof of a theorem, although that is not the only thing mathematicians do. So, AI companies have recognized that their most unambiguous successes — if they’re going to have any — are going to come from mathematics.
+在几乎所有其他应用领域，人工智能最大的软肋在于它会犯无法验证的错误。但在数学领域，几乎是唯一可以自动检查输出结果的领域——至少当输出结果是定理的证明时是如此，尽管这并非数学家工作的全部。因此，人工智能公司已经意识到，它们最明确的成功——如果它们能够取得任何成功的话——都将来自数学。
+
+In my opinion, there are many use cases of AI that are risky and controversial. In mathematics, the downsides are much more limited
+我认为，人工智能的许多应用场景都存在风险且极具争议。而在数学领域，其负面影响则要有限得多。
+
+What will happen to mathematics as a field in the age of AI?
+人工智能时代，数学领域将会发生怎样的变化？
+The job description is changing a lot. A graduate student who refuses to touch AI systems and just wants to prove things the way we’ve done in the past might find they have fewer opportunities, unfortunately. Those who understand maths traditionally but are also adept at using new tools can flourish.
+工作内容正在发生巨大变化。那些拒绝接触人工智能系统，只想沿用传统方法验证理论的研究生，很可能会发现他们的机会越来越少。而那些既精通传统数学，又善于运用新工具的人，则更有可能脱颖而出。
+
+I don’t think AI will replace mathematicians, but it will complement them. There could be a division of labour: we decide what to prove and what we think is interesting. We could get instant feedback from the AI. We could propose a definition, make some conjecture and AI could instantly evaluate it. But who knows, it’s all changing.
+我不认为人工智能会取代数学家，但它会成为他们的补充。可能会出现分工：我们决定要证明什么，以及我们认为什么有趣。我们可以从人工智能那里获得即时反馈。我们可以提出一个定义，做出一些猜想，人工智能可以立即对其进行评估。但谁知道呢，一切都在变化。
+
+But we do have to somehow let go of conventional assumptions of what intellect is. I think we have a human-centric way of thinking about all types of intellectual task, and we have to accept that this is not the only perspective.
+但是，我们必须在某种程度上摒弃对智力本质的传统假设。我认为，我们看待所有类型的智力活动都以人为中心，而我们必须承认，这并非唯一的视角。
+
+What are mathematicians’ attitudes? Are they embracing the use of AI?
+数学家们对人工智能的态度如何？他们是否接受人工智能的应用？
+It’s very much a spectrum. You see all the ‘five stages of grief’ play out — denial, anger, bargaining, depression and acceptance. And I think this is happening everywhere. But I think we’re beginning to see denial fade away.
+这其实是一个连续谱。你会看到悲伤的“五个阶段”全部上演——否认、愤怒、讨价还价、抑郁和接受。我认为这种情况在世界各地都在发生。但我认为我们开始看到否认阶段逐渐消退。
+
+How good are AI models at solving mathematical problems?
+人工智能模型解决数学问题的能力如何？
+For a while, you could say they were just picking up proofs that were in the literature. Or that they solved an easy problem that nobody had looked at before. But recent progress has been increasingly impressive. We’re just beginning to see examples in which AI — maybe by luck — starts solving problems that people care about.
+一段时间以来，可以说他们只是在沿用文献中已有的证明，或者解决了一个之前无人问津的简单问题。但近期的进展令人瞩目。我们开始看到一些例子，人工智能——或许是出于偶然——开始解决人们真正关心的问题。
+
+It’s still very occasional, and it still has a lot of weaknesses; it is not a replacement for what humans do. But it’s getting harder to deny that these tools can work.
+虽然目前这种做法仍然非常少见，而且仍然存在诸多缺陷；它无法取代人类的工作。但越来越难以否认这些工具的有效性。
+
+Can you tell us a notable success story?
+您能给我们讲一个值得一提的成功案例吗？
+In the areas of mathematics I am most familiar with, the most recent promising example is Erdős problem #1196. Unlike most other Erdős problems solved by AI so far, it was studied intensively by several mathematicians, but it ended up having a fairly short proof that all the humans missed. It seems that the AI-generated proofs have stumbled on some new methods to solve problems in this area, but we are still in the process of assessing how generalizable these methods are to other problems.
+在我最熟悉的数学领域，最近一个很有前途的例子是埃尔德什问题#1196 。与目前人工智能已经解决的大多数其他埃尔德什问题不同，这个问题曾被多位数学家深入研究，但最终却有一个相当简短的证明，而所有人类都未能发现。人工智能生成的证明似乎在解决这类问题上找到了一些新的方法，但我们仍在评估这些方法对其他问题的普适性。
+
+Do you see differences between the leading models?
+你觉得主流车型之间有什么区别吗？
+A little bit. In my experience, ChatGPT makes fewer mistakes, and it’s better for really rigorous mathematics, but the way it writes is just too robotic. Gemini makes nice pictures, but its outputs are too wordy. Claude is a bit faster, and explains things better: it feels more human. It’s more conversational. A lot of it is just the default prompting: I think that if you change the prompt, you can make one model similar to another.
+稍微好一点。就我的经验而言，ChatGPT 出错率更低，更适合处理严谨的数学问题，但它的写作方式太机械化了。Gemini 生成的图片很漂亮，但输出内容过于冗长。Claude 速度更快，解释得也更好，感觉更人性化，更像对话。很多时候，这都取决于默认提示：我认为，如果改变提示，就能让不同的模型变得非常相似。
+
+What are the main limitations?
+主要局限性是什么？
+One weakness of AI tools right now is that you can converse with them only to a limited extent. But they don’t have a permanent memory of what they did. For now, defining new concepts and trying to decide what problems to work on — this might still be something that human mathematicians will have to do for a while. The current AI systems are not designed for that.
+人工智能工具目前的一个弱点是，你只能与它们进行有限的对话。它们不会永久记住自己做过的事情。就目前而言，定义新概念和决定要解决哪些问题——这些可能还需要人类数学家在一段时间内来完成。当前的人工智能系统并非为此而设计的。
+
+doi: https://doi.org/10.1038/d41586-026-01246-9
+doi：https://doi.org/10.1038/d41586-026-01246-9
+
+This interview has been edited for length and clarity.
+为了篇幅和清晰度，本次采访内容经过编辑。
+
+Additional reporting by Elizabeth Gibney and Edward Chen.
+Elizabeth Gibney 和 Edward Chen 也参与了报道。
+
+References  参考
+Klowden, T. & Tao, T. Preprint at arXiv https://doi.org/10.48550/arXiv.2603.26524 (2026).
+Klowden, T. & Tao, T. arXiv 预印本 https://doi.org/10.48550/arXiv.2603.26524 (2026)。

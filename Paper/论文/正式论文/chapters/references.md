@@ -1,0 +1,35 @@
+# 参考文献
+
+- [Fermat1894] Fermat P de. Lettre à Digby (15 Août 1657) & Lettres de défi de 1657[M]//Tannery P, Henry C, eds. Oeuvres de Fermat. Vol. 2. Paris: Gauthier-Villars et fils, 1894: 332-346.
+- [Mordell1914] Mordell L J. The Diophantine Equation $y^2-k=x^3$[J]. Proceedings of the London Mathematical Society, 1914, s2-13(1): 60-80.
+- [Mordell1920] Mordell L J. A Statement by Fermat[J]. Proceedings of the London Mathematical Society, 1920, s2-18: v-vi.
+- [Mordell1969] Mordell L J. Diophantine Equations[M]. London: Academic Press, 1969.
+- [Baker1968] Baker A. Contributions to the Theory of Diophantine Equations II: The Diophantine Equation $y^2=x^3+k$[J]. Philosophical Transactions of the Royal Society of London Series A, 1968, 263(1139): 193-208.
+- [Stark1973] Stark H. Effective Estimates of Solutions of Some Diophantine Equations[J]. Acta Arithmetica, 1973, 24(3): 251-259.
+- [Bennett2015] Bennett M A, Ghadermarzi A. Mordell's Equation: A Classical Approach[J]. LMS Journal of Computation and Mathematics, 2015, 18(1): 633-646.
+- [Baanen2023MordellLean] Baanen A, Best A J, Coppola N, Dahmen S R. Formalized Class Group Computations and Integral Points on Mordell Elliptic Curves[C]//Proceedings of the 12th ACM SIGPLAN International Conference on Certified Programs and Proofs. New York: ACM, 2023. DOI: 10.1145/3573105.3575682.
+- [Baanen2021DedekindClassGroups] Baanen A, Dahmen S R, Narayanan A, Nuccio Mortarino Majno di Capriglio F A E. A Formalization of Dedekind Domains and Class Groups of Global Fields[C]//Cohen L, Kaliszyk C, eds. 12th International Conference on Interactive Theorem Proving (ITP 2021). Dagstuhl: Schloss Dagstuhl -- Leibniz-Zentrum für Informatik, 2021: 5:1-5:19. DOI: 10.4230/LIPIcs.ITP.2021.5.
+- [Comparator2026] Lean FRO. Comparator: A Trustworthy Judge for Lean Proofs[EB/OL]. GitHub, 2026[2026-05-08]. <https://github.com/leanprover/comparator>.
+- [OpenAICodex2025] OpenAI. Introducing Codex[EB/OL]. OpenAI, 2025[2026-05-08]. <https://openai.com/index/introducing-codex/>.
+- [OpenAIChatGPTPro2026] OpenAI. About ChatGPT Pro tiers[EB/OL]. OpenAI Help Center, 2026[2026-05-08]. <https://help.openai.com/en/articles/9793128>.
+- [Huang2025IMO] Huang Y, Yang L F. Winning Gold at IMO 2025 with a Model-Agnostic Verification-and-Refinement Pipeline[EB/OL]. arXiv, 2025[2026-05-04]. <https://arxiv.org/abs/2507.15855>.
+- [DeepMind2025IMO] Google DeepMind. Advanced Version of Gemini with Deep Think Officially Achieves Gold-Medal Standard at the International Mathematical Olympiad[EB/OL]. Google DeepMind Blog, 2025[2026-05-04]. <https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/>.
+- [Feng2026AutonomousMath] Feng T, Trinh T H, Bingham G, et al. Towards Autonomous Mathematics Research[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2602.10177>.
+- [Feng2026FirstProof] Feng T, Jung J, Kim S, et al. Aletheia Tackles FirstProof Autonomously[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2602.21201>.
+- [Bryan2026Motivic] Bryan J, Elek B, Manners F, et al. The Motivic Class of the Space of Genus 0 Maps to the Flag Variety[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2601.07222>.
+- [Lichtman2023Primitive] Lichtman J D. A Proof of the Erdős Primitive Set Conjecture[J]. Forum of Mathematics, Pi, 2023, 11: e18. DOI: 10.1017/fmp.2023.16.
+- [Alexeev2026Primitive] Alexeev B, Barreto K, Li Y, et al. Primitive Sets and von Mangoldt Chains: Erdős Problem #1196 and Beyond[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2605.00301>.
+- [Erdos1196] Bloom T F. Erdős Problem #1196[EB/OL]. Erdős Problems, 2026[2026-05-04]. <https://www.erdosproblems.com/1196>.
+- [Hubert2025AlphaProof] Hubert T, Mehta S, Kanigicherla K, et al. Olympiad-Level Formal Mathematical Reasoning with Reinforcement Learning[J/OL]. Nature, 2025[2026-05-04]. <https://www.nature.com/articles/s41586-025-09833-y>.
+- [Achim2025Aristotle] Achim T, Best A, Der K, et al. Aristotle: IMO-Level Automated Theorem Proving[EB/OL]. arXiv, 2025[2026-05-04]. <https://arxiv.org/abs/2510.01346>.
+- [Ren2025DeepSeekProverV2] Ren Z Z, Shao Z, Song J, et al. DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition[EB/OL]. arXiv, 2025[2026-05-04]. <https://arxiv.org/abs/2504.21801>.
+- [Lin2025GoedelProverV2] Lin Y, Tang S, Lyu B, et al. Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction[EB/OL]. arXiv, 2025[2026-05-04]. <https://arxiv.org/abs/2508.03613>.
+- [Chen2025SeedProver] Chen J, Chen W, Du J, et al. Seed-Prover 1.5: Mastering Undergraduate-Level Theorem Proving via Learning from Experience[EB/OL]. arXiv, 2025[2026-05-04]. <https://arxiv.org/abs/2512.17260>.
+- [Liu2026NuminaLeanAgent] Liu J, Zhou Z, Zhu Z, et al. Numina-Lean-Agent: An Open and General Agentic Reasoning System for Formal Mathematics[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2601.14027>.
+- [Chen2026FelConjecture] Chen E, Cummins C, GSM, et al. Fel's Conjecture on Syzygies of Numerical Semigroups[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2602.03716>.
+- [Ju2026Rethlas] Ju H, Gao G, Jiang J, et al. Automated Conjecture Resolution with Formal Verification[EB/OL]. arXiv, 2026[2026-05-04]. <https://arxiv.org/abs/2604.03789>.
+- [Mistral2026LeanstralNews] Mistral AI. Leanstral: Open-Source Foundation for Trustworthy Vibe-Coding[EB/OL]. Mistral AI, 2026[2026-05-04]. <https://mistral.ai/news/leanstral>.
+- [Mistral2026LeanstralDocs] Mistral AI. Leanstral[EB/OL]. Mistral Docs, 2026[2026-05-04]. <https://docs.mistral.ai/models/model-cards/leanstral-26-03>.
+- [TaoErdosAIWiki2026] Tao T, Sothanaphan N, et al. AI Contributions to Erdős Problems[EB/OL]. GitHub Wiki: teorth/erdosproblems, 2026[2026-05-04]. <https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems>.
+- [Tao2026Primitive] Tao T. Primitive Sets and von Mangoldt Chains: Erdős Problem #1196 and Beyond[EB/OL]. What's New, 2026[2026-05-04]. <https://terrytao.wordpress.com/2026/05/03/primitive-sets-and-von-mangoldt-chains-erdos-problem-1196-and-beyond/>.
+- [Tao2023AIAnthology] Tao T. Embracing Change and Resetting Expectations[EB/OL]//AI Anthology: Reflections on AI and the Future of Human Flourishing. Microsoft Unlocked, 2023[2026-05-04]. <https://unlocked.microsoft.com/ai-anthology/terence-tao/>.

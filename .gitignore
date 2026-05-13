@@ -1,1 +1,8 @@
 .idea/
+.DS_Store
+
+# External tool repositories kept as local checkouts.
+tools/Archon/
+tools/Rethlas/
+tools/numina-lean-agent/
+tools/ulamai/

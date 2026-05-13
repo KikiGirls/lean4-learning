@@ -1,0 +1,9 @@
+{
+  "iteration": 1,
+  "stage": "prover",
+  "mode": "parallel",
+  "startedAt": "2026-05-09T10:39:08Z",
+  "plan": {
+    "status": "running"
+  }
+}

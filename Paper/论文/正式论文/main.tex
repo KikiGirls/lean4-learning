@@ -1,0 +1,262 @@
+% !TeX program = xelatex
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+
+\usepackage[left=3cm,right=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{dutchcal}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{mathptmx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{tocloft}
+\usepackage{fvextra}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{\usepackage{url}}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{appendix}
+
+\graphicspath{{figures/}}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
+\IfFontExistsTF{Menlo}{\setmonofont{Menlo}}{}
+\DefineVerbatimEnvironment{leanlisting}{Verbatim}{
+  fontsize=\footnotesize,
+  numbers=left,
+  numbersep=6pt,
+  xleftmargin=2.2em,
+  frame=single,
+  framesep=2.5mm,
+  rulecolor=\color{black!35},
+  breaklines=true,
+  breakanywhere=true,
+  breaksymbolleft={},
+  tabsize=2
+}
+
+\renewcommand\thesection{\arabic{section}}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\allowdisplaybreaks[4]
+\setstretch{1.25}
+\captionsetup{font={small},labelsep=quad}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\setlength{\headheight}{14.5pt}
+\setlength{\voffset}{-1.14cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headsep}{2.5cm}
+
+\titleformat{\section}{\heiti\zihao{3}\centering}{\thesection}{0.5em}{}[]
+\titleformat{\subsection}{\heiti\zihao{-3}}{\thesubsection}{0.5em}{}[]
+\titleformat{\subsubsection}{\heiti\zihao{4}}{\thesubsubsection}{0.5em}{}[]
+\titlecontents{section}[0pt]{\addvspace{0pt}\filright\heiti\zihao{4}}
+  {\contentspush{\thecontentslabel\quad}}{}{\titlerule*[8pt]{.}\contentspage}
+\titlecontents{subsection}[1em]{\addvspace{0pt}\filright\heiti\zihao{5}}
+  {\contentspush{\thecontentslabel\quad}}{}{\titlerule*[8pt]{.}\contentspage}
+\titlecontents{subsubsection}[2em]{\addvspace{0pt}\filright\songti\zihao{5}}
+  {\contentspush{\thecontentslabel\quad}}{}{\titlerule*[8pt]{.}\contentspage}
+
+\makeatletter
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+\hrule\@height 0.5pt \@width\headwidth\vskip1.5pt
+\vskip-2\headrulewidth\vskip-1pt}}
+\makeatother
+
+\newcommand{\cquHeader}{重庆大学本科学生毕业论文（设计）}
+\newcommand{\thesisTitle}{基于人工智能和 Lean 的形式化及其应用}
+\newcommand{\thesisSubtitle}{以 Mordell 方程整数解的 Lean 4 形式化为例}
+\newcommand{\thesisTitleEn}{Formalization and Application Based on Artificial Intelligence and Lean}
+\newcommand{\thesisSubtitleEn}{A Case Study on Lean 4 Formalization of Integral Points on Mordell Equations}
+\newcommand{\studentName}{王世洋}
+\newcommand{\studentId}{20226119}
+\newcommand{\advisorName}{赵宏博}
+\newcommand{\advisorNameEn}{ZHAO Hongbo}
+\newcommand{\majorName}{数学与应用数学}
+\newcommand{\majorNameEn}{Mathematics and Applied Mathematics}
+\newcommand{\collegeName}{数学与统计学院}
+\newcommand{\collegeNameEn}{School of Mathematics and Statistics}
+\newcommand{\defenseDate}{2026年5月}
+\newcommand{\defenseDateEn}{May, 2026}
+
+\newcommand{\setChapterHeader}[2]{
+  \fancyhead[L]{\songti\zihao{-5}\cquHeader}
+  \fancyhead[R]{\songti\zihao{-5}#1\quad #2}
+}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{appendixatheorem}{定理}
+\renewcommand{\theappendixatheorem}{A.\arabic{appendixatheorem}}
+\newtheorem{appendixalemma}[appendixatheorem]{引理}
+\renewcommand{\proofname}{证明}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}
+\heiti\zihao{-2} \cquHeader
+\end{center}
+
+~\\
+\begin{center}
+\heiti\zihao{2} \thesisTitle\\[0.6em]
+\heiti\zihao{-2} \thesisSubtitle
+\end{center}
+
+~\\
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=5cm]{fig1.png}
+\end{figure}
+
+~\\
+\begin{center}
+\heiti\zihao{4}
+\begin{tabular}{l}
+学\qquad 生：\studentName\\
+学\qquad 号：\studentId\\
+指导教师：\advisorName\\
+专\qquad 业：\majorName\\
+\end{tabular}
+\end{center}
+
+~\\
+\begin{center}
+\heiti\zihao{-2} 重庆大学\collegeName
+\end{center}
+
+\begin{center}
+\heiti\zihao{3} \defenseDate
+\end{center}
+
+\newpage
+\thispagestyle{empty}
+\setmainfont{Times New Roman}
+\begin{center}
+\zihao{3}\textbf{Undergraduate Thesis (Design) of Chongqing University}
+\end{center}
+
+~\\
+\begin{center}
+\zihao{2}\textbf{\thesisTitleEn}\\[0.6em]
+\zihao{-2}\textbf{\thesisSubtitleEn}
+\end{center}
+
+~\\
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=5cm]{fig1.png}
+\end{figure}
+
+\begin{center}
+\zihao{3}
+\textbf{By}\\
+\textbf{WANG Shiyang}
+\end{center}
+
+\begin{center}
+\zihao{3}
+\textbf{Supervised by}\\
+\textbf{\advisorNameEn}
+\end{center}
+
+\begin{center}
+\zihao{-2}
+\textbf{\majorNameEn}\\
+\textbf{\collegeNameEn}\\
+\textbf{Chongqing University}
+\end{center}
+
+\begin{center}
+\zihao{3}\textbf{\defenseDateEn}
+\end{center}
+
+\newpage
+\pagestyle{fancy}
+\pagenumbering{Roman}
+\input{chapters/abstract}
+
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}目录}
+\renewcommand\contentsname{{目\quad 录}}
+\begin{center}
+{\tableofcontents}
+\end{center}
+
+\newpage
+\pagenumbering{arabic}
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+\input{chapters/chapter5}
+\input{chapters/chapter6}
+\input{chapters/references}
+\input{chapters/appendixA}
+\input{chapters/appendixB}
+\input{chapters/appendixC}
+\input{chapters/appendixD}
+\input{chapters/appendixE}
+\input{chapters/appendixF}
+\input{chapters/appendixG}
+\input{chapters/appendixH}
+\input{chapters/acknowledgements}
+
+\newpage
+\thispagestyle{empty}
+\addcontentsline{toc}{section}{原创性声明和使用授权书}
+\begin{center}
+\heiti\zihao{3} 原创性声明
+\end{center}
+
+\songti\zihao{-4}
+郑重声明：所呈交的论文（设计）\underline{《\thesisTitle》}，是本人在导师的指导下，独立进行研究取得的成果。除论文（设计）中已经标注引用的内容外，本论文（设计）不包含其他人或集体已经发表或撰写过的作品成果。对本文的研究做出贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律后果，并承诺因本声明而产生的法律结果由本人承担。
+
+~\\
+\begin{flushleft}
+\begin{tabular}{l}
+论文（设计）作者签名：\underline{\hspace{6em}}\\
+日期：\underline{\hspace{6em}}
+\end{tabular}
+\end{flushleft}
+
+~\\
+\begin{center}
+\heiti\zihao{3} 使用授权书
+\end{center}
+
+\songti\zihao{-4}
+本论文（设计）作者完全了解学校有关保留、使用论文（设计）的规定，同意学校保留并向国家有关部门或机构送交论文（设计）复印件和电子版，允许论文（设计）被查阅和借阅。本人授权重庆大学将本论文（设计）的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制方式保存和汇编本论文（设计）。
+
+~\\
+本论文（设计）属于：\par
+保\quad 密 $\Box$ \quad 在\underline{\qquad}年解密后适用本授权书\par
+不保密 $\Box$
+
+~\\
+~\\
+\begin{flushleft}
+\begin{tabular}{ll}
+论文（设计）作者签名：\underline{\hspace{6em}} & 指导教师签名：\underline{\hspace{6em}}\\
+日期：\underline{\hspace{6em}} & 日期：\underline{\hspace{6em}}\\
+\end{tabular}
+\end{flushleft}
+
+\end{document}

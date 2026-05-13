@@ -1,0 +1,55 @@
+\newpage
+\setChapterHeader{3}{Mordell 方程的数学基础与证明思路}
+\section{Mordell 方程的数学基础与证明思路}
+\zihao{-4}
+
+本章重点讲你那篇数学论文的内容。
+
+\subsection{Mordell 方程概述}
+
+在开始之前，我们先简要介绍一下 Mordell 方程本身的历史。
+
+1657 年，Fermat 在一封信中指出，方程
+\[
+y^2=x^3-2
+\]
+在正整数中的唯一解是 \((x,y)=(3,5)\)\cite{Fermat1894}。1914 年，Mordell\cite{Mordell1914} 系统研究了一般形式的方程
+\[
+y^2=x^3+d,\qquad x,y,d\in\mathbb{Z}.
+\]
+
+Mordell 的研究主要关注两个方面：一是给出使方程不存在任何整数解的关于 \(d\) 的条件；二是基于理想下降法为某些 \(d\) 寻找解的方法。这个方程很快就被称为 Mordell 方程。在二十世纪和二十一世纪，围绕 Mordell 方程的研究不断深入，人们开发出了有效解决 Mordell 方程的技术。Mordell\cite{Mordell1914,Mordell1920,Mordell1969}、Baker\cite{Baker1968}、Stark\cite{Stark1973}、Bennett 和 Ghadermarzi\cite{Bennett2015}等人的研究为 Mordell 方程的理论发展和具体求解提供了重要基础。
+
+在本文后续形式化过程中，使用了 Mordell\cite{Mordell1914} 中一个基于类群下降法得到的存在性结论，来求特殊负整数参数下的整数解。例如：
+\[
+d=-1,-2,-5,-6,-13.
+\]
+
+\subsection{使用的主要结论}
+
+\begin{theorem}[Mordell 基本结论]\label{thm:mordell-basic}
+令 \(d<0\) 为无平方因子的整数，满足
+\[
+d\equiv 2\ \text{或}\ 3 \pmod{4},
+\]
+且假设
+\[
+3\nmid h(\mathbb{Z}[\sqrt d]).
+\]
+则 Mordell 方程
+\[
+y^2=x^3+d
+\]
+有整数解当且仅当存在 \(m\in\mathbb{N}\)，使得 \(d=-3m^2\pm 1\)；此时方程的解满足
+\[
+y=\pm m(3d+m^2).
+\]
+\end{theorem}
+
+定理 \ref{thm:mordell-basic} 是本文后续 Lean 4 形式化实践中的核心数学依据。它将原本关于整数点存在性的数论问题，转化为关于参数 \(m\) 的条件判断。该结论的简要证明见附录 A。
+
+\subsection{本章小结}
+
+本章介绍了 Mordell 方程的研究背景、本文使用的主要结论、二次整数环中的分解方法、范数公式、理想分解和类群下降法。上述数学结构构成本文 Lean 4 形式化实践的主要对象，也决定了后续 AI 辅助证明实验的难度层次。
+
+

@@ -1,0 +1,58 @@
+\contentsline {section}{摘要}{I}{figure.caption.2}%
+\contentsline {section}{ABSTRACT}{II}{figure.caption.2}%
+\contentsline {section}{\numberline {1}绪论}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}研究背景}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}本文主要研究内容}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}本文研究意义}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}本章小结}{2}{subsection.1.4}%
+\contentsline {section}{\numberline {2}AI 数学证明最新现状和相关工作}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}自然语言推理}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}形式化证明推理}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}本章小结}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Mordell 方程相关命题的 Lean 4 形式化实现}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Mordell 方程概述}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}使用的主要结论}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}从元素分解到理想分解}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Dedekind 条件与互素性}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}类群下降}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}类群计算}{13}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}\(d=-1\) 与 \(d=-2\) 的情形}{13}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}\(d=-5,-6,-13\) 的有限理想类代表}{13}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}有限代表的分类}{16}{subsubsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.7}具体整数解的求解}{17}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}本章小结}{18}{subsection.3.8}%
+\contentsline {section}{\numberline {4}补充说明}{19}{section.4}%
+\contentsline {subsection}{\numberline {4.1}形式化结果概述}{19}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}人工智能辅助形式化}{21}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}本章小结}{22}{subsection.4.3}%
+\contentsline {section}{\numberline {5}多模型 AI 辅助 Lean 4 形式化实验与分析}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}实验数据与复核方法}{23}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}模型和评价框架}{24}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}自然语言证明生成实验}{25}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Lean 证明生成实验}{26}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}全自动智能体实验}{27}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}三类实验的比较维度}{29}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}观察到的局限性}{30}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}本章小结}{30}{subsection.5.8}%
+\contentsline {section}{\numberline {6}结论与展望}{31}{section.6}%
+\contentsline {subsection}{\numberline {6.1}主要贡献}{31}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}不足之处}{31}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}未来展望}{32}{subsection.6.3}%
+\contentsline {section}{参考文献}{33}{subsection.6.3}%
+\contentsline {section}{附录A：Mordell 主定理的详细推导}{37}{subsection.6.3}%
+\contentsline {section}{附录B：AI 实验记录表}{44}{subsection.6.3}%
+\contentsline {section}{附录C：模型详情}{45}{table.caption.20}%
+\contentsline {section}{附录D：评价框架}{46}{table.caption.21}%
+\contentsline {section}{附录E：有限代表的分类证明}{47}{table.caption.23}%
+\contentsline {paragraph}{引理 E.1.}{47}{paragraph*.24}%
+\contentsline {paragraph}{证明.}{48}{paragraph*.25}%
+\contentsline {paragraph}{引理 E.2.}{49}{paragraph*.26}%
+\contentsline {paragraph}{证明.}{49}{paragraph*.27}%
+\contentsline {paragraph}{引理 E.3.}{50}{paragraph*.28}%
+\contentsline {paragraph}{证明.}{51}{paragraph*.29}%
+\contentsline {section}{附录F：通过 Comparator 进行声明验证}{55}{paragraph*.29}%
+\contentsline {section}{附录G：主要证明定理与 Lean 形式化对应关系}{57}{paragraph*.29}%
+\contentsline {section}{附录H：项目与蓝图地址}{60}{table.6.3}%
+\contentsline {section}{致谢}{61}{table.6.3}%
+\contentsline {section}{原创性声明和使用授权书}{63}{table.6.3}%
+\contentsfinish 

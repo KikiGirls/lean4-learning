@@ -1,0 +1,49 @@
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Mordell Lean 4 项目模块结构与统计数据}
+\label{tab:mordell-module-stats}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}p{0.43\textwidth}rr@{}}
+\toprule
+\textbf{文件} & \textbf{目的} & \textbf{LOC} & \textbf{声明} \\
+\midrule
+\texttt{ZsqrtdBasic.lean} &
+二次整数环 \(\mathbb Z[\sqrt d]\) 与有理二次代数的基础接口；整理范数、迹、基和有限模结构。 &
+177 & 17 \\
+\texttt{Approximation.lean} &
+有理数取整逼近和范数估计；为 \(d=-5,-6,-13\) 的类群代表约化提供计算引理。 &
+327 & 11 \\
+\texttt{Dedekind.lean} &
+证明 \(\mathbb Z[\sqrt d]\) 在相应同余与无平方因子条件下具有整环和 Dedekind 整环结构。 &
+306 & 14 \\
+\texttt{ClassGroupApprox.lean} &
+形式化类群代表元约化准则，将逼近结果转化为关于理想类代表的有限性控制。 &
+139 & 8 \\
+\texttt{Descent.lean} &
+形式化 Mordell 下降法主线：因式分解、理想互素、类群下降、单位处理和参数化结论。 &
+549 & 26 \\
+\texttt{EuclideanNegTwo.lean} &
+构造 \(\mathbb Z[\sqrt{-2}]\) 的显式除法算法，并给出 Euclidean domain 实例。 &
+176 & 18 \\
+\texttt{ClassNumberSmall.lean} &
+验证 \(d=-1,-2,-5,-6,-13\) 所需的小类数条件，并给出若干具体 cube-root 输入。 &
+868 & 44 \\
+\texttt{Extensions.lean} &
+将下降法结论包装为更易复用的解集等价命题和无解判别准则。 &
+104 & 6 \\
+\texttt{Solutions.lean} &
+给出具体 Mordell 方程的最终结论：\(d=-1,-2,-13\) 的整数解以及 \(d=-5,-6\) 的无解性。 &
+188 & 12 \\
+\texttt{Basic.lean} &
+聚合导入基础证明模块，作为项目内部的统一入口。 &
+5 & 0 \\
+\texttt{Mordell.lean} &
+导出项目主要模块，作为 Lake 默认目标。 &
+5 & 0 \\
+\midrule
+\textbf{合计} & \textbf{11 个 Lean 文件} & \textbf{2844} & \textbf{156} \\
+\bottomrule
+\end{tabular}
+\end{table}

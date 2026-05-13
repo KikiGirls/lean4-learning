@@ -1,0 +1,14 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "LaTeX版本.xdv" "LaTeX版本.pdf" "LaTeX版本" 0 -1
+  "LaTeX版本.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "LaTeX版本.pdf"
+  (rewritten before read)
+["xelatex"] 1777891650.01489 "/Users/kikigirl/Desktop/lean4-learning/Paper/2024年重庆大学论文模版/LaTeX版本.tex" "LaTeX版本.xdv" "LaTeX版本" 1777891650.02358 2
+  "/Users/kikigirl/Desktop/lean4-learning/Paper/2024年重庆大学论文模版/LaTeX版本.tex" 1777542807.11274 17038 e757bb68393a6c4b80864a74d063244b ""
+  "LaTeX版本.aux" 1777891642.01437 32 3985256e7290058c681f74d7a3565a19 "xelatex"
+  (generated)
+  "LaTeX版本.aux"
+  "LaTeX版本.log"
+  "LaTeX版本.xdv"
+  (rewritten before read)

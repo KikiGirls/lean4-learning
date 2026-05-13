@@ -1,0 +1,81 @@
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录F：通过 Comparator 进行声明验证}
+\addcontentsline{toc}{section}{附录F：通过 Comparator 进行声明验证}
+\section*{附录F：通过 Comparator 进行声明验证}
+\zihao{5}
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35\baselineskip}
+
+如第 3 章所述，本文从两个层面验证形式化结果。首先，整个 Lean 项目通过 \texttt{lake build}，确认项目中的声明均被 Lean 接受，且维护的源文件中不含未完成的证明义务。其次，本文使用 Comparator 工具~\cite{Comparator2026}，将简短的可信规范与完整项目中的定理声明进行比较，并把导出的环境重新交给 Lean 内核检查。
+
+验证时临时放置在 \path{Mordell/Challenge.lean} 的规范模块如下所示。它只包含本文讨论的 Mordell 方程最终结论，而不包含证明细节。人工审阅者无需阅读 \texttt{Descent.lean}、\texttt{ClassGroupApprox.lean} 或具体类数文件中的证明工程，即可核对这些声明本身的语义是否正确。随后，Comparator 自动检查完整项目中同名声明是否证明了完全相同的命题，并且只依赖允许的 Lean 公理。
+
+\begin{leanlisting}
+import Mathlib.Tactic
+
+theorem mordell_minus1_solution_iff (x y : Int) :
+    y ^ 2 = x ^ 3 - 1 <-> x = 1 /\ y = 0 := by
+  sorry
+
+theorem mordell_minus2_solutions_iff (x y : Int) :
+    y ^ 2 = x ^ 3 - 2 <->
+      (x = 3 /\ y = 5) \/ (x = 3 /\ y = -5) := by
+  sorry
+
+theorem mordell_minus5 (x y : Int) :
+    Not (y ^ 2 = x ^ 3 - 5) := by
+  sorry
+
+theorem mordell_minus6 (x y : Int) :
+    Not (y ^ 2 = x ^ 3 - 6) := by
+  sorry
+
+theorem mordell_minus13_solutions_iff (x y : Int) :
+    y ^ 2 = x ^ 3 - 13 <->
+      (x = 17 /\ y = 70) \/ (x = 17 /\ y = -70) := by
+  sorry
+\end{leanlisting}
+
+对应的 Comparator 配置如下：
+
+\begin{leanlisting}
+{
+  "challenge_module": "Mordell.Challenge",
+  "solution_module": "Mordell",
+  "theorem_names": [
+    "mordell_minus1_solution_iff",
+    "mordell_minus2_solutions_iff",
+    "mordell_minus5",
+    "mordell_minus6",
+    "mordell_minus13_solutions_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}
+\end{leanlisting}
+
+运行 Comparator 时需要进入 Lake 环境，从而保证 \texttt{lean4export}、项目库路径以及锁定的 Lean 工具链都来自同一份构建配置：
+
+\begin{leanlisting}
+lake build Mordell
+lake build comparator
+lake build lean4export
+lake env comparator comparator-mordell.json
+\end{leanlisting}
+
+在本文使用的开发环境中，项目固定在 Lean \texttt{v4.30.0-rc2}。完整项目可以成功构建。对 Mordell 最终解集声明运行 Comparator 后，得到如下结果：
+
+\begin{leanlisting}
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+\end{leanlisting}
+
+该输出表明，导出的声明被 Lean 内核接受，并且被检查定理的证明体没有使用超过 \texttt{propext}、\texttt{Quot.sound} 和 \texttt{Classical.choice} 的额外公理。
+\endgroup

@@ -1,0 +1,172 @@
+\newpage
+\setChapterHeader{4}{补充说明}
+\section{补充说明}
+\zihao{-4}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\leanfile}[1]{{\scriptsize\texttt{#1}}}
+
+\subsection{形式化结果概述}
+
+形式化结果的正确性已在多个层面上得到验证。整个项目通过了 lake build 测试，未出现任何错误。此外，还使用了 Comparator\footnote{\url{https://github.com/leanprover/comparator}} 进行验证，一个用于精益证明的沙盒验证工具，用于确认形式化的定理陈述与人工审核的简化规范（附录 F）相符，并且证明仅依赖于标准的精益公理，而不引入任何隐藏的假设。
+
+完整的形式化过程包含约 2800 行 Lean 4 代码，分布在 12 个文件中（详见表~\ref{tab:formalization-summary} 和表~\ref{tab:formalization-modules}）。
+
+\begin{table}[H]
+  \centering
+  \caption{项目统计数据}
+  \label{tab:formalization-summary}
+  \small
+  \begin{tabular}{@{}L{6.8cm}R{2.4cm}@{}}
+    \toprule
+    \toprule
+    \textbf{指标} & \textbf{数值} \\
+    \midrule
+    证明链 Lean 源文件 & 12 \\
+    Lean 源代码行数 & 2839 \\
+    定理/引理声明 & 120 \\
+    占位符（\texttt{sorry}/\texttt{admit}/\texttt{axiom}） & 0 \\
+    Lean 版本 & 4.30.0-rc2 \\
+    \bottomrule
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}L{4.75cm}L{6.85cm}R{1cm}R{1.05cm}@{}}
+  \caption{Mordell 形式化项目模块统计}\label{tab:formalization-modules}\\
+  \toprule
+  \toprule
+  \textbf{文件} & \textbf{作用} & \textbf{代码行数} & \textbf{声明数} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \toprule
+  \textbf{文件} & \textbf{作用} & \textbf{代码行数} & \textbf{声明数} \\
+  \midrule
+  \endhead
+  \midrule
+  \multicolumn{4}{r}{接下页}\\
+  \bottomrule
+  \endfoot
+  \bottomrule
+  \bottomrule
+  \endlastfoot
+
+  \leanfile{Mordell.lean}
+    & 项目公开入口，导入可复用核心与最终解表述模块
+    & 9 & 0 \\
+
+  \leanfile{Approximation.lean}
+    & 有理数取整逼近与范数估计，用于类群代表元约化
+    & 327 & 11 \\
+
+  \leanfile{ClassGroupApprox.lean}
+    & 把逼近结果转化为类群代表控制，并定义二次类数接口
+    & 122 & 4 \\
+
+  \leanfile{ClassNumber/Common.lean}
+    & 共享的理想成员判定、理想除法以及小类数辅助结论
+    & 154 & 19 \\
+
+  \leanfile{ClassNumber/NegFive.lean}
+    & \(d=-5\) 情形所需的显式类群计算
+    & 190 & 7 \\
+
+  \leanfile{ClassNumber/NegSix.lean}
+    & \(d=-6\) 情形所需的显式类群计算
+    & 179 & 7 \\
+
+  \leanfile{ClassNumber/NegThirteen.lean}
+    & \(d=-13\) 情形所需的显式类群计算
+    & 393 & 11 \\
+
+  \leanfile{Dedekind.lean}
+    & \(\mathbb{Z}[\sqrt d]\) 的整环、整闭包与 Dedekind 整环结构
+    & 311 & 13 \\
+
+  \leanfile{Descent.lean}
+    & Mordell 下降法：单位、互素理想、立方根、参数化与判别准则
+    & 624 & 30 \\
+
+  \leanfile{EuclideanNegTwo.lean}
+    & \(\mathbb{Z}[\sqrt{-2}]\) 的 Euclidean domain 结构
+    & 176 & 18 \\
+
+  \leanfile{Solutions.lean}
+    & \(d=-1,-2,-5,-6,-13\) 的最终整数解定理
+    & 189 & 11 \\
+
+  \leanfile{ZsqrtdBasic.lean}
+    & \(\mathbb{Z}[\sqrt d]\)、二次代数、迹、范数和基的基础接口
+    & 165 & 17 \\
+
+  \midrule
+  \textbf{合计} & \textbf{12 个 Lean 源文件} & \textbf{2839} & \textbf{148} \\
+\end{longtable}
+}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{mordell_blueprint_simplified_paper.png}
+  \caption{Mordell 形式化依赖关系的简化蓝图。方框表示 Lean 声明或声明组；虚线轮廓按证明层次分组。箭头从依赖项指向被依赖项。}
+  \label{fig:mordell-blueprint-simplified}
+\end{figure}
+
+图~\ref{fig:mordell-blueprint-simplified} 显示了主要结果的依赖关系图，该图是从完整的蓝图（包含 156 个公开顶层声明节点）简化而来。本文的 Lean 4 项目源码和完整交互式蓝图均已发布，项目地址见附录 H；其中完整蓝图可用于按文件、声明类型和名称交互式查看声明依赖。
+
+附录 G 则汇总了全文主要证明环节、项目模块与 Lean 定理声明之间的对应关系。
+
+\subsection{人工智能辅助形式化}
+
+人工智能工具在整个形式化过程中发挥了重要作用。本文主要使用的是两个系统，Codex\cite{OpenAICodex2025} 和 ChatGPT 5.5 Pro\cite{OpenAIChatGPTPro2026}，计算成本包括一个 ChatGPT Pro 5x 订阅（每个订阅每月 100 美元），并消耗了约 50\% 的每周配额。
+
+这些工具在多个层面上协助了形式化过程：
+
+\begingroup
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\noindent\textbf{自然语言对话。}ChatGPT 用来为形式化提供数学依据，包括以下方面：
+\begin{itemize}
+  \item \textbf{检查数学证明的正确性。}在将非形式化证明转写为 Lean 代码之前，ChatGPT 可用于检查原始数学推导是否存在逻辑跳步、条件遗漏或符号使用不一致等问题。例如，在处理理想分解、类群阶数和单位群结构时，ChatGPT 可以帮助确认每一步数学推理是否能够作为后续形式化的依据。
+  \item \textbf{引理发现。}在形式化过程中，从 Mathlib 庞大的 API 中搜索合适的引理是一个众所周知的瓶颈。ChatGPT 通常能够从所需结果的自然语言描述中识别出相关的引理，从而显著缩短搜索时间。
+  \item \textbf{提出形式化方案。}在面对一个数学结论时，ChatGPT 可以帮助判断应当采用哪种 Lean 表达方式，例如使用理想、商群、类群、环同态，还是转化为整数上的等式证明。这类方案设计有助于在正式写代码之前确定较合理的形式化路线。
+\end{itemize}
+
+\noindent\textbf{代码生成与修复。}Codex 直接参与代码产生过程，包括以下方面：
+\begin{itemize}
+  \item \textbf{生成初始代码脚手架。}Codex 可以根据已经整理好的数学证明结构，生成 Lean 文件的初始框架，包括模块划分、定理声明、变量声明和必要的 import。对于较长的证明，Codex 通常先生成带有待证明目标的代码结构，再逐步补全具体证明。
+  \item \textbf{生成重复性证明代码。}在一些结构相似的分类讨论中，例如单位群情形划分、同余类讨论、模条件下的若干分支证明等，Codex 可以快速生成多个相似分支的证明代码。虽然这些代码仍需要人工检查和局部修改，但整体上明显提高了开发效率。
+  \item \textbf{根据编译错误修复证明。}当 Lean 报告类型不匹配、定理名称错误、参数顺序不一致或 tactic 失败时，Codex 可以根据错误信息修改代码。尤其是在 Mathlib 更新导致 API 名称或定理签名变化时，Codex 能够根据新的错误信息尝试完成迁移和修复。
+\end{itemize}
+\endgroup
+
+其他所使用的工具包括但不限于表~\ref{tab:ai-tools} 所列内容。
+
+\begin{table}[H]
+  \centering
+  \caption{辅助工具}
+  \label{tab:ai-tools}
+  \begin{tabularx}{0.78\textwidth}{@{}L{3.4cm}Y@{}}
+    \toprule
+    \toprule
+    \textbf{工具} & \textbf{用途} \\
+    \midrule
+    \texttt{LeanSearch\footnote{\url{https://leansearch.net/}}} & Lean 证明与库检索工具 \\
+    \texttt{Moogle\footnote{\url{https://www.moogle.ai/}}} & Lean 代码与定理搜索引擎 \\
+    \texttt{Aristotle\footnote{\url{https://aristotle.harmonic.fun/}}} & 专门用于 Lean 4 证明综合的 AI 系统。 \\
+    \texttt{Matlas\footnote{\url{https://matlas.ai}}} & 基于人工智能的数学文献搜索引擎 \\
+    \bottomrule
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+人工智能工具加速了编写过程。 这些工具虽然可以简化证明过程，但不会影响其正确性 。根据经验，这些工具极大地降低了形式化的入门门槛，预计随着这些工具的成熟，人工智能辅助的形式化将成为标准实践。
+
+\subsection{本章小结}
+
+本章补充说明了本文 Lean 4 形式化工作的整体结果、项目结构和验证方式。人工智能工具提高了证明开发效率，但最终正确性仍以 Lean 内核检查和人工复核为准。

@@ -1,0 +1,103 @@
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录G：主要证明定理与 Lean 形式化对应关系}
+\addcontentsline{toc}{section}{附录G：主要证明定理与 Lean 形式化对应关系}
+\section*{附录G：主要证明定理与 Lean 形式化对应关系}
+\zihao{5}
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35\baselineskip}
+
+本附录汇总全文主要证明环节以及 Mordell Lean 4 项目中主要定理声明之间的对应关系。表中列出的声明是证明主线、有限类群计算和最终结果验证中反复使用的代表性入口；完整辅助引理和依赖关系以项目中的 Lean 源文件及附录 H 的完整蓝图为准。
+
+{\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.18}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}@{}}
+\caption{主要证明定理与 Lean 形式化对应关系}\label{tab:appendix-proof-lean-map}\\
+\toprule
+\textbf{证明或项目环节} & \textbf{数学内容} & \textbf{Lean 文件} & \textbf{主要声明} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{证明或项目环节} & \textbf{数学内容} & \textbf{Lean 文件} & \textbf{主要声明} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{接下页}\\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+项目入口 & 公开导入完整 Mordell 形式化项目，作为 Comparator 和外部引用的统一入口。 &
+\path{Mordell.lean} &
+导入 \path{Mordell.ZomegaBasic} 与 \path{Mordell.Solutions} \\
+
+基础二次整数环接口 & 建立 \(\mathbb Z[\sqrt d]\) 到二次有理代数的嵌入、迹、范数、有限生成与基表示唯一性，对应附录 A 中的 T9、T12、T13。 &
+\path{ZsqrtdBasic.lean} &
+\path{zsqrtdToQuadRat_injective}；\path{quadRat_norm}；\path{zsqrtd_algebra_norm}；\path{Module.Free}；\path{Module.Finite} \\
+
+\(d\equiv1\pmod4\) 的二次整数模型 & 形式化 \(\mathbb Z[\omega]\) 型二次整数环、范数乘法性及其与 \(\mathbb Z[\sqrt d]\) 的接口，是项目基础结构的一部分。 &
+\path{ZomegaBasic.lean} &
+\path{omega_sq}；\path{norm_mul}；\path{norm_pow}；\path{toQuadRat_injective}；\path{toQuadRat_fromZsqrtd} \\
+
+Dedekind 条件（第 3 章、附录 A T3） & 证明满足平方自由与模 \(4\) 条件时，\(\mathbb Z[\sqrt d]\) 是整环、整闭包并满足 Dedekind 整环条件。 &
+\path{Dedekind.lean} &
+\path{zsqrtd_isDomain_of_mod_four_eq_two_or_three}；\path{zsqrtd_isIntegrallyClosed_of_squarefree_mod}；\path{zsqrtd_isIntegralClosure_of_squarefree_mod}；\path{zsqrtd_isDedekindDomain_of_squarefree_mod} \\
+
+初等算术与互素输入（附录 A A.2--A.3） & 从整数解推出 \(x>0\)、\(x\) 为奇数、相关整数互素性，并把这些事实转化为共轭主理想互素。 &
+\path{Descent.lean} &
+\path{x_odd_two_three}；\path{int_isCoprime_four_mul_d_y_sq_sub_d}；\path{span_y_add_sqrtd_coprime} \\
+
+元素分解到理想分解（附录 A A.3） & 在 \(\mathbb Z[\sqrt d]\) 中分解 \(y^2-d=x^3\)，并推出 \(\langle y+\sqrt d\rangle\) 是某个理想的三次方。 &
+\path{Descent.lean} &
+\path{factor_y_sq_sub_d}；\path{span_y_add_sqrtd_eq_ideal_cube_of_coprime} \\
+
+类群下降（附录 A A.4、T4--T8） & 由理想三次方和类数与 \(3\) 互素，推出相关理想为主理想，并得到元素三次方表示。 &
+\path{Descent.lean} &
+\path{ideal_isPrincipal_of_cube_isPrincipal}；\path{cube_root_of_principal_cube_span}；\path{exists_cube_root_y_add_sqrtd_of_ideal_coprime}；\path{exists_cube_root_y_add_sqrtd_of_dedekind}；\path{exists_cube_root_y_add_sqrtd} \\
+
+单位处理（附录 A A.5、T10--T11） & 分类 \(d\le -1\) 情形下的单位，并证明单位因子可以吸收到三次方中。 &
+\path{Descent.lean} &
+\path{zsqrtd_units_eq_one_or_neg_one}；\path{zsqrtd_units_neg_one_cases}；\path{zsqrtd_units_cubes} \\
+
+Mordell 主下降定理（第 3 章、附录 A A.6--A.7） & 展开 \(y+\sqrt d=(a+b\sqrt d)^3\)，比较系数，得到 \(d=-3m^2\pm1\) 与 \(y=m(3d+m^2)\)，并给出反向构造和无解判别接口。 &
+\path{Descent.lean} &
+\path{mordell_arithmetic_of_cube}；\path{mordell_d}；\path{mordell_param_solution}；\path{mordell_d_solution_iff}；\path{mordell_d_no_solution_of_no_param}；\path{mordell_d_no_solution_of_three_dvd} \\
+
+近似引理与有限代表入口（第 3 章） & 用范数估计把每个理想类的代表限制到有限候选集合。 &
+\path{Approximation.lean} &
+\path{exists_int_two_mul_sub_sq_le_one_nine}；\path{exists_int_mul_sub_sq_le_one_twentyfive}；\path{approx_norm_expr_lt}；\path{approx_norm_expr_lt_neg_thirteen}；\path{exists_q_r_of_neg_six_le}；\path{exists_q_r_of_neg_thirteen} \\
+
+类群代表约化（第 3 章） & 将抽象类群元素替换为含有小整数 \(2\) 或 \(12\) 的整理想代表。 &
+\path{ClassGroupApprox.lean} &
+\path{exists_mk0_eq_mk0_of_approx}；\path{classGroup_exists_mk0_mem_two_of_neg_six_le}；\path{classGroup_exists_mk0_mem_twelve_neg_thirteen} \\
+
+\(d=-2\) 的欧几里得结构 & 构造 \(\mathbb Z[\sqrt{-2}]\) 的除法算法和欧几里得整环实例，用于类数为 \(1\) 的证明。 &
+\path{EuclideanNegTwo.lean} &
+\path{norm_mod_lt}；\path{natAbs_norm_mod_lt}；\path{instNontrivial}；\path{EuclideanDomain} 实例 \\
+
+\(d=-1,-2\) 的类数输入 & 证明 \(\mathbb Z[i]\) 和 \(\mathbb Z[\sqrt{-2}]\) 的类数条件，并提供这两个参数下的三次根入口。 &
+\path{ClassNumber/Common.lean} &
+\path{quadClassNumber_neg_one}；\path{quadClassNumber_neg_two}；\path{classNumber_gcd_three_neg_one}；\path{classNumber_gcd_three_neg_two}；\path{exists_cube_root_y_add_sqrtd_neg_one}；\path{exists_cube_root_y_add_sqrtd_neg_two} \\
+
+\(d=-5\) 的有限类群分类（附录 E） & 构造 \(2\) 上方候选理想类，并证明每个类群元素属于平凡类或该候选类，从而类数不被 \(3\) 整除。 &
+\path{ClassNumber/NegFive.lean} &
+\path{sqrtTwoIdealNegFive}；\path{class_mk0_eq_one_or_sqrtTwo_negFive}；\path{classGroup_negFive_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_five} \\
+
+\(d=-6\) 的有限类群分类（附录 E） & 对 \(\mathbb Z[\sqrt{-6}]\) 进行同样的二元素候选分类，得到 Mordell 下降所需的类数条件。 &
+\path{ClassNumber/NegSix.lean} &
+\path{sqrtTwoIdealNegSix}；\path{class_mk0_eq_one_or_sqrtTwo_negSix}；\path{classGroup_negSix_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_six} \\
+
+\(d=-13\) 的有限类群分类（附录 E） & 处理 \(12\in J\) 的有限代表分类，并将所有候选压缩到两个理想类。 &
+\path{ClassNumber/NegThirteen.lean} &
+\path{sqrtTwoIdealNegThirteen}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve}；\path{classGroup_negThirteen_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_thirteen} \\
+
+最终整数解定理（第 3 章、附录 F） & 将下降定理与具体类数输入结合，得到 \(d=-1,-2,-5,-6,-13\) 的最终整数解或无解结论；附录 F 的 Comparator 检查也以这些声明为规范目标。 &
+\path{Solutions.lean} &
+\path{mordell_minus1_solution_iff}；\path{mordell_minus2_solutions_iff}；\path{mordell_minus5}；\path{mordell_minus6}；\path{mordell_minus13_solutions_iff} \\
+\end{longtable}
+}
+
+\endgroup

@@ -1,0 +1,349 @@
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录A：Mordell 主定理的详细推导}
+\addcontentsline{toc}{section}{附录A：Mordell 主定理的详细推导}
+\section*{附录A：Mordell 主定理的详细推导}
+\zihao{5}
+
+\subsection*{A.1 在 \(\mathbb{Z}[\sqrt d]\) 中分解}
+
+由
+\[
+y^2=x^3+d
+\]
+得到
+\[
+y^2-d=x^3.
+\]
+在
+\[
+D=\mathbb{Z}[\sqrt d]
+\]
+中，左边分解为
+\[
+(y+\sqrt d)(y-\sqrt d)=x^3.
+\]
+转为主理想：
+\[
+\langle y+\sqrt d\rangle\langle y-\sqrt d\rangle=\langle x\rangle^3.
+\]
+记
+\[
+I=\langle y+\sqrt d\rangle,\qquad
+J=\langle y-\sqrt d\rangle,\qquad
+L=\langle x\rangle.
+\]
+则
+\[
+IJ=L^3.
+\]
+
+\subsection*{A.2 证明 \(I,J\) 互素}
+
+需要证明
+\[
+\gcd(I,J)=1.
+\]
+手算证明思路如下：若某个素理想同时整除 \(I\) 和 \(J\)，则它同时整除
+\[
+(y+\sqrt d)+(y-\sqrt d)=2y
+\]
+和
+\[
+(y+\sqrt d)-(y-\sqrt d)=2\sqrt d.
+\]
+因此公共因子只能来自 \(2\)、\(y\)、\(d\) 的公共约束。
+
+论文中用到两个辅助事实：第一，\(y\) 与 \(d\) 互素；第二，在定理假设下，任何解都满足 \(x\) 为奇数。
+
+\(x\) 为奇数可用模 \(8\) 检查：若 \(x\) 偶，则
+\[
+x^3\equiv 0\pmod 8.
+\]
+而平方模 \(8\) 只可能是
+\[
+0,1,4.
+\]
+对 \(d\equiv 2,3\pmod 4\) 的相关剩余类，
+\[
+y^2-d\equiv x^3\pmod 8
+\]
+会矛盾。因此 \(x\) 必为奇数。
+
+Lean 形式化中没有采用完全相同的纸笔证明，而是直接通过范数限制计算两个理想的 gcd。
+
+\subsection*{A.3 理想下降}
+
+已经有
+\[
+IJ=L^3,\qquad \gcd(I,J)=1.
+\]
+由 Dedekind domain 中的理想下降定理，存在理想 \(A,B\) 使得
+\[
+I=A^3,\qquad J=B^3.
+\]
+特别地，
+\[
+\langle y+\sqrt d\rangle=A^3.
+\]
+因为左边是主理想，所以 \(A^3\) 是主理想。
+
+\subsection*{A.4 类数条件推出 \(A\) 主理想}
+
+在类群中，
+\[
+[A]^3=1.
+\]
+假设
+\[
+3\nmid h(D),
+\]
+即
+\[
+\gcd(3,h(D))=1.
+\]
+由有限群理论可得
+\[
+[A]=1.
+\]
+所以 \(A\) 是主理想：
+\[
+A=\langle\alpha\rangle
+\]
+对某个
+\[
+\alpha\in D.
+\]
+于是
+\[
+\langle y+\sqrt d\rangle=\langle\alpha^3\rangle.
+\]
+两个主理想相等意味着生成元相差一个单位：
+\[
+y+\sqrt d=u\alpha^3,\qquad u\in D^\times.
+\]
+
+\subsection*{A.5 单位都是三次方}
+
+对
+\[
+D=\mathbb{Z}[\sqrt d],\qquad d<0,
+\]
+单位可以通过范数方程刻画：
+\[
+N(a+b\sqrt d)=a^2-db^2=1.
+\]
+当 \(d<-1\) 时，单位只有
+\[
+\pm 1.
+\]
+当 \(d=-1\) 时，单位为
+\[
+\{\pm1,\pm i\}.
+\]
+这两个单位群的阶都是 \(2\) 的幂，因此三次幂映射
+\[
+u\mapsto u^3
+\]
+是单位群的双射。换句话说，每个单位都是三次方。
+
+所以可以把 \(u\) 吸收到 \(\alpha\) 中，不妨设
+\[
+y+\sqrt d=\alpha^3.
+\]
+
+\subsection*{A.6 展开 \(\alpha^3\)}
+
+写
+\[
+\alpha=a+b\sqrt d,\qquad a,b\in\mathbb{Z}.
+\]
+先平方：
+\[
+(a+b\sqrt d)^2=a^2+2ab\sqrt d+b^2d.
+\]
+再乘一次：
+\[
+(a+b\sqrt d)^3=(a^3+3ab^2d)+(3a^2b+b^3d)\sqrt d.
+\]
+也可写成
+\[
+(a+b\sqrt d)^3=a(a^2+3b^2d)+b(3a^2+b^2d)\sqrt d.
+\]
+由于
+\[
+y+\sqrt d=(a+b\sqrt d)^3.
+\]
+比较 \(\sqrt d\) 的系数，得到
+\[
+1=b(3a^2+b^2d).
+\]
+这是整数中的分解，所以
+\[
+b=\pm1.
+\]
+又因为 \(b^2=1\)，上式给出
+\[
+3a^2+d=b.
+\]
+因此
+\[
+d=b-3a^2.
+\]
+即
+\[
+d=1-3a^2
+\qquad\text{或}\qquad
+d=-1-3a^2.
+\]
+令
+\[
+m=a,
+\]
+得到
+\[
+d=-3m^2\pm 1.
+\]
+再比较有理部分，得到
+\[
+y=a(a^2+3b^2d).
+\]
+由于 \(b^2=1\)，所以
+\[
+y=a(a^2+3d)=m(m^2+3d)=m(3d+m^2).
+\]
+这就是主定理中的 \(y\) 公式。
+
+\subsection*{A.7 推出 \(x\) 公式}
+
+对
+\[
+y+\sqrt d=(a+b\sqrt d)^3
+\]
+取范数：
+\[
+N(y+\sqrt d)=N(a+b\sqrt d)^3.
+\]
+左边是
+\[
+N(y+\sqrt d)=y^2-d.
+\]
+由 Mordell 方程，
+\[
+y^2-d=x^3.
+\]
+右边是
+\[
+N(a+b\sqrt d)^3=(a^2-db^2)^3.
+\]
+因为 \(b^2=1\)，所以
+\[
+x^3=(a^2-d)^3.
+\]
+整数中立方映射单射，因此
+\[
+x=a^2-d=m^2-d.
+\]
+
+\subsection*{A.8 反方向验证}
+
+反方向更简单。若
+\[
+d=1-3m^2
+\qquad\text{或}\qquad
+d=-1-3m^2,
+\]
+令
+\[
+x=m^2-d,\qquad y=m(3d+m^2),
+\]
+则直接代入可证
+\[
+y^2=x^3+d.
+\]
+统一地，令
+\[
+s\in\{1,-1\},\qquad d=s-3m^2.
+\]
+设
+\[
+t=m^2.
+\]
+则
+\[
+3d+m^2=3s-8t,
+\]
+\[
+m^2-d=4t-s.
+\]
+于是
+\[
+y^2=m^2(3d+m^2)^2=t(3s-8t)^2.
+\]
+展开：
+\[
+t(3s-8t)^2=t(9s^2-48st+64t^2).
+\]
+因为 \(s^2=1\)，所以
+\[
+y^2=9t-48st^2+64t^3.
+\]
+另一方面，
+\[
+x^3+d=(4t-s)^3+s-3t.
+\]
+展开：
+\[
+(4t-s)^3+s-3t
+=64t^3-48st^2+12s^2t-s^3+s-3t.
+\]
+由于 \(s^2=1\) 且 \(s^3=s\)，得到
+\[
+x^3+d=64t^3-48st^2+12t-s+s-3t.
+\]
+即
+\[
+x^3+d=64t^3-48st^2+9t.
+\]
+这与 \(y^2\) 相同，因此
+\[
+y^2=x^3+d.
+\]
+Lean 中这个验证由 \texttt{ring} tactic 直接完成。
+
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录B：Lean 4 代码片段}
+\addcontentsline{toc}{section}{附录B：Lean 4 代码片段}
+\section*{附录B：Lean 4 代码片段}
+\zihao{5}
+
+本附录用于整理正文中涉及的 Lean 4 形式化代码。正式定稿时，可将已经通过编译的核心定义、引理和定理放置在本处，并注明其所在 Lean 项目文件路径。
+
+\begin{verbatim}
+-- 示例：Mordell 方程整数解谓词
+def IsMordellSolution (d x y : Int) : Prop :=
+  y ^ 2 = x ^ 3 + d
+\end{verbatim}
+
+\newpage
+\fancyhead[L]{\songti\zihao{-5}\cquHeader}
+\fancyhead[R]{\songti\zihao{-5}附录C：AI 实验记录表}
+\addcontentsline{toc}{section}{附录C：AI 实验记录表}
+\section*{附录C：AI 实验记录表}
+\zihao{5}
+
+\begin{table}[htbp]
+\centering
+\caption*{AI 辅助 Lean 形式化实验记录表模板}
+\small
+\begin{tabular}{ccccc}
+\toprule
+任务编号 & 任务类型 & 模型 & 是否编译通过 & 主要问题\\
+\midrule
+T1 & 代数恒等式 & 待填写 & 待填写 & 待填写\\
+T2 & 命题建模 & 待填写 & 待填写 & 待填写\\
+T3 & 报错修复 & 待填写 & 待填写 & 待填写\\
+\bottomrule
+\end{tabular}
+\end{table}
