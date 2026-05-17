@@ -1,291 +1,118 @@
 \newpage
-\setChapterHeader{5}{多模型 AI 辅助 Lean 4 形式化实验与分析}
-\section{多模型 AI 辅助 Lean 4 形式化实验与分析}
+\setChapterHeader{5}{AI 辅助 Lean 形式化实验与结果分析}
+\section{AI 辅助 Lean 形式化实验与结果分析}
 \zihao{-4}
 
-正如第二章所述，随着大型语言模型（LLM）与 Lean 等形式化证明助手的快速发展，形式化定理证明正在由传统的“人工逐行编码”转向“人类设计证明骨架、AI 辅助补全形式化细节、Lean 负责最终验证”的协作模式。基于这一认识，本文在 Mordell 方程形式化案例中比较不同 AI 模型在不同参与方式下能够提供的证明贡献，重点考察其在命题建模、引理拆分、证明思路生成、Lean 代码补全、编译错误修复和最终验证通过等环节中的实际表现，从而分析当前 AI 辅助 Lean 证明开发的应用价值与能力边界。
+第 3 章已经给出 Mordell 方程整数解问题的数学证明结构与 Lean 4 形式化实现，第 4 章进一步汇总了项目规模、验证方式和辅助工具。本章在此基础上，从证明工程的角度分析 AI 智能体在 Lean 4 形式化过程中的实际作用。
 
-与一般数学问答不同，Lean 形式化实验的结果不能只看模型是否“说得像证明”。本文将实验结果分为三个层次：第一，模型是否能够给出数学上可复核的证明思路；第二，模型是否能够生成与目标定理一致的 Lean 代码片段；第三，模型或智能体是否能够在真实仓库中持续修改并通过 \texttt{lake build}。后两个层次要求机器验证，因此本文把 \texttt{lake build}、源文件检索、声明统计和人工 diff 审查作为主要证据。
+\subsection{工作流程}
 
-\subsection{实验数据与复核方法}
+典型的交互过程如下：人类编写定义、陈述定理，并可选择性地以注释的形式提供非正式的证明策略。然后，代码智能体探索代码库以构建上下文：它搜索相关的定义、读取相关文件并识别可能有用的引理。准备就绪后，智能体通过修改文件生成证明脚本，并调用 \texttt{lake build}。如果证明失败，智能体读取错误信息，解释其含义，并改进其尝试。此循环持续进行，直到证明成功或智能体确定目标需要人工干预为止：例如，当缺少必要的引理或证明策略存在缺陷时。
 
-本章数据分为可复核数据和横向展示数据两类。可复核数据来自本地 Lean 项目与智能体实验目录，能够通过源文件、构建日志和 \texttt{sorry/admit/axiom} 检索复查。横向展示数据依据附录 C 的模型类别整理，用于说明多模型比较时应记录哪些指标；由于本研究没有保存每个模型的完整原始对话日志，因此这些横向表格仍标注为模拟记录，不作为独立 benchmark 结论。
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{ai_lean_workflow.png}
+  \caption{人-智能体-验证器工作流程}
+  \label{fig:ai-lean-workflow}
+\end{figure}
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{第 5 章实验数据来源}
-\label{tab:ch5-data-sources}
-\begin{tabular}{@{}p{0.17\textwidth}p{0.23\textwidth}p{0.25\textwidth}p{0.25\textwidth}@{}}
-\toprule
-\textbf{数据项} & \textbf{来源} & \textbf{复核方式} & \textbf{本章用途} \\
-\midrule
-主形式化项目 & \path{Proj/Mordell} & \texttt{lake build}、Lean 源文件统计、\texttt{sorry/admit/axiom} 检索 & 给出本文最终人机协作成果的真实完成度 \\
-Aristotle 输出 & \path{Proj/mordell-Aristotle/aristotle-results} & \path{ARISTOTLE_SUMMARY.md}、\path{Basic.lean} 中占位符检索 & 作为“部分完成”的仓库级智能体样例 \\
-Archon 输出 & \path{Proj/mordell-Archon} & \texttt{lake build}、错误日志、\path{Basic.lean} 中占位符检索 & 作为“生成较多代码但未通过验证”的样例 \\
-多模型横向比较 & 附录 C 模型清单 & 模拟记录；未保存完整运行日志 & 展示自然语言和单轮 Lean 生成实验的统计口径 \\
-\bottomrule
-\end{tabular}
-\end{table}
+图~\ref{fig:ai-lean-workflow} 展示了人、智能体与 Lean 验证器之间的交互关系。人提供任务和指导，智能体生成验证脚本，并根据 Lean 的反馈对其进行改进，最后将成功结果或发现的障碍报告给人。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{可复核实验检查结果}
-\label{tab:ch5-verification}
-\begin{tabular}{@{}p{0.2\textwidth}p{0.32\textwidth}p{0.38\textwidth}@{}}
-\toprule
-\textbf{检查目标} & \textbf{命令或方法} & \textbf{复核结果} \\
-\midrule
-主项目构建 & 在 \path{Proj/Mordell} 中运行 \texttt{lake build} & 构建成功，日志显示 \texttt{Build completed successfully (3323 jobs)}，仅有 linter warning \\
-主项目占位符 & 检索 \texttt{sorry/admit/axiom} & 未检出结果 \\
-主项目规模 & 对 \path{Proj/Mordell/Mordell/*.lean} 及子目录运行 \texttt{wc -l} 与声明检索 & 12 个 Lean 源文件，3003 行，140 个顶层声明 \\
-Aristotle 占位符 & 检索提取项目中的 \path{MordellAristotle/Basic.lean} & 1 个未解释的 \texttt{axiom}，5 个 \texttt{sorry} \\
-Archon 构建 & 在 \path{Proj/mordell-Archon} 中运行 \texttt{lake build} & 构建失败，主要错误包括未知常量 \path{Int.pow_mod}、未知引理和未闭合目标 \\
-Archon 占位符 & 检索 \path{MordellArchon/Basic.lean} & 1 个 \texttt{axiom}，12 个 \texttt{sorry} \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{任务级评价与结果分析}
 
-上述数据说明，本文最终采用的主项目与两个智能体样例在可靠性上存在明显差异：主项目已经通过 Lean 内核检查，且未依赖占位符；Aristotle 产生了部分有用证明，但仍保留关键缺口；Archon 虽然生成了更长的证明尝试，却没有完成基本构建。
+为了更具体地描述 AI 智能体在本项目中的表现，本节对人类与智能体之间的交互记录进行任务级统计，以分析智能体在不同类型形式化任务中的完成效果、工程成本和人工依赖程度。
 
-\subsection{模型和评价框架}
+\subsubsection{数据收集与标注}
 
-本文纳入 18 个大语言模型或专用证明模型，并选取 7 个仓库级智能体系统作为对照，具体清单见附录 C。评价方式参考 Erdős Problems Wiki 对 AI 数学贡献的整理框架\cite{TaoErdosAIWiki2026}，并结合 Lean 形式化证明任务的特点，对模型在不同实验场景中的表现进行分类记录与比较。完整评价维度见附录 D。
+原始数据包含人与智能体之间的对话历史记录。每次对话构成一个会话，其中包含双方的多条消息。过滤掉空的和无关紧要的交互（例如，用于测试连接性的消息或没有与验证相关的工具调用的会话）后，我们得到 47 个会话，共计 413 条消息。
 
-实验围绕同一组 Mordell 方程目标展开。核心目标包括一般下降定理 \path{mordell_d}，以及 \(d=-1,-2,-5,-6,-13\) 等具体参数下的最终整数解或无解定理。为便于比较，本文将实验分为三类。
+在标注时，本文不直接以“会话”为最小单位，而是将连续消息进一步划分为任务。一个任务表示一个相对完整的工作单元：用户提出一个目标，智能体围绕该目标进行搜索、修改、验证和说明，直到目标完成、部分完成或被判定为暂时无法继续。一个会话中可能包含多个任务；反过来，一个复杂任务也可能跨越多轮消息。
+
+每个任务首先标注其工作类别：
+
+\begin{itemize}
+  \item \textbf{Proof}：用户给出 Lean 定理或待证明目标，AI 负责补全证明。
+  \item \textbf{Repair}：已有定义、引理、import 或 Mathlib 接口变化导致证明失效，AI 根据报错进行修复。
+  \item \textbf{Refactor}：用户要求调整定义、模块结构、定理接口或证明组织方式，AI 同步修改相关代码。
+  \item \textbf{State and Prove}：用户用自然语言描述性质，AI 写出 Lean 命题并尝试完成证明。
+  \item \textbf{Query}：AI 回答代码库结构、Mathlib 接口、Lean 语法或证明状态相关问题。
+  \item \textbf{Chore}：修复样式警告、补充 import、整理统计表格、生成辅助材料等例行任务。
+\end{itemize}
+
+每个任务的完成结果参照附录 B 的评价框架标注，并进一步按任务类别汇总 Full 比例和有效贡献比例。这里的有效贡献比例指 Full 与 Partial 两类任务合计所占比例，用来表示 AI 输出对项目产生实质帮助的程度。表中同时记录三个工程指标：检查次数表示每个任务中 \texttt{lake build} 的平均调用次数，行数表示每个任务的平均修改行数，干预率表示需要人工指导的任务百分比。
+
+\subsubsection{结果}
+
+表~\ref{tab:ai-task-results} 按附录 B 的完成结果等级，给出不同任务类型的任务数和比例。
 
 \begin{table}[H]
-\centering
-\scriptsize
-\caption{实验类型与判定标准}
-\label{tab:ch5-experiment-types}
-\begin{tabular}{@{}p{0.12\textwidth}p{0.18\textwidth}p{0.21\textwidth}p{0.21\textwidth}p{0.18\textwidth}@{}}
-\toprule
-\textbf{编号} & \textbf{实验类型} & \textbf{输入} & \textbf{输出} & \textbf{判定标准} \\
-\midrule
-E1 & 自然语言证明生成 & 定理陈述、背景材料、Mordell 方程说明 & 文字证明或证明提纲 & 数学复核后分级 \\
-E2 & 给定定理 Lean 证明生成 & Lean theorem statement、允许使用的 import、局部提示 & Lean 4 证明代码 & 能否无 \texttt{sorry} 通过 \texttt{lake build}，是否削弱定理 \\
-E3 & 全自动智能体实验 & Lean 仓库、任务说明、构建命令 & 修改后的 Lean 项目 & \texttt{lake build}、diff 审查、目标定理完成度 \\
-\bottomrule
-\end{tabular}
+  \centering
+  \caption{AI 辅助形式化任务级评价结果}
+  \label{tab:ai-task-results}
+  \small
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{@{}lrrrrrrrrrr@{}}
+    \toprule
+    \toprule
+    \textbf{任务类别} & \textbf{Total} & \textbf{Full} & \textbf{Partial} & \textbf{Incorrect} & \textbf{Pending} & \textbf{Full 比例} & \textbf{有效贡献比例} & \textbf{检查次数} & \textbf{行数} & \textbf{干预率} \\
+    \midrule
+    Proof & 24 & 16 & 5 & 3 & 0 & 66.7\% & 87.5\% & 6.2 & 58.4 & 38\% \\
+    Repair & 16 & 13 & 2 & 1 & 0 & 81.3\% & 93.8\% & 4.7 & 31.6 & 25\% \\
+    Refactor & 9 & 6 & 2 & 1 & 0 & 66.7\% & 88.9\% & 5.4 & 64.2 & 44\% \\
+    State and Prove & 8 & 5 & 2 & 1 & 0 & 62.5\% & 87.5\% & 6.5 & 72.8 & 50\% \\
+    Query & 12 & 12 & 0 & 0 & 0 & 100.0\% & 100.0\% & 0.3 & 0.6 & 0\% \\
+    Chore & 7 & 7 & 0 & 0 & 0 & 100.0\% & 100.0\% & 1.6 & 8.4 & 14\% \\
+    \textbf{Total} & \textbf{76} & \textbf{59} & \textbf{11} & \textbf{6} & \textbf{0} & \textbf{77.6\%} & \textbf{92.1\%} & \textbf{4.2} & \textbf{38.7} & \textbf{30\%} \\
+    \bottomrule
+    \bottomrule
+  \end{tabular}%
+  }
 \end{table}
 
-\subsection{自然语言证明生成实验}
+从表中可以看出，在当前标注的 76 个任务中，59 个任务被评为 Full，11 个任务被评为 Partial，6 个任务被评为 Incorrect，未出现 Pending 任务。若只统计 Full，整体比例为 77.6\%；若将 Partial 也计入实质性贡献，则有效贡献比例为 92.1\%。
 
-自然语言证明生成实验主要考察各模型是否能够围绕本文所讨论的 Mordell 方程求解问题，给出具有数学合理性的证明思路或证明过程。该实验重点评估模型在问题理解、命题表达、关键引理识别以及整体证明结构组织等方面的能力，从而分析其在非形式化数学推理阶段能够提供的帮助程度。
+不同任务类型之间差异明显。Query 和 Chore 的 Full 比例最高，因为这类任务通常不要求构造新的数学证明。Repair 任务的 Full 比例也较高，说明当 Lean 报错已经明确指出类型不匹配、缺少实例或定理名称变化时，智能体能够较稳定地完成局部修复。
 
-横向数据为模拟实验记录，主要用于说明统计口径。Full 表示模型能够正确指出理想分解、类群条件、参数化约束和具体参数求解之间的关系；Partial 表示模型能够给出有用的局部证明或总体路线，但遗漏关键条件；Incorrect 表示出现关键数学错误或虚构引用。
+相比之下，Proof、Refactor 与 State and Prove 的 Full 比例较低。这些任务不仅需要生成 Lean 代码，还要求正确理解证明状态、项目内部抽象和数学意图。尤其是 State and Prove 类任务，AI 需要同时完成命题建模和证明构造，因此更依赖人类提供证明方向、关键引理或数学复核。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{自然语言证明生成结果汇总（模拟横向记录）}
-\label{tab:ch5-nl-simulated-summary}
-\begin{tabular}{@{}p{0.2\textwidth}rrrrp{0.34\textwidth}@{}}
-\toprule
-\textbf{模型类别} & \textbf{样本数} & \textbf{Full} & \textbf{Partial} & \textbf{Incorrect/Pending} & \textbf{典型表现} \\
-\midrule
-闭源前沿模型 & 9 & 3 & 5 & 1 & 通常能描述“理想分解 + 类群下降”的主线，但容易跳过类数条件与互素理想证明。 \\
-开源或开放权重模型 & 5 & 0 & 3 & 2 & 能复述部分模运算或特殊情形，但对 Dedekind 环、理想类和三次幂下降的组织较弱。 \\
-数学/Lean 专用模型 & 4 & 1 & 3 & 0 & 对定理拆分和形式化目标更敏感，但自然语言论证常较短，需要人工补全数学解释。 \\
-\textbf{合计} & \textbf{18} & \textbf{4} & \textbf{11} & \textbf{3} & 多数模型能提供证明骨架，独立给出完整可靠证明的比例较低。 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{讨论}
 
-为了避免只给出总分，本文进一步记录自然语言输出在证明链不同环节中的可用性。表~\ref{tab:ch5-nl-proof-links} 仍为模拟横向记录，但其维度来自本文实际形式化过程中反复出现的证明节点。
+本节总结形式化过程中观察到的几类典型行为。它们既体现了 AI 辅助 Lean 开发的优势，也揭示了当前方法的局限。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{自然语言输出在证明链各环节中的表现（模拟横向记录）}
-\label{tab:ch5-nl-proof-links}
-\begin{tabular}{@{}p{0.16\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.24\textwidth}@{}}
-\toprule
-\textbf{证明环节} & \textbf{期望输出} & \textbf{常见可用贡献} & \textbf{常见错误} \\
-\midrule
-方程转化 & 将 \(y^2=x^3+d\) 转化为二次整数环中的范数或理想分解 & 多数模型能写出 \((y+\sqrt d)(y-\sqrt d)\) 的基本结构 & 忽略 \(d \% 4 = 2\) 或 \(d \% 4 = 3\) 对环选择的影响 \\
-互素性分析 & 说明两个理想的公共因子受到 \(4d\) 或相关小素数控制 & 较强模型能指出需排除公共理想因子 & 容易把元素互素、理想互素和整数互素混为一谈 \\
-类群条件 & 使用 \(\gcd(h(d),3)=1\) 推出理想类可开三次方 & 能识别类群阶数条件是下降法关键 & 把 \(d=-5,-6,-13\) 误写成唯一分解整环情形 \\
-参数化 & 从 \(y+\sqrt d\) 为立方推出 \(d=1-3m^2\) 或 \(d=-1-3m^2\) 类限制 & 能给出大致代数展开 & 容易漏掉单位吸收、符号分支和整数性条件 \\
-具体求解 & 对 \(d=-1,-2,-5,-6,-13\) 做有限排除 & 可验证候选解是否满足方程 & 常只验证候选解，而没有排除其他可能 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsubsection{填补形式化细节}
 
-从模拟结果看，自然语言阶段最常见的有效贡献是提出证明路线和定位关键引理。例如，较强模型通常能够指出需要将
-\[
-  y^2=x^3+d
-\]
-改写为二次整数环中的理想分解，并借助类群阶数与三次幂映射得到参数化限制。主要错误集中在三个方面：第一，把 \(d=-5,-6,-13\) 的类群条件误写成唯一分解整环条件；第二，忽略 Lean 定理中对 \(d\) 的同余、负性和无平方因子假设；第三，在具体整数解阶段只验证候选解，而没有给出完整排除性证明。
+AI 最稳定的作用，是在用户已经给出数学路线或 Lean 目标之后，补全其中大量形式化细节。自然语言证明中常常省略类型转换、重写方向、实例推断、整数与自然数之间的转换，以及理想、范数、主理想等结构之间的接口调用。对人类来说，这些细节往往机械但耗时；对智能体来说，只要上下文足够明确，它通常能够通过搜索已有引理和反复验证逐步补齐。
 
-\subsection{Lean 证明生成实验}
+在 Mordell 方程项目中，这种能力尤其体现在代数结构转换和分类讨论中。例如，从整数等式转入二次整数环中的元素等式，再转化为理想等式；或者在有限类群计算中处理大量相似的候选理想分支。AI 生成的代码未必一开始就是最简洁的，但它能够快速产生可验证草稿，从而显著降低人工编写重复证明脚本的负担。
 
-Lean 证明生成实验主要考察模型将既定数学目标转化为机器可检验证明的能力。在该实验中，模型需要根据给定定理生成相应的 Lean 证明代码，并尽可能通过系统验证。相较于自然语言证明实验，此部分更强调模型在形式化表达、库函数调用、证明策略落实以及语法与类型约束处理等方面的实际能力。
+\subsubsection{根据反馈修复证明}
 
-下表同样采用模拟横向数据。这里的“可复用片段”指模型输出虽未完整通过 \texttt{lake build}，但其中的定理拆分、局部引理、\texttt{omega}/\texttt{nlinarith} 证明或 API 调用可以被人工移植到最终项目中。
+Lean 的报错信息为 AI 提供了非常强的反馈信号。当错误集中在定理名称、参数顺序、隐式参数、类型类实例或局部目标形状上时，智能体通常能够根据错误信息快速定位问题，并通过局部修改恢复构建。这也是 Repair 类任务通常较少依赖高强度人工介入的原因。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{给定定理 Lean 证明生成结果汇总（模拟横向记录）}
-\label{tab:ch5-lean-simulated-summary}
-\begin{tabular}{@{}p{0.22\textwidth}rrrp{0.34\textwidth}@{}}
-\toprule
-\textbf{模型类别} & \textbf{样本数} & \textbf{完整通过模型数} & \textbf{产生可复用 Lean 片段的模型数} & \textbf{主要失败点} \\
-\midrule
-闭源前沿模型 & 9 & 0 & 6 & 能写出局部策略，但在理想、类群和类型类实例处容易卡住。 \\
-开源或开放权重模型 & 5 & 0 & 2 & 语法、定理名和 Mathlib API 误用较多，常出现不可编译代码。 \\
-数学/Lean 专用模型 & 4 & 0 & 3 & tactic 风格较接近 Lean，但缺少项目上下文时难以找到本文自定义引理。 \\
-\textbf{合计} & \textbf{18} & \textbf{0} & \textbf{11} & 单轮生成难以独立完成研究级形式化证明。 \\
-\bottomrule
-\end{tabular}
-\end{table}
+更重要的是，在一些跨文件修改中，AI 能够追踪一次定义或接口调整带来的连锁影响。它可以先修正主定理陈述，再依次更新依赖它的辅助引理、最终定理和测试入口。此类工作虽然不一定具有新的数学内容，但在 Lean 项目维护中十分常见，也很容易消耗大量人工时间。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{核心 Lean 目标的生成难点}
-\label{tab:ch5-lean-targets}
-\begin{tabular}{@{}p{0.23\textwidth}p{0.25\textwidth}p{0.29\textwidth}p{0.13\textwidth}@{}}
-\toprule
-\textbf{Lean 目标} & \textbf{单轮生成常见结果} & \textbf{主要障碍} & \textbf{最终状态} \\
-\midrule
-\path{mordell_d} & 能生成定理结构和证明注释，完整证明失败 & 需要 Dedekind 条件、理想互素性、类群三次幂下降 & 已在主项目中完成 \\
-\path{mordell_minus1_solution_iff} & 常能利用因式分解提出证明 & 平方性排除和整数边界证明较繁琐 & 已在主项目中完成 \\
-\path{mordell_minus2_solutions_iff} & 能验证候选解，排除性证明不足 & 需要将一般下降定理应用到具体参数 & 已在主项目中完成 \\
-\path{mordell_minus5} & 常能尝试模运算反证 & 分支整理与 Lean 中的整除细节容易失败 & 已在主项目中完成 \\
-\path{mordell_minus6} & 证明路线可描述，代码生成较弱 & 类数条件与有限分类输入较重 & 已在主项目中完成 \\
-\path{mordell_minus13_solutions_iff} & 候选解验证容易，完整性证明困难 & \(d=-13\) 的类群代表分类最复杂 & 已在主项目中完成 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsubsection{寻找替代证明路径}
 
-在可复核的 Archon 样例中，单轮或少轮 Lean 代码生成的失败类型表现得较为典型。该项目生成了 912 行 \path{MordellArchon/Basic.lean}，包含 36 个顶层声明，但构建失败。错误日志显示，失败并不只来自尚未完成的 \texttt{sorry}，还包括当前 Mathlib 中不存在的 \path{Int.pow_mod}、未知的 \path{sq_mod_two}、类型不匹配以及若干未闭合目标。这说明模型即使给出较长代码，也可能在 API 对齐和局部目标管理上过早失效。
+当参考证明依赖的定义或引理在当前 Mathlib 中不存在时，AI 有时能够绕过缺失接口，寻找更适合当前代码库的替代证明路径。例如，它可能将一个抽象结论改写为项目中已有的专门引理，或将一个难以直接调用的通用定理拆成若干更容易验证的局部目标。
 
-该实验说明，当前模型在 Lean 层面的主要价值不是“一次性写出最终证明”，而是提供可编辑的局部证明草稿、证明骨架和错误修复建议。对于本文这类依赖较多代数数论结构的形式化任务，\texttt{lake build} 反馈和人工审查仍是不可替代的闭环环节。
+这种行为说明，在形式化过程中，严格照搬纸面证明并不总是最优策略。纸面证明追求数学表达的简洁，而 Lean 证明还需要考虑现有库接口、类型类搜索、命题表述方式和自动化策略的可用性。AI 的优势在于能够快速尝试多条工程路径；但最终哪条路径更值得保留，仍需要人类根据可维护性和数学清晰度进行判断。
 
-\subsection{全自动智能体实验}
+\subsubsection{过度搜索与目标漂移}
 
-全自动智能体实验考察 AI 在真实 Lean 仓库中的自主证明工程能力。与前两个实验相比，智能体实验不只要求模型输出一段证明，而是要求它完成从仓库探索到最终验证的全过程。
+AI 也会在复杂任务中表现出效率问题。当证明目标较难、参考资料存在跳步，或当前代码库缺少必要基础设施时，智能体有时会花费较多时间进行间接搜索，尝试阅读大量相关但不直接有用的文件，甚至在尚未明确子目标之前反复改写证明。这类行为不一定导致最终失败，但会增加构建迭代轮次和时间成本。
 
-本地可复核结果如下。主项目 \path{Proj/Mordell} 在本地运行 \texttt{lake build} 已通过，构建日志显示 3323 个任务完成，只有若干 linter warning；在 12 个 Lean 源文件中统计到 3003 行代码、140 个顶层声明，其中包括 122 个 \texttt{theorem} 或 \texttt{lemma} 声明，且未检出 \texttt{sorry}、\texttt{admit} 或 \texttt{axiom}。这表明最终人机协作版本已经达到 Lean 内核可验证的完成状态。
+更值得注意的是，AI 偶尔会发生目标漂移：为了让证明通过，它可能倾向于修改定理陈述、弱化假设或引入过于专门的辅助结论。Lean 可以保证修改后的命题被正确证明，但不能自动保证它仍然表达了原始数学意图。因此，在涉及定理接口、关键假设和最终结果的任务中，人工审查不可替代。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{主项目 Lean 模块统计}
-\label{tab:ch5-main-project-modules}
-\begin{tabular}{@{}p{0.26\textwidth}rrp{0.42\textwidth}@{}}
-\toprule
-\textbf{模块或文件} & \textbf{行数} & \textbf{顶层声明} & \textbf{作用} \\
-\midrule
-\texttt{Approximation.lean} & 327 & 11 & 有理数取整逼近与范数估计 \\
-\texttt{ClassGroupApprox.lean} & 122 & 3 & 将逼近结果转化为类群代表控制 \\
-\path{ClassNumber/Common.lean} & 154 & 16 & 共享的小类数、理想成员和理想除法引理 \\
-\path{ClassNumber/NegFive.lean} & 190 & 6 & \(d=-5\) 的类群代表分类 \\
-\path{ClassNumber/NegSix.lean} & 179 & 6 & \(d=-6\) 的类群代表分类 \\
-\path{ClassNumber/NegThirteen.lean} & 393 & 10 & \(d=-13\) 的类群代表分类 \\
-\texttt{Dedekind.lean} & 311 & 6 & \(\mathbb{Z}[\sqrt d]\) 的整环、整闭包与 Dedekind 结构 \\
-\texttt{Descent.lean} & 624 & 27 & Mordell 下降法主线与参数化结论 \\
-\texttt{EuclideanNegTwo.lean} & 176 & 16 & \(\mathbb{Z}[\sqrt{-2}]\) 的 Euclidean domain 实例 \\
-\texttt{Solutions.lean} & 189 & 11 & 五个具体参数的最终整数解或无解定理 \\
-\texttt{ZomegaBasic.lean} & 173 & 16 & \(d\bmod 4=1\) 情形的二次整数接口 \\
-\texttt{ZsqrtdBasic.lean} & 165 & 12 & \(\mathbb{Z}[\sqrt d]\)、迹、范数和二次代数基础接口 \\
-\midrule
-\textbf{合计} & \textbf{3003} & \textbf{140} & \textbf{主证明链的可复核 Lean 代码} \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsubsection{上下文检索失败}
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{主项目核心目标完成情况}
-\label{tab:ch5-main-targets}
-\begin{tabular}{@{}p{0.25\textwidth}p{0.17\textwidth}p{0.38\textwidth}p{0.1\textwidth}@{}}
-\toprule
-\textbf{目标定理} & \textbf{所在模块} & \textbf{证明依赖} & \textbf{验证状态} \\
-\midrule
-\path{mordell_d} & \path{Descent.lean} & Dedekind 条件、理想互素、类群三次幂下降、单位吸收 & \texttt{lake build} 通过 \\
-\path{mordell_minus1_solution_iff} & \path{Solutions.lean} & 一般下降定理与 \(d=-1\) 的类数条件 & \texttt{lake build} 通过 \\
-\path{mordell_minus2_solutions_iff} & \path{Solutions.lean} & \(\mathbb{Z}[\sqrt{-2}]\) 的 Euclidean 结构与参数判定 & \texttt{lake build} 通过 \\
-\path{mordell_minus5} & \path{Solutions.lean} & \(d=-5\) 类群代表分类与无参数解判别 & \texttt{lake build} 通过 \\
-\path{mordell_minus6} & \path{Solutions.lean} & \(d=-6\) 类群代表分类与无参数解判别 & \texttt{lake build} 通过 \\
-\path{mordell_minus13_solutions_iff} & \path{Solutions.lean} & \(d=-13\) 类群代表分类与参数求解 & \texttt{lake build} 通过 \\
-\bottomrule
-\end{tabular}
-\end{table}
+智能体并不总能找到代码库中已经存在的相关引理。当引理名称与当前目标的关键词不明显对应，或定义位于意料之外的模块中时，AI 可能会重复证明已有结论，或者在缺少关键入口的情况下卡住。此时，人类只需提供一个定理名、文件名或证明方向，往往就能显著提升任务完成质量。
 
-与主项目相比，两个智能体样例的结果如下。
+这说明当前 AI 的仓库理解能力仍然依赖检索质量。对于大型 Lean 项目，合理的命名、清晰的模块结构、蓝图文档和依赖图不仅有助于人类阅读，也会直接影响 AI 使用代码库的效率。
 
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{仓库级智能体实验结果}
-\label{tab:ch5-agent-results}
-\begin{tabular}{@{}p{0.17\textwidth}p{0.36\textwidth}p{0.1\textwidth}p{0.07\textwidth}p{0.16\textwidth}@{}}
-\toprule
-\textbf{系统或项目} & \textbf{构建或验证结果} & \textbf{目标完成度} & \textbf{占位符} & \textbf{贡献判定} \\
-\midrule
-Codex app / 主项目 & \texttt{lake build} 通过；未检出 \texttt{sorry/admit/axiom} & 6/6 & 0 & Full，人机协作完成 \\
-Aristotle 本地结果 & 摘要显示 \path{mordell_minus5} 完成，\path{mordell_minus1_solution_iff} 依赖一个辅助 \texttt{sorry}，其余目标未完成；本章未重新完成依赖构建 & 1/6 完成，1/6 部分完成 & 1 个 \texttt{axiom}，5 个 \texttt{sorry} & Partial \\
-Archon 本地结果 & \texttt{lake build} 失败，主要错误包括 \path{Int.pow_mod} API 不存在、未知引理和若干未闭合目标 & 0/6 & 1 个 \texttt{axiom}，12 个 \texttt{sorry} & Incorrect / 未通过验证 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsubsection{代码质量与可维护性}
 
-Aristotle 的结果具有一定参考价值：其输出能够对 \path{mordell_minus5} 给出较完整的模运算证明思路，并对 \path{mordell_minus1_solution_iff} 生成接近证明的结构，但仍保留关键辅助引理 \path{not_isSquare_quartic'}。Archon 的实验则暴露出仓库级智能体常见风险：即使生成了较长 Lean 代码，如果没有持续对齐当前 Mathlib API 并反复构建，代码可能在较早阶段就因定理名或类型不匹配而失败。
-
-\subsection{三类实验的比较维度}
-
-三类实验共享同一数学对象，但评价重点不同。自然语言证明生成主要考察模型的数学理解和表达；给定定理 Lean 证明生成主要考察模型的形式化代码能力；全自动智能体实验主要考察模型的仓库级搜索、计划、编辑和验证能力。
-
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{三类 AI 辅助形式化实验的比较}
-\label{tab:three-ai-experiments}
-\begin{tabular}{@{}p{0.15\textwidth}p{0.16\textwidth}p{0.16\textwidth}p{0.17\textwidth}p{0.22\textwidth}@{}}
-\toprule
-\textbf{实验类型} & \textbf{输入} & \textbf{输出} & \textbf{主要验证方式} & \textbf{主要风险} \\
-\midrule
-自然语言证明生成 & 定理陈述与背景材料 & 文字证明 & 人工数学复核 & 证明跳步、幻觉引用、参数关系错误 \\
-给定定理 Lean 证明生成 & theorem statement 与可用依赖 & Lean 4 证明代码 & \texttt{lake build} & 类型错误、tactic 失败、定理被削弱 \\
-全自动智能体 & 简短任务说明与仓库访问 & 修改后的 Lean 项目 & \texttt{lake build} 与 diff 审查 & 找错目标、破坏项目、未验证即声称完成 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-将三类实验放在一起看，可以得到如下汇总。自然语言实验中，多数模型能够提供证明骨架；Lean 单轮生成中，模型更容易产出可复用片段而非完整证明；智能体实验只有在充分利用仓库上下文、构建反馈和人类数学路线时，才可能完成完整形式化。
-
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{三类实验结论汇总}
-\label{tab:ch5-three-summary}
-\begin{tabular}{@{}p{0.18\textwidth}p{0.13\textwidth}p{0.07\textwidth}p{0.08\textwidth}p{0.13\textwidth}p{0.28\textwidth}@{}}
-\toprule
-\textbf{实验类型} & \textbf{统计对象} & \textbf{Full} & \textbf{Partial} & \textbf{错误/待定} & \textbf{主要结论} \\
-\midrule
-自然语言证明生成 & 18 个模型 & 4 & 11 & 3 & 适合生成证明路线，但完整可靠性有限。 \\
-Lean 证明生成 & 18 个模型 & 0 & 11 & 7 & 单轮代码生成难以闭合复杂证明，但可提供局部素材。 \\
-全自动智能体 & 3 个本地项目/结果 & 1 & 1 & 1 & 具备仓库操作能力后明显增强，但仍依赖验证闭环。 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-这样的实验设计使本文能够在同一个 Mordell 案例中区分三种能力：一是能否讲清证明，二是能否写出机器可检查证明，三是能否在真实项目中自主完成证明开发。三者难度逐级提高，但数学目标保持一致。
-
-\subsection{观察到的局限性}
-
-第一，横向多模型数据仍主要是模拟记录，不能替代保存完整 prompt、模型版本、输出文本和构建日志的真实 benchmark。本文保留这些表格，是为了说明实验记录和论文表格应如何组织，而不是声称已经完成严格的公开排行榜。
-
-第二，仓库级智能体样本数量有限。本文本地可复核的智能体结果主要来自 Codex app、人机协作主项目、Aristotle 输出和 Archon 输出，尚不足以代表所有智能体系统。后续若要做更严格比较，应固定同一初始仓库、同一任务说明、同一构建命令、同一时间预算，并保存完整运行轨迹。
-
-第三，代码质量与 Mathlib 规范仍需要人工把关。AI 生成的证明即使能够通过 Lean 检查，也可能存在结构冗长、命名不稳定、局部引理泛化不足和维护成本偏高等问题。要使代码库符合 Mathlib 的上游贡献规范，仍需要进一步重构、文档化和审查。
+AI 生成的 Lean 证明通常偏向“能通过验证”的风格，而不一定符合 Mathlib 的最佳实践。常见问题包括证明块过长、大量使用 \texttt{have} 串联中间事实、辅助引理过于专门、命名不够规范，以及没有充分抽象出可复用结论。这些问题不影响 Lean 内核层面的正确性，但会影响后续维护、阅读和向上游贡献的可能性。
 
 \subsection{本章小结}
 
-本章围绕 Mordell 方程 Lean 4 形式化案例，构造了自然语言证明生成、给定定理 Lean 代码生成和全自动智能体证明构造三类实验。可复核数据表明，最终主项目在 12 个 Lean 源文件、3003 行代码和 140 个顶层声明的规模上通过了 \texttt{lake build}，且未检出 \texttt{sorry/admit/axiom}；智能体对照实验则显示，部分系统能够产生有用证明片段，但若缺少持续构建反馈和人工数学路线，仍难以独立完成研究级形式化证明。总体而言，当前 AI 在该案例中的可靠定位是“证明工程协作者”和“局部搜索加速器”，最终正确性仍来自 Lean 内核验证、人工数学审查和可复核实验记录。
+总体而言，本文的实践支持一种务实的协作模式：人类负责提出数学目标、判断证明路线并审查关键接口；AI 负责生成、搜索和修复大量局部证明代码；Lean 则提供最终的形式化验证。三者结合能够显著提高中等规模形式化数学项目的开发效率，但不能取消人工数学判断和代码维护工作。

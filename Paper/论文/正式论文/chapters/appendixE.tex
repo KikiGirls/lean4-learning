@@ -1,425 +1,103 @@
 \newpage
 \fancyhead[L]{\songti\zihao{-5}\cquHeader}
-\fancyhead[R]{\songti\zihao{-5}附录E：有限代表的分类证明}
-\addcontentsline{toc}{section}{附录E：有限代表的分类证明}
-\section*{附录E：有限代表的分类证明}
+\fancyhead[R]{\songti\zihao{-5}附录E：主要证明定理与 Lean 形式化对应关系}
+\addcontentsline{toc}{section}{附录E：主要证明定理与 Lean 形式化对应关系}
+\section*{附录E：主要证明定理与 Lean 形式化对应关系}
 \zihao{5}
 \begingroup
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.35\baselineskip}
 
-\subsection*{E.1 目标与记号}
+本附录汇总全文主要证明环节以及 Mordell Lean 4 项目中主要定理声明之间的对应关系。表中列出的声明是证明主线、有限类群计算和最终结果验证中反复使用的代表性入口；完整辅助引理和依赖关系以项目中的 Lean 源文件及附录 F 的完整蓝图为准。
 
-本附录补充正文中“有限代表的分类”步骤。正文已经由代表元约化得到如下结论：当
-\(d=-5,-6\) 时，每个理想类都有一个非零整理想代表 \(I\)，满足 \(2\in I\)；当
-\(d=-13\) 时，每个理想类都有一个非零整理想代表 \(I\)，满足 \(12\in I\)。本附录证明这些代表只能落在两个候选理想类中。
+{\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.18}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}@{}}
+\caption{主要证明定理与 Lean 形式化对应关系}\label{tab:appendix-proof-lean-map}\\
+\toprule
+\textbf{证明或项目环节} & \textbf{数学内容} & \textbf{Lean 文件} & \textbf{主要声明} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{证明或项目环节} & \textbf{数学内容} & \textbf{Lean 文件} & \textbf{主要声明} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{接下页}\\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
 
-记
-\[
-R_5=\mathbb Z[\sqrt{-5}],\qquad
-R_6=\mathbb Z[\sqrt{-6}],\qquad
-R_{13}=\mathbb Z[\sqrt{-13}].
-\]
-在三个环中分别取候选理想
-\[
-P_5=(2,1+\sqrt{-5})\subset R_5,
-\]
-\[
-P_6=(2,\sqrt{-6})\subset R_6,
-\]
-\[
-P_{13}=(2,1+\sqrt{-13})\subset R_{13}.
-\]
-令 \(A_d=[P_d]\) 表示相应的理想类。需要证明的是
-\[
-\operatorname{Cl}(R_5)=\{1,A_5\},\qquad
-\operatorname{Cl}(R_6)=\{1,A_6\},\qquad
-\operatorname{Cl}(R_{13})=\{1,A_{13}\}.
-\]
-这里的等号只表示右侧集合覆盖了整个类群；并不预先断言 \(A_d\ne1\)。
+项目入口 & 公开导入完整 Mordell 形式化项目，作为 Comparator 和外部引用的统一入口。 &
+\path{Mordell.lean} &
+导入 \path{Mordell.ZomegaBasic} 与 \path{Mordell.Solutions} \\
 
-\subsection*{E.2 含有 \(2\) 的理想的分类}
+基础二次整数环接口 & 建立 \(\mathbb Z[\sqrt d]\) 到二次有理代数的嵌入、迹、范数、有限生成与基表示唯一性，对应附录 A 中的 T9、T12、T13。 &
+\path{ZsqrtdBasic.lean} &
+\path{zsqrtdToQuadRat_injective}；\path{quadRat_norm}；\path{zsqrtd_algebra_norm}；\path{Module.Free}；\path{Module.Finite} \\
 
-本节先分类含有 \(2\) 的非零整理想。该分类将用于
-\(R_5\)、\(R_6\)，并在后文用于处理 \(R_{13}\)。
+\(d\equiv1\pmod4\) 的二次整数模型 & 形式化 \(\mathbb Z[\omega]\) 型二次整数环、范数乘法性及其与 \(\mathbb Z[\sqrt d]\) 的接口，是项目基础结构的一部分。 &
+\path{ZomegaBasic.lean} &
+\path{omega_sq}；\path{norm_mul}；\path{norm_pow}；\path{toQuadRat_injective}；\path{toQuadRat_fromZsqrtd} \\
 
-\paragraph{引理 E.1.}
-令 \(m=5\) 或 \(13\)，并记
-\[
-R_m=\mathbb Z[s],\qquad s=\sqrt{-m}.
-\]
-设
-\[
-P_m=(2,1+s)\subset R_m.
-\]
-若 \(I\subset R_m\) 是非零整理想且 \(2\in I\)，则
-\[
-[I]=1\quad\text{或}\quad [I]=[P_m].
-\]
+Dedekind 条件（第 3 章、附录 A T3） & 证明满足平方自由与模 \(4\) 条件时，\(\mathbb Z[\sqrt d]\) 是整环、整闭包并满足 Dedekind 整环条件。 &
+\path{Dedekind.lean} &
+\path{zsqrtd_isDomain_of_mod_four_eq_two_or_three}；\path{zsqrtd_isIntegrallyClosed_of_squarefree_mod}；\path{zsqrtd_isIntegralClosure_of_squarefree_mod}；\path{zsqrtd_isDedekindDomain_of_squarefree_mod} \\
 
-\paragraph{证明.}
-首先给出 \(P_m\) 的同余刻画。对任意
-\(z=a+bs\in R_m\)，有
-\[
-z\in P_m
-\quad\Longleftrightarrow\quad
- a-b\equiv0\pmod 2.
-\]
-事实上，生成元 \(2\) 与 \(1+s\) 显然满足右侧同余条件。反过来，若
-\(a-b=2k\)，则
-\[
-a+bs=b(1+s)+k\cdot2\in P_m.
-\]
+初等算术与互素输入（附录 A A.2--A.3） & 从整数解推出 \(x>0\)、\(x\) 为奇数、相关整数互素性，并把这些事实转化为共轭主理想互素。 &
+\path{Descent.lean} &
+\path{x_odd_two_three}；\path{int_isCoprime_four_mul_d_y_sq_sub_d}；\path{span_y_add_sqrtd_coprime} \\
 
-设 \(I\subset R_m\) 是非零整理想且 \(2\in I\)。若存在
-\(z=a+bs\in I\) 使得 \(a-b\) 为奇数，则 \(a,b\) 一奇一偶。由于
-\(m\) 为奇数，
-\[
-N(z)=z\overline z=a^2+mb^2
-\]
-为奇数。因此 \(\gcd(N(z),2)=1\)。取整数 \(u,v\) 使得
-\[
-uN(z)+2v=1.
-\]
-又因为 \(N(z)=z\overline z\in I\) 且 \(2\in I\)，故 \(1\in I\)，从而
-\(I=R_m\)。此时 \([I]=1\)。
+元素分解到理想分解（附录 A A.3） & 在 \(\mathbb Z[\sqrt d]\) 中分解 \(y^2-d=x^3\)，并推出 \(\langle y+\sqrt d\rangle\) 是某个理想的三次方。 &
+\path{Descent.lean} &
+\path{factor_y_sq_sub_d}；\path{span_y_add_sqrtd_eq_ideal_cube_of_coprime} \\
 
-下面假设 \(I\) 中任意元素 \(a+bs\) 均满足
-\(a-b\equiv0\pmod2\)。由上面的同余刻画可知
-\[
-I\subseteq P_m.
-\]
+类群下降（附录 A A.4、T4--T8） & 由理想三次方和类数与 \(3\) 互素，推出相关理想为主理想，并得到元素三次方表示。 &
+\path{Descent.lean} &
+\path{ideal_isPrincipal_of_cube_isPrincipal}；\path{cube_root_of_principal_cube_span}；\path{exists_cube_root_y_add_sqrtd_of_ideal_coprime}；\path{exists_cube_root_y_add_sqrtd_of_dedekind}；\path{exists_cube_root_y_add_sqrtd} \\
 
-若 \(1+s\in I\)，则由 \(2\in I\) 得
-\[
-P_m=(2,1+s)\subseteq I.
-\]
-结合 \(I\subseteq P_m\)，可知 \(I=P_m\)，故
-\[
-[I]=[P_m].
-\]
+单位处理（附录 A A.5、T10--T11） & 分类 \(d\le -1\) 情形下的单位，并证明单位因子可以吸收到三次方中。 &
+\path{Descent.lean} &
+\path{zsqrtd_units_eq_one_or_neg_one}；\path{zsqrtd_units_neg_one_cases}；\path{zsqrtd_units_cubes} \\
 
-最后设 \(1+s\notin I\)。我们证明此时 \(I=(2)\)。任取
-\(z=a+bs\in I\)。若 \(b\) 为奇数，则由
-\(a-b\equiv0\pmod2\) 可知 \(a\) 也为奇数。于是
-\[
-1+s
-=
-(a+bs)+\frac{b-a}{2}\cdot2+\frac{1-b}{2}\cdot2(1+s).
-\]
-右端属于 \(I\)：其中 \(a+bs\in I\)，\(2\in I\)，且
-\(2(1+s)\in I\)，因为 \(I\) 是理想。于是 \(1+s\in I\)，与假设矛盾。
-故 \(b\) 必为偶数。再由 \(a-b\equiv0\pmod2\) 得 \(a\) 亦为偶数。
-因此每个 \(I\) 中元素均属于 \((2)\)，即
-\[
-I\subseteq(2).
-\]
-另一方面，由 \(2\in I\) 得 \((2)\subseteq I\)。故
-\[
-I=(2).
-\]
-由于 \((2)\) 是主理想，其理想类为平凡类。
+Mordell 主下降定理（第 3 章、附录 A A.6--A.7） & 展开 \(y+\sqrt d=(a+b\sqrt d)^3\)，比较系数，得到 \(d=-3m^2\pm1\) 与 \(y=m(3d+m^2)\)，并给出反向构造和无解判别接口。 &
+\path{Descent.lean} &
+\path{mordell_arithmetic_of_cube}；\path{mordell_d}；\path{mordell_param_solution}；\path{mordell_d_solution_iff}；\path{mordell_d_no_solution_of_no_param}；\path{mordell_d_no_solution_of_three_dvd} \\
 
-综上，
-\[
-[I]=1\quad\text{或}\quad [I]=[P_m].
-\]
-引理得证。 \(\square\)
+近似引理与有限代表入口（第 3 章） & 用范数估计把每个理想类的代表限制到有限候选集合。 &
+\path{Approximation.lean} &
+\path{exists_int_two_mul_sub_sq_le_one_nine}；\path{exists_int_mul_sub_sq_le_one_twentyfive}；\path{approx_norm_expr_lt}；\path{approx_norm_expr_lt_neg_thirteen}；\path{exists_q_r_of_neg_six_le}；\path{exists_q_r_of_neg_thirteen} \\
 
-\paragraph{引理 E.2.}
-令
-\[
-R_6=\mathbb Z[s],\qquad s=\sqrt{-6},
-\]
-并设
-\[
-P_6=(2,s)\subset R_6.
-\]
-若 \(I\subset R_6\) 是非零整理想且 \(2\in I\)，则
-\[
-[I]=1\quad\text{或}\quad [I]=[P_6].
-\]
+类群代表约化（第 3 章） & 将抽象类群元素替换为含有小整数 \(2\) 或 \(12\) 的整理想代表。 &
+\path{ClassGroupApprox.lean} &
+\path{exists_mk0_eq_mk0_of_approx}；\path{classGroup_exists_mk0_mem_two_of_neg_six_le}；\path{classGroup_exists_mk0_mem_twelve_neg_thirteen} \\
 
-\paragraph{证明.}
-对任意 \(z=a+bs\in R_6\)，有同余刻画
-\[
-z\in P_6
-\quad\Longleftrightarrow\quad
- a\equiv0\pmod2.
-\]
-事实上，若 \(z\in P_6=(2,s)\)，则其实部为偶数；反之，若
-\(a=2k\)，则
-\[
-a+bs=k\cdot2+bs\in P_6.
-\]
+\(d=-2\) 的欧几里得结构 & 构造 \(\mathbb Z[\sqrt{-2}]\) 的除法算法和欧几里得整环实例，用于类数为 \(1\) 的证明。 &
+\path{EuclideanNegTwo.lean} &
+\path{norm_mod_lt}；\path{natAbs_norm_mod_lt}；\path{instNontrivial}；\path{EuclideanDomain} 实例 \\
 
-设 \(I\subset R_6\) 是非零整理想且 \(2\in I\)。若存在
-\(z=a+bs\in I\) 使 \(a\) 为奇数，则
-\[
-N(z)=z\overline z=a^2+6b^2
-\]
-为奇数。因此 \(\gcd(N(z),2)=1\)。取整数 \(u,v\) 使
-\[
-uN(z)+2v=1.
-\]
-由于 \(N(z)\in I\) 且 \(2\in I\)，可得 \(1\in I\)，从而
-\(I=R_6\)。此时 \([I]=1\)。
+\(d=-1,-2\) 的类数输入 & 证明 \(\mathbb Z[i]\) 和 \(\mathbb Z[\sqrt{-2}]\) 的类数条件，并提供这两个参数下的三次根入口。 &
+\path{ClassNumber/Common.lean} &
+\path{quadClassNumber_neg_one}；\path{quadClassNumber_neg_two}；\path{classNumber_gcd_three_neg_one}；\path{classNumber_gcd_three_neg_two}；\path{exists_cube_root_y_add_sqrtd_neg_one}；\path{exists_cube_root_y_add_sqrtd_neg_two} \\
 
-下面假设 \(I\) 中任意元素的实部均为偶数。由上述同余刻画，
-\[
-I\subseteq P_6.
-\]
+\(d=-5\) 的有限类群分类（附录 C） & 构造 \(2\) 上方候选理想类，并证明每个类群元素属于平凡类或该候选类，从而类数不被 \(3\) 整除。 &
+\path{ClassNumber/NegFive.lean} &
+\path{sqrtTwoIdealNegFive}；\path{class_mk0_eq_one_or_sqrtTwo_negFive}；\path{classGroup_negFive_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_five} \\
 
-若 \(s\in I\)，则由 \(2\in I\) 得
-\[
-P_6=(2,s)\subseteq I.
-\]
-结合 \(I\subseteq P_6\)，得 \(I=P_6\)，故
-\[
-[I]=[P_6].
-\]
+\(d=-6\) 的有限类群分类（附录 C） & 对 \(\mathbb Z[\sqrt{-6}]\) 进行同样的二元素候选分类，得到 Mordell 下降所需的类数条件。 &
+\path{ClassNumber/NegSix.lean} &
+\path{sqrtTwoIdealNegSix}；\path{class_mk0_eq_one_or_sqrtTwo_negSix}；\path{classGroup_negSix_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_six} \\
 
-若 \(s\notin I\)，则证明 \(I=(2)\)。任取
-\(z=a+bs\in I\)。若 \(b\) 为奇数，则由 \(a\) 为偶数可得
-\[
-s
-=
-(a+bs)-\frac a2\cdot2+\frac{1-b}{2}\cdot2s.
-\]
-右端属于 \(I\)，因为 \(a+bs\in I\)，\(2\in I\)，且
-\(2s\in I\)。于是 \(s\in I\)，矛盾。因此 \(b\) 必为偶数。
-又 \(a\) 为偶数，所以 \(a+bs\in(2)\)。故
-\[
-I\subseteq(2).
-\]
-另一方面，由 \(2\in I\) 得 \((2)\subseteq I\)。于是
-\[
-I=(2).
-\]
-因此 \([I]=1\)。
+\(d=-13\) 的有限类群分类（附录 C） & 处理 \(12\in J\) 的有限代表分类，并将所有候选压缩到两个理想类。 &
+\path{ClassNumber/NegThirteen.lean} &
+\path{sqrtTwoIdealNegThirteen}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_four}；\path{class_mk0_eq_one_or_sqrtTwo_negThirteen_of_mem_twelve}；\path{classGroup_negThirteen_eq_one_or_sqrtTwo}；\path{classNumber_gcd_three_neg_thirteen} \\
 
-综上，
-\[
-[I]=1\quad\text{或}\quad [I]=[P_6].
-\]
-引理得证。 \(\square\)
-
-\subsection*{E.3 \(R_{13}\) 中含有 \(12\) 的理想的分类}
-
-现在处理 \(R_{13}\) 的情形。正文中的代表元约化结论给出的是
-\(12\in I\)，而不是 \(2\in I\)。因此需要进一步证明：任何含有
-\(12\) 的非零整理想，在理想类意义下仍然只可能给出平凡类或
-\([P_{13}]\)。
-
-\paragraph{引理 E.3.}
-令
-\[
-R_{13}=\mathbb Z[s],\qquad s=\sqrt{-13},
-\]
-并设
-\[
-P_{13}=(2,1+s).
-\]
-若 \(I\subset R_{13}\) 是非零整理想且 \(12\in I\)，则
-\[
-[I]=1\quad\text{或}\quad [I]=[P_{13}].
-\]
-
-\paragraph{证明.}
-第一步，先将问题化为含有 \(4\) 的理想的分类。
-
-若 \(I\subseteq(3)\)，定义
-\[
-K=(I:3)=\{x\in R_{13}\mid 3x\in I\}.
-\]
-由 \(12\in I\) 可知 \(4\in K\)。又因为 \(I\subseteq(3)\)，任意
-\(y\in I\) 均可写成 \(y=3x\)，且由 \(y\in I\) 得 \(x\in K\)。因此
-\[
-I=(3)K.
-\]
-由于 \((3)\) 是主理想，在类群中代表单位元，故
-\[
-[I]=[K].
-\]
-于是该情形归结为研究含有 \(4\) 的非零整理想 \(K\)。
-
-若 \(I\not\subseteq(3)\)，则存在
-\[
-z=a+bs\in I,
-\qquad
-z\notin(3).
-\]
-注意到
-\[
-N(z)=a^2+13b^2\equiv a^2+b^2\pmod3.
-\]
-在 \(\mathbb Z/3\mathbb Z\) 中，平方只可能为 \(0\) 或 \(1\)。因此
-\[
-3\mid N(z)
-\quad\Longrightarrow\quad
-3\mid a\ \text{且}\ 3\mid b.
-\]
-这将推出 \(z\in(3)\)，与 \(z\notin(3)\) 矛盾。故
-\[
-3\nmid N(z).
-\]
-于是存在整数 \(u,v\) 使
-\[
-uN(z)+3v=1.
-\]
-两边乘以 \(4\)，得到
-\[
-4uN(z)+12v=4.
-\]
-由于 \(N(z)=z\overline z\in I\) 且 \(12\in I\)，故 \(4\in I\)。
-
-因此，在两种情形下，问题均可化为如下断言：若 \(J\subset R_{13}\)
-是非零整理想且 \(4\in J\)，则
-\[
-[J]=1\quad\text{或}\quad [J]=[P_{13}].
-\]
-
-下面证明该断言。设 \(J\subset R_{13}\) 是非零整理想且 \(4\in J\)。
-
-若 \(2\in J\)，则由引理 E.1，取 \(m=13\)，立即得到
-\[
-[J]=1\quad\text{或}\quad [J]=[P_{13}].
-\]
-
-下面设 \(2\notin J\)。首先证明：任意
-\(z=a+bs\in J\) 均满足
-\[
-a-b\equiv0\pmod2.
-\]
-否则 \(a-b\) 为奇数，则 \(a,b\) 一奇一偶。由于 \(13\) 为奇数，
-\[
-N(z)=a^2+13b^2
-\]
-为奇数。于是 \(\gcd(N(z),4)=1\)。取整数 \(u,v\) 使
-\[
-uN(z)+4v=1.
-\]
-因为 \(N(z)\in J\) 且 \(4\in J\)，故 \(1\in J\)，从而
-\(2\in J\)，与假设矛盾。因此
-\[
-a-b\equiv0\pmod2
-\]
-对所有 \(a+bs\in J\) 成立。
-
-接下来证明
-\[
-J\subseteq(2).
-\]
-反设存在 \(z=a+bs\in J\) 使 \(a\) 为奇数。由
-\(a-b\equiv0\pmod2\) 可知 \(b\) 也为奇数。于是
-\((a,b)\) 模 \(4\) 只有以下四种可能：
-\[
-(1,1),\quad (3,3),\quad (1,3),\quad (3,1).
-\]
-利用
-\[
-s^2=-13\equiv-1\pmod4,
-\]
-可逐一验证下表：
-\[
-\begin{array}{c|c}
-(a,b)\pmod4 & \text{属于 }J\text{ 且与 }1+s\text{ 模 }(4)\text{ 同余的元素} \\
-\hline
-(1,1) & z \\
-(3,3) & -z \\
-(1,3) & sz \\
-(3,1) & -sz
-\end{array}
-\]
-由于 \(J\) 是理想，所以上表第二列中的元素均属于 \(J\)。又因为
-\(4\in J\)，故 \((4)\subseteq J\)。于是 \(1+s\) 与 \(J\) 中某元素相差
-\((4)\) 中的元素，从而
-\[
-1+s\in J.
-\]
-于是
-\[
-N(1+s)=(1+s)(1-s)=14\in J.
-\]
-结合 \(4\in J\)，得到
-\[
-2=14-3\cdot4\in J,
-\]
-这与 \(2\notin J\) 矛盾。因此 \(J\) 中任意元素 \(a+bs\) 的实部
-\(a\) 必为偶数。再由 \(a-b\equiv0\pmod2\) 可知 \(b\) 亦为偶数。
-故
-\[
-J\subseteq(2).
-\]
-
-定义
-\[
-L=(J:2)=\{x\in R_{13}\mid 2x\in J\}.
-\]
-由于 \(4\in J\)，有 \(2\in L\)。又由 \(J\subseteq(2)\)，任意
-\(y\in J\) 均可写作 \(y=2x\)，且 \(x\in L\)。因此
-\[
-J=(2)L.
-\]
-由于 \((2)\) 是主理想，故
-\[
-[J]=[L].
-\]
-而 \(2\in L\)，由引理 E.1，取 \(m=13\)，得
-\[
-[L]=1\quad\text{或}\quad [L]=[P_{13}].
-\]
-于是
-\[
-[J]=1\quad\text{或}\quad [J]=[P_{13}].
-\]
-
-综上，任意满足 \(12\in I\) 的非零整理想 \(I\subset R_{13}\) 均满足
-\[
-[I]=1\quad\text{或}\quad [I]=[P_{13}].
-\]
-引理得证。 \(\square\)
-
-\subsection*{E.4 有限代表的分类结论}
-
-现在回到正文中的代表元约化结论。正文已经证明：当
-\(d=-5,-6\) 时，每个理想类都有一个非零整理想代表 \(I\)，满足
-\(2\in I\)；当 \(d=-13\) 时，每个理想类都有一个非零整理想代表
-\(I\)，满足 \(12\in I\)。
-
-对 \(R_5\)，由引理 E.1 得
-\[
-\operatorname{Cl}(R_5)\subseteq\{1,[P_5]\}.
-\]
-由于 \(P_5\) 本身定义了类 \([P_5]\)，故可写为
-\[
-\operatorname{Cl}(R_5)=\{1,A_5\}.
-\]
-
-对 \(R_6\)，由引理 E.2 得
-\[
-\operatorname{Cl}(R_6)\subseteq\{1,[P_6]\}.
-\]
-因此
-\[
-\operatorname{Cl}(R_6)=\{1,A_6\}.
-\]
-
-对 \(R_{13}\)，由引理 E.3 得
-\[
-\operatorname{Cl}(R_{13})\subseteq\{1,[P_{13}]\}.
-\]
-因此
-\[
-\operatorname{Cl}(R_{13})=\{1,A_{13}\}.
-\]
-
-这里的等号表示右侧集合覆盖整个类群；若某个 \(A_d\) 恰好等于
-\(1\)，则对应类群为平凡群。特别地，三个类群的阶均不超过 \(2\)，
-故相应类数只能为 \(1\) 或 \(2\)。于是
-\[
-\gcd(h(R_5),3)=\gcd(h(R_6),3)=\gcd(h(R_{13}),3)=1.
-\]
-这正是正文中 Mordell 下降论证所需的类数输入。
+最终整数解定理（第 3 章、附录 D） & 将下降定理与具体类数输入结合，得到 \(d=-1,-2,-5,-6,-13\) 的最终整数解或无解结论；附录 D 的 Comparator 检查也以这些声明为规范目标。 &
+\path{Solutions.lean} &
+\path{mordell_minus1_solution_iff}；\path{mordell_minus2_solutions_iff}；\path{mordell_minus5}；\path{mordell_minus6}；\path{mordell_minus13_solutions_iff} \\
+\end{longtable}
+}
 
 \endgroup

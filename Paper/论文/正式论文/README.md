@@ -6,9 +6,9 @@
 
 - `main.tex`：论文主文件，包含封面、英文扉页、目录、全局格式和各章节引用。
 - `chapters/abstract.tex`：中英文摘要。
-- `chapters/chapter1.tex` 至 `chapters/chapter5.tex`：正文各章。
+- `chapters/chapter1.tex` 至 `chapters/chapter6.tex`：正文各章。
 - `chapters/references.tex`：参考文献。
-- `chapters/appendix.tex`：附录。
+- `chapters/appendixA.tex` 至 `chapters/appendixF.tex`：附录。
 - `chapters/acknowledgements.tex`：致谢。
 - `figures/`：图片资源，目前包含模版中的校徽和示例图。
 - `out/`：建议作为 LaTeX 编译输出目录。

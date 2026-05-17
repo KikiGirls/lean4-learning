@@ -8,7 +8,7 @@ y^2=x^3+d
 $$
 建立 Lean 4 形式化项目。证明主线从二次整数环 $\mathbb{Z}[\sqrt d]$ 中的元素分解出发，将方程转化为主理想分解，再利用 Dedekind 整环结构、共轭主理想互素性、类群下降和有限类群计算，得到 Mordell 基本结论，并将其应用于 $d=-1,-2,-5,-6,-13$ 等具体参数。最终项目包含 12 个 Lean 源文件，约 2800 行代码，完成了基础二次整数环接口、Dedekind 条件、类群代表元约化、若干小类数条件以及最终整数解定理的形式化；项目通过 `lake build` 验证，未使用 `sorry`、`admit` 或 `axiom` 占位。
 
-在此基础上，本文进一步比较了不同人工智能模型在自然语言证明生成、Lean 证明代码生成和仓库级智能体实验中的表现。实验表明，当前 AI 能够有效提供证明路线、局部引理、代码草稿和编译错误修复建议，但在复杂代数数论形式化任务中仍难以脱离人类设计的证明结构和 Lean 编译反馈独立完成完整证明。本文的实践说明，人类给出数学路线、AI 辅助证明工程、Lean 负责最终核验的协作模式，已经能够支持具有一定复杂度的形式化数学项目。
+在此基础上，本文进一步对开发过程中的人机交互记录进行任务级评价。本文将 47 个会话、413 条消息划分为 76 个任务，并参照评价框架标注 Full、Partial、Incorrect 和 Pending 等完成结果。统计显示，AI 智能体在本项目中的 Full 比例为 77.6%，Full 与 Partial 合计的有效贡献比例为 92.1%。实验表明，当前 AI 能够有效提供证明路线、局部引理、代码草稿和编译错误修复建议，但在复杂代数数论形式化任务中仍难以脱离人类设计的证明结构和 Lean 编译反馈独立完成完整证明。本文的实践说明，人类给出数学路线、AI 辅助证明工程、Lean 负责最终核验的协作模式，已经能够支持具有一定复杂度的形式化数学项目。
 
 {\heiti 关键词}：人工智能；Lean 4；形式化证明；Mordell 方程；
 
@@ -22,6 +22,6 @@ y^2=x^3+d.
 $$
 The formal proof starts from a factorization in the quadratic integer ring $\mathbb{Z}[\sqrt d]$, turns the equation into a statement about principal ideals, and then uses Dedekind domain structures, coprimality of conjugate ideals, class group descent, and finite class group computations. These ingredients yield the basic Mordell theorem and its applications to the parameters $d=-1,-2,-5,-6,-13$. The final project consists of 12 Lean source files and about 2800 lines of code, covering the basic interface of quadratic integer rings, Dedekind conditions, class group representative reduction, small class number conditions, and final theorems for integral solutions. The project passes `lake build` without using `sorry`, `admit`, or `axiom`.
 
-The thesis also compares several types of AI assistance in natural-language proof generation, Lean proof generation, and repository-level agent experiments. The experiments show that current AI systems can provide useful proof outlines, local lemmas, code drafts, and suggestions for fixing compiler errors, but they still have difficulty completing complex algebraic number theory formalizations without human-designed proof structures and Lean feedback. This case study suggests that a workflow combining human mathematical planning, AI-assisted proof engineering, and Lean kernel verification is already practical for nontrivial formal mathematics projects.
+The thesis also evaluates the human-agent interaction records from the development process at the task level. The records contain 47 sessions and 413 messages, which are grouped into 76 tasks and annotated using the Full, Partial, Incorrect, and Pending categories of the evaluation framework. The resulting Full rate is 77.6%, and the combined effective contribution rate of Full and Partial tasks is 92.1%. The experiments show that current AI systems can provide useful proof outlines, local lemmas, code drafts, and suggestions for fixing compiler errors, but they still have difficulty completing complex algebraic number theory formalizations without human-designed proof structures and Lean feedback. This case study suggests that a workflow combining human mathematical planning, AI-assisted proof engineering, and Lean kernel verification is already practical for nontrivial formal mathematics projects.
 
 **Key words**: artificial intelligence; Lean 4; formal proof; Mordell equation;

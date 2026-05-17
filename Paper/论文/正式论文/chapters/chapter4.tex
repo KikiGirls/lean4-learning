@@ -10,7 +10,7 @@
 
 \subsection{形式化结果概述}
 
-形式化结果的正确性已在多个层面上得到验证。整个项目通过了 lake build 测试，未出现任何错误。此外，还使用了 Comparator\footnote{\url{https://github.com/leanprover/comparator}} 进行验证，一个用于精益证明的沙盒验证工具，用于确认形式化的定理陈述与人工审核的简化规范（附录 F）相符，并且证明仅依赖于标准的精益公理，而不引入任何隐藏的假设。
+形式化结果的正确性已在多个层面上得到验证。整个项目通过了 lake build 测试，未出现任何错误。此外，还使用了 Comparator\footnote{\url{https://github.com/leanprover/comparator}} 进行验证，一个用于精益证明的沙盒验证工具，用于确认形式化的定理陈述与人工审核的简化规范（附录 D）相符，并且证明仅依赖于标准的精益公理，而不引入任何隐藏的假设。
 
 完整的形式化过程包含约 2800 行 Lean 4 代码，分布在 12 个文件中（详见表~\ref{tab:formalization-summary} 和表~\ref{tab:formalization-modules}）。
 
@@ -116,9 +116,9 @@
   \label{fig:mordell-blueprint-simplified}
 \end{figure}
 
-图~\ref{fig:mordell-blueprint-simplified} 显示了主要结果的依赖关系图，该图是从完整的蓝图（包含 156 个公开顶层声明节点）简化而来。本文的 Lean 4 项目源码和完整交互式蓝图均已发布，项目地址见附录 H；其中完整蓝图可用于按文件、声明类型和名称交互式查看声明依赖。
+图~\ref{fig:mordell-blueprint-simplified} 显示了主要结果的依赖关系图，该图是从完整的蓝图（包含 156 个公开顶层声明节点）简化而来。本文的 Lean 4 项目源码和完整交互式蓝图均已发布，项目地址见附录 F；其中完整蓝图可用于按文件、声明类型和名称交互式查看声明依赖。
 
-附录 G 则汇总了全文主要证明环节、项目模块与 Lean 定理声明之间的对应关系。
+附录 E 则汇总了全文主要证明环节、项目模块与 Lean 定理声明之间的对应关系。
 
 \subsection{人工智能辅助形式化}
 
